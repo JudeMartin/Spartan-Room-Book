@@ -11,7 +11,6 @@ public class RoomType {
 	public String getRoomType() {
 		return roomType;
 	}
-
 	public void setRoomType(String roomType) {
 		this.roomType = roomType;
 	}
