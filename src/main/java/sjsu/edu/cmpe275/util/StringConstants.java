@@ -14,5 +14,5 @@ public class StringConstants {
 	public static String ROOM_TYPE_2QUEEN_BED = "2 Queen Bed";
 	public static String ROOM_TYPE_1KING_BED = "1 King Bed";
 	
-	
+	//check
 }
