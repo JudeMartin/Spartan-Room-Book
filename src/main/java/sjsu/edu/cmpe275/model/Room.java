@@ -1,5 +1,8 @@
 package sjsu.edu.cmpe275.model;
 
+/*
+@Author: Jude Martin
+*/
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
