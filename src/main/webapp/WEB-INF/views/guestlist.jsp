@@ -9,9 +9,9 @@
 <body>
 
 <h1>List Guests</h1>
-<h3><a href="/Spring3HibernateApp/add.html">Add More Guest</a></h3>
 
-<c:if test="${!empty guests}">
+
+<c:if test="${!empty guest}">
 	<table align="left" border="1">
 		<tr>
 			<th>Guest ID</th>
@@ -25,17 +25,17 @@
 			<th>Guest DL</th>
 		</tr>
 
-		<c:forEach items="${guests}" var="guest">
+		<c:forEach items="${guest}" var="guestData">
 			<tr>
-				<td><c:out value="${guest.guest_id}"/></td>	
-				<td><c:out value="${guest.first_name}"/></td>
-				<td><c:out value="${guest.last_name}"/></td>
-				<td><c:out value="${guest.address}"/></td>
-				<td><c:out value="${guest.email}"/></td>
-				<td><c:out value="${guest.phone}"/></td>
-				<td><c:out value="${guest.city}"/></td>
-				<td><c:out value="${guest.country}"/></td>
-				<td><c:out value="${guest.driver_license}"/></td>
+				<td><c:out value="${guestData.guest_id}"/></td>	
+				<td><c:out value="${guestData.first_name}"/></td>
+				<td><c:out value="${guestData.last_name}"/></td>
+				<td><c:out value="${guestData.address}"/></td>
+				<td><c:out value="${guestData.email}"/></td>
+				<td><c:out value="${guestData.phone}"/></td>
+				<td><c:out value="${guestData.city}"/></td>
+				<td><c:out value="${guestData.country}"/></td>
+				<td><c:out value="${guestData.driver_license}"/></td>
 			</tr>
 		</c:forEach>
 	</table>

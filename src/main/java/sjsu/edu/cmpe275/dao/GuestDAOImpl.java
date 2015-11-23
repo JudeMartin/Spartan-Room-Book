@@ -1,18 +1,16 @@
 package sjsu.edu.cmpe275.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import sjsu.edu.cmpe275.model.Guest;
-import sjsu.edu.cmpe275.model.Users;
 
 @Repository("guestDao")
 public class GuestDAOImpl implements GuestDAO {
@@ -48,10 +46,12 @@ public class GuestDAOImpl implements GuestDAO {
 		}
 		return listCategories1;
 		*/
+		
+		
 		try {
 			System.out.println("Try Block => In the ListGuest - DAO");		
 			List<Guest> res = (List<Guest>) session.createQuery("from Guest").list();
-			System.out.println("Try Block => after hibernate Sessoion In the ListGuest - DAO is list empty?"+res.isEmpty());		
+			System.out.println("Try Block => after hibernate Sessoion In the ListGuest - DAO is list empty?"+res.isEmpty());	
 			return res;
 		} catch (HibernateException e) {
 			// TODO Auto-generated catch block
@@ -63,6 +63,7 @@ public class GuestDAOImpl implements GuestDAO {
 		return null;
 	}
 
+	 
 	@Override
 	public Guest getGuest(int guest_id) {
 		// TODO Auto-generated method stub

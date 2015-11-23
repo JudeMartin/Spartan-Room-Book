@@ -1,8 +1,8 @@
 package sjsu.edu.cmpe275.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +20,7 @@ import sjsu.edu.cmpe275.service.GuestService;
 public class GuestController {
 	@Autowired
 	private GuestService guestService;
+	private List<Guest> res;
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView listGuests() {
 		System.out.println("In the guest controller1");
@@ -55,9 +56,33 @@ public class GuestController {
 				bean.setLast_name(guest.getLast_name());
 				beans.add(bean);
 			}
+			printBeans(beans);
 		}
-		System.out.println("beans-Last");
-		System.out.println(Arrays.toString(beans.toArray()).isEmpty());
+		System.out.println("beans-Last"); 
 		return beans;
 	}
+
+	private void printBeans(List<Guest> beans) {
+		for ( 
+				Iterator<Guest> iter = beans.iterator(); iter.hasNext();) {
+					 
+					Guest guest = (Guest) iter.next(); 
+					
+					  Integer guest_id = guest.getGuest_id();
+					  String first_name = guest.getFirst_name();
+					  String last_name = guest.getLast_name();
+					  String address = guest.getAddress();
+					  String email = guest.getEmail();
+					  String phone = guest.getPhone();
+					  String city = guest.getCity();
+					  String country = guest.getCountry();
+					  String driver_license = guest.getDriver_license();
+					
+					System.out.println("Id=>"+guest_id+" "+"First Name=>"+first_name+" "+
+									  "Last Name=>"+last_name+" "+"Address=>"+address+" "+"email=> "+email+" "+
+									  "phone=>"+phone+" "+"City=> "+city+" "+
+									  "Country=>"+country+" "+"DriverLic =>"+driver_license);
+				}
+	}
+
 }
