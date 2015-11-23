@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import sjsu.edu.cmpe275.dao.GuestDAO;
+import sjsu.edu.cmpe275.dao.GuestDAOImpl;
 import sjsu.edu.cmpe275.model.Guest;
 
 @Service("guestService")
@@ -24,6 +25,7 @@ public class GuestServiceImpl implements GuestService {
 	@Transactional(readOnly = false)
 	public List<Guest> listGuests() {
 		try {
+			System.out.println("Before executing the Dao get list ");
 			return guestDao.listGuests();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

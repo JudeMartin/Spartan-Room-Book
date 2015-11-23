@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import sjsu.edu.cmpe275.model.Guest;
 import sjsu.edu.cmpe275.service.GuestService;
@@ -20,24 +21,25 @@ public class GuestController {
 	@Autowired
 	private GuestService guestService;
 	@RequestMapping(method = RequestMethod.GET)
-	public String listGuests() {
+	public ModelAndView listGuests() {
 		System.out.println("In the guest controller1");
 
 		Map<String, Object> model = new HashMap<String, Object>();
 		System.out.println("In the guest controller2");
-		System.out.println(guestService.listGuests().isEmpty());
-		
-		model.put("guests",  prepareListofBean(guestService.listGuests()));
+		List<Guest> res = guestService.listGuests();
+		System.out.println("Before Calling PrepareListOfBeans => is the guests list empty?"+res.isEmpty());
+		model.put("guests",  prepareListofBean(res));
 		System.out.println("In the guest controller3");
-		//return new ModelAndView("guestlist", model);
-		return  "home";
+		return new ModelAndView("guestlist", model);
+		//return  "home";
 	}
 
 	private List<Guest> prepareListofBean(List<Guest> guests){
 		System.out.println("Bean - 1");
 		List<Guest> beans = null;
+		System.out.println("Is the guests null?"+guests.isEmpty());
 		if(guests != null && !guests.isEmpty()){
-			System.out.println("Is the guests null?"+guests.isEmpty());
+			System.out.println("Inside the if method - Is the guests null?"+guests.isEmpty());
 			beans = new ArrayList<Guest>();
 			Guest bean = null;
 			for(Guest guest : guests){

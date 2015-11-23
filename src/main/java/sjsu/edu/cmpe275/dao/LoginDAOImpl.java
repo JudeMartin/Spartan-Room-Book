@@ -27,7 +27,7 @@ public class LoginDAOImpl implements LoginDAO{
        protected Session getSession(){
               return sessionFactory.openSession();
        }
-
+       
        public boolean checkLogin(String userName, String userPassword){
 			System.out.println("In Check login");
 			Session session = sessionFactory.openSession();
