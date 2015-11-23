@@ -2,6 +2,7 @@ package sjsu.edu.cmpe275.dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,7 +26,15 @@ public class GuestDAOImpl implements GuestDAO {
 	public List<Guest> listGuests() {
 		// TODO Auto-generated method stub
 		System.out.println("In the ListGuest - DAO");
-		return (List<Guest>) sessionFactory.getCurrentSession().createCriteria(Guest.class).list();
+		
+		try {
+			return (List<Guest>) sessionFactory.getCurrentSession().createCriteria(Guest.class).list();
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Caught the error in the ListGuests:");
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override

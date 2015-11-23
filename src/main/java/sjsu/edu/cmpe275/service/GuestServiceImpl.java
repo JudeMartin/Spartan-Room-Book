@@ -23,7 +23,14 @@ public class GuestServiceImpl implements GuestService {
 	}
 
 	public List<Guest> listGuests() {
-		return guestDao.listGuests();
+		try {
+			return guestDao.listGuests();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error Caught");
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public Guest getGuest(int guest_id) {
