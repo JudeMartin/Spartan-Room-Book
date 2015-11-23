@@ -27,6 +27,7 @@ public class LoginController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String showForm(Map model) {
+		System.out.println("In Login Controller");
 		LoginForm loginForm = new LoginForm();
 		model.put("loginForm", loginForm);
 		return "loginform";

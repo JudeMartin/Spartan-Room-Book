@@ -12,7 +12,7 @@
   <li><a href="forms/loginform.html">Login Form</a></li>
 </ul>
 <ul>
-  <li><a href="forms/registrationform.html">Registration Form</a></li>
+  <li><a href="forms/guestform.html">Guest View </a></li>
 </ul>
  
 </body>
