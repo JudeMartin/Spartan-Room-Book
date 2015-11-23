@@ -1,12 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-      xmlns:context="http://www.springframework.org/schema/context"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="
-        http://www.springframework.org/schema/beans    
-        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?><beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-4.0.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+   
+  
+   
    
     <!-- Base package for checking the annoted classes -->
       <context:component-scan base-package="sjsu.edu.cmpe275">
@@ -25,6 +32,8 @@
             <property name="password" value="root" />
       </bean>
       <!-- Configure Hibernate 4 Session Facotry -->
+      <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+      
       <bean id="sessionFactory"
             class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 

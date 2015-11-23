@@ -55,7 +55,7 @@ public class GuestController {
 			}
 		}
 		System.out.println("beans-Last");
-		System.out.println(Arrays.toString(beans.toArray()));
+		System.out.println(Arrays.toString(beans.toArray()).isEmpty());
 		return beans;
 	}
 }

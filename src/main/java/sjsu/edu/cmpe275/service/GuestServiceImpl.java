@@ -11,7 +11,7 @@ import sjsu.edu.cmpe275.dao.GuestDAO;
 import sjsu.edu.cmpe275.model.Guest;
 
 @Service("guestService")
-//@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class GuestServiceImpl implements GuestService {
 	
 	@Autowired
@@ -21,7 +21,7 @@ public class GuestServiceImpl implements GuestService {
 	public void addGuest(Guest guest) {
 		guestDao.addGuest(guest);
 	}
-
+	@Transactional(readOnly = false)
 	public List<Guest> listGuests() {
 		try {
 			return guestDao.listGuests();
