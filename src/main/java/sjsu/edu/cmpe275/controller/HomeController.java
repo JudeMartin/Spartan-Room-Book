@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import sjsu.edu.cmpe275.model.RoomStatus;
+
 @Controller
 public class HomeController {
 
@@ -15,4 +17,6 @@ public class HomeController {
 	public ModelAndView test(HttpServletResponse response) throws IOException{
 		return new ModelAndView("home");
 	}
+	
+	
 }
