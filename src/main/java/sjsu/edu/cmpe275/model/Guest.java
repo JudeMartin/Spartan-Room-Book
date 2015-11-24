@@ -89,20 +89,5 @@ public class Guest implements Serializable{
 	public void setDriver_license(String driver_license) {
 		this.driver_license = driver_license;
 	}
-	 
 }
 
-	
-/*
- * 
- * INSERT INTO `roombooking`.`guest`
-(`phone`,
-`last_name`,
-`guest_id`,
-`first_name`,
-`email`,
-`driver_license`,
-`country`,
-`city`,
-`address`)
- * */

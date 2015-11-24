@@ -14,25 +14,18 @@ import sjsu.edu.cmpe275.model.Guest;
 @Service("guestService")
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class GuestServiceImpl implements GuestService {
-	
+
 	@Autowired
 	private GuestDAO guestDao;
-	
+
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void addGuest(Guest guest) {
 		guestDao.addGuest(guest);
 	}
+
 	@Transactional(readOnly = false)
 	public List<Guest> listGuests() {
-		try {
-			System.out.println("Before executing the Dao get list ");
-			return guestDao.listGuests();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			System.out.println("Error Caught");
-			e.printStackTrace();
-		}
-		return null;
+		return guestDao.listGuests();
 	}
 
 	public Guest getGuest(int guest_id) {
