@@ -8,6 +8,6 @@
         <title>Home</title>
     </head>
     <body>
-        <h1>Spartan Room Book  - Hotel booking service</h1>
+        <h1>Spartan Room Book  -  Hotel booking service</h1>
     </body>
 </html>
