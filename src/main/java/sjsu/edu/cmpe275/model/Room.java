@@ -1,33 +1,59 @@
 package sjsu.edu.cmpe275.model;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name="Room")
+@Entity
 public class Room {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="room_id")
     private Long id;
-	@Embedded
-    private RoomType roomType;
-	@Embedded
-	private RoomStatus roomStatus;
-	@Embedded
-	private RoomOtherType roomOtherType;
-    public Long getId() {
+
+	@Column(name="room_type_id")
+	private int roomTypeId;	
+	
+	@Column(name="other_type_id")
+	private int otherTypeId;
+	
+	@Column(name="status_id")
+	private int statusId;
+
+	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public RoomType getRoomType() {
-		return roomType;
+
+	public int getRoomTypeId() {
+		return roomTypeId;
 	}
-	public void setRoomType(RoomType roomType) {
-		this.roomType = roomType;
+
+	public void setRoomTypeId(int roomTypeId) {
+		this.roomTypeId = roomTypeId;
 	}
+
+	public int getOtherTypeId() {
+		return otherTypeId;
+	}
+
+	public void setOtherTypeId(int otherTypeId) {
+		this.otherTypeId = otherTypeId;
+	}
+
+	public int getStatusId() {
+		return statusId;
+	}
+
+	public void setStatusId(int statusId) {
+		this.statusId = statusId;
+	}
+	
 	
 }
