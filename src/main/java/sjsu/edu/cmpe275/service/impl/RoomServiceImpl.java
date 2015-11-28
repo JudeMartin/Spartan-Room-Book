@@ -21,4 +21,24 @@ public class RoomServiceImpl implements RoomService {
 		return roomDAO.listRooms();
 	}
 
+	@Transactional
+	public Room createRoom(Room room) {
+		return roomDAO.createRoom(room);
+	}
+
+	@Transactional(readOnly = true)
+	public Room viewRoom(Long roomId) {
+		return roomDAO.viewRoom(roomId);
+	}
+
+	@Transactional
+	public void updateRoom(Room room) {
+		roomDAO.updateRoom(room);
+	}
+
+	@Transactional
+	public void deleteRoom(Long roomId) {
+		roomDAO.deleteRoom(roomId);
+	}
+
 }

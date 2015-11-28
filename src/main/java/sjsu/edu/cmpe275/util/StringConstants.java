@@ -6,7 +6,7 @@ public class StringConstants {
 	public static String OTHER_TYPE_SMOKING = "SMOKING";
 	public static String OTHER_TYPE_NON_SMOKING = "NON-SMOKING";
 	
-	//ROOM STATUS 0 - AVAILABLE, 1 - RESERVED, 2 - IN-USE
+	//ROOM STATUS 1 - AVAILABLE, 2 - RESERVED, 3 - IN-USE
 	public static String STATUS_AVAILABLE = "Available";
 	public static String STATUS_RESERVED = "Reserved";
 	public static String STATUS_IN_USE = "In Use";

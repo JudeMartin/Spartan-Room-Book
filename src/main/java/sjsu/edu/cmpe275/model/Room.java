@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Entity
 public class Room {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="room_id")
     private Long id;
 
@@ -53,6 +53,12 @@ public class Room {
 
 	public void setStatusId(int statusId) {
 		this.statusId = statusId;
+	}
+
+	@Override
+	public String toString() {
+		return "Room [id=" + id + ", roomTypeId=" + roomTypeId + ", otherTypeId=" + otherTypeId + ", statusId="
+				+ statusId + "]";
 	}
 	
 	

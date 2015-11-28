@@ -7,9 +7,9 @@ import javax.persistence.Entity;
 import sjsu.edu.cmpe275.util.StringConstants;
 //@Entity
 public enum RoomStatus {
-	AVAILABLE(0, StringConstants.STATUS_AVAILABLE), 
-	RESERVED(1, StringConstants.STATUS_RESERVED), 
-	INUSE(2, StringConstants.STATUS_IN_USE);
+	AVAILABLE(1, StringConstants.STATUS_AVAILABLE), 
+	RESERVED(2, StringConstants.STATUS_RESERVED), 
+	INUSE(3, StringConstants.STATUS_IN_USE);
 	
 	//@Column(name="room_status_id")
 	private int roomStatusId;
