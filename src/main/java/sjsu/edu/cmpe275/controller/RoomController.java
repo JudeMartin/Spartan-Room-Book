@@ -43,11 +43,8 @@ public class RoomController {
 		roomStatusList.put(RoomStatus.RESERVED.getRoomStatusId(), RoomStatus.RESERVED.getRoomStatusName());
 		model.addAttribute("roomStatusList", roomStatusList);*/
 		//Room Other Type List
-		
 		//Room Type List
-		
-		
-		printRoomsDetails(rmls);
+		//printRoomsDetails(rmls);
 		return "listrooms";
 	}
 	
