@@ -13,6 +13,28 @@
 			<!-- start header -->
 			<jsp:include page="menu.jsp" />
 			<!-- end header -->
+			<div class="span6 pull-right main_menu">
+				<div class="navbar">
+					<div class="container">
+						<a class="btn btn-navbar" data-toggle="collapse"
+							data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span>
+						</a>
+						<div class="nav-collapse">
+							<ul class="nav nav-pills">
+								<li class="active"><a href="home">Home</a></li>
+								<li class=""><a href="rooms">Rooms</a></li>
+								<li class=""><a href="facilities">Facilities</a></li>
+								<li class=""><a href="gallery">Gallery</a></li>
+								<li class=""><a href="map">Map</a></li>
+								<li class=""><a href="book-start">Book</a></li>
+							</ul>
+						</div>
+						<!-- /.nav-collapse -->
+					</div>
+				</div>
+				<!-- /navbar -->
+			</div>
 			<div class="row-fluid slideshow-row">
 				<div class="span12 slideshow">
 					<div class="slider-wrapper theme-default">
@@ -265,23 +287,7 @@
 		</div>
 	</div>
 	<!-- /container -->
-
 	<jsp:include page="footer.jsp" />
-
-	<script src="../../../maps.google.com/maps/api/js?sensor=false"
-		type="text/javascript"></script>
-	<script type="text/javascript" src="web-resources/js/Scripts/jquery.js"></script>
-	<script type="text/javascript"
-		src="web-resources/js/Scripts/jquery-ui.js"></script>
-	<script type="text/javascript"
-		src="web-resources/js/Scriptsbootstrap.js"></script>
-	<script type="text/javascript"
-		src="web-resources/js/Scripts/jquery.nivo.slider.js"></script>
-	<script type="text/javascript"
-		src="web-resources/js/Scripts/socialcount.min.js"></script>
-	<script src="web-resources/js/Scripts/jquery.quicksand.js"
-		type="text/javascript"></script>
-
-	<script type="text/javascript" src="web-resources/js/Scripts/global.js"></script>
+	<jsp:include page="includes/scripts.jsp" />
 </body>
 </html>

@@ -1,7 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<jsp:include page="menu.jsp" />
+<jsp:include page="header.jsp" />
 </head>
 <body>
 	<div class="container-fluid">
@@ -9,15 +13,34 @@
 			<!-- start header -->
 			<jsp:include page="menu.jsp" />
 			<!-- end header -->
+				<div class="span6 pull-right main_menu">
+		<div class="navbar">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+				</a>
+				<div class="nav-collapse">
+					<ul class="nav nav-pills">
+						<li class=""><a href="home">Home</a></li>
+						<li class=""><a href="rooms">Rooms</a></li>
+						<li class=""><a href="facilities">Facilities</a></li>
+						<li class=""><a href="gallery">Gallery</a></li>
+						<li class=""><a href="map">Map</a></li>
+						<li class="active"><a href="book-start">Book</a></li>
+					</ul>
+				</div>
+				<!-- /.nav-collapse -->
+			</div>
+		</div>
+		<!-- /navbar -->
+	</div>
 			<div class="row booking_summary">
 
 				<div class="span12">
 
 					<div class="row">
 						<div class="span9">
-
-
-
 							<form class="form-horizontal" action="">
 
 								<fieldset>
@@ -391,7 +414,7 @@
 
 									<div class="row">
 										<div class="span9">
-											<br /> <a href="book-pay.html"
+											<br /> <a href="book-pay"
 												class="btn btn-primary btn-large book-now pull-right">Continue</a>
 											<br /> <br />
 										</div>
@@ -433,21 +456,7 @@
 		</div>
 		<!-- /container -->
 		<jsp:include page="footer.jsp" />
-		<script src="http://maps.google.com/maps/api/js?sensor=false"
-			type="text/javascript"></script>
-		<script type="text/javascript" src="web-resources/js/Script/jquery.js"></script>
-		<script type="text/javascript"
-			src="web-resources/js/Script/jquery-ui.js"></script>
-		<script type="text/javascript"
-			src="web-resources/js/Script/bootstrap.js"></script>
-		<script type="text/javascript"
-			src="web-resources/js/Script/jquery.nivo.slider.js"></script>
-		<script type="text/javascript"
-			src="web-resources/js/Script/socialcount.min.js"></script>
-		<script src="web-resources/js/jquery.quicksand.js"
-			type="text/javascript"></script>
-
-		<script type="text/javascript" src="web-resources/js/Script/global.js"></script>
+<jsp:include page="includes/scripts.jsp" />
 	</div>
 </body>
 </html>

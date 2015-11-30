@@ -13,6 +13,28 @@
 			<!-- start header -->
 			<jsp:include page="menu.jsp" />
 			<!-- end header -->
+		<div class="span6 pull-right main_menu">
+		<div class="navbar">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+				</a>
+				<div class="nav-collapse">
+					<ul class="nav nav-pills">
+						<li class=""><a href="home">Home</a></li>
+						<li class="active"><a href="rooms">Rooms</a></li>
+						<li class=""><a href="facilities">Facilities</a></li>
+						<li class=""><a href="gallery">Gallery</a></li>
+						<li class=""><a href="map">Map</a></li>
+						<li class=""><a href="book-start">Book</a></li>
+					</ul>
+				</div>
+				<!-- /.nav-collapse -->
+			</div>
+		</div>
+		<!-- /navbar -->
+	</div>
 			<div class="row-fluid">
 
 				<div class="span12">
@@ -249,8 +271,9 @@
 				</div>
 			</div>
 		</div>
+	</div>
 		<!-- /container -->
 		<jsp:include page="footer.jsp" />
-	</div>
+		<jsp:include page="includes/scripts.jsp" />
 </body>
 </html>
