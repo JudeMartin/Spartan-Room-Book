@@ -48,4 +48,8 @@ public class HomeController {
 	public ModelAndView loadBookStart(HttpServletResponse response) throws IOException{
 		return new ModelAndView("book-start");
 	}
+	@RequestMapping(value="/book")
+	public ModelAndView loadBook(HttpServletResponse response) throws IOException{
+		return new ModelAndView("book");
+	}
 }	
