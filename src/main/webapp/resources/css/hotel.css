@@ -12,6 +12,9 @@ nav,
 section {
   display: block;
 }
+element.style {
+    margin-left: 122px;
+}
 audio,
 canvas,
 video {
