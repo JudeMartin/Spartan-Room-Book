@@ -7,8 +7,12 @@
 <jsp:include page="header.jsp" />
 </head>
 <body>
-<jsp:include page="menu.jsp" />
+	<div class="container-fluid">
 		<div class="row">
+			<!-- start header -->
+			<jsp:include page="menu.jsp" />
+			<!-- end header -->
+			<div class="row">
 			<div class="span12">
 				<br />
 				<br />
@@ -156,5 +160,5 @@
 	<script src="web-resources/js/jquery.quicksand.js"
 		type="text/javascript"></script>
 	<script type="text/javascript" src="web-resources/js/Scripts/global.js"></script>
-</body>
+</div></body>
 </html>

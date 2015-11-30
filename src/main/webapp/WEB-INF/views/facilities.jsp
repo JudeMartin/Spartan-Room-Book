@@ -8,112 +8,116 @@
 <jsp:include page="header.jsp" />
 </head>
 <body>
-	<jsp:include page="menu.jsp" />
+	<div class="container-fluid">
+		<div class="row">
+			<!-- start header -->
+			<jsp:include page="menu.jsp" />
+			<!-- end header -->
 			<div class="row">
 
-			<div class="span12">
-				<br />
-				<br />
-				<h1>facilities and services</h1>
+				<div class="span12">
+					<br /> <br />
+					<h1>facilities and services</h1>
 
-				<div class="row">
+					<div class="row">
 
-					<div class="span6">
-						<h3>
-							<span>Fitness</span> Center
-						</h3>
-						<a href="general.html"><img
-							src="web-resources/css/images/facilities/gym.jpg" alt="" /></a>
-						<p>Duis aute irure dolor in reprehenderit in voluptate velit
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-							occaecat cupidatat non proident, sunt in culpa qui.</p>
+						<div class="span6">
+							<h3>
+								<span>Fitness</span> Center
+							</h3>
+							<a href="general.html"><img
+								src="web-resources/css/images/facilities/gym.jpg" alt="" /></a>
+							<p>Duis aute irure dolor in reprehenderit in voluptate velit
+								esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+								occaecat cupidatat non proident, sunt in culpa qui.</p>
+						</div>
+
+						<div class="span6">
+							<h3>
+								<span>Spa </span> &amp; Massage
+							</h3>
+							<a href="general.html"><img
+								src="web-resources/css/images/facilities/massage.jpg" alt="" /></a>
+							<p>Duis aute irure dolor in reprehenderit in voluptate velit
+								esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+								occaecat cupidatat non proident, sunt in culpa qui.</p>
+						</div>
+
+						<div class="span6">
+							<h3>
+								<span>fun</span> &amp; sports
+							</h3>
+							<a href="general.html"><img
+								src="web-resources/css/images/facilities/golf.jpg" alt="" /></a>
+							<p>Duis aute irure dolor in reprehenderit in voluptate velit
+								esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+								occaecat cupidatat non proident, sunt in culpa qui.</p>
+						</div>
+
+						<div class="span6">
+							<h3>
+								<span>Swimming </span> pool
+							</h3>
+							<a href="general.html"><img
+								src="web-resources/css/images/facilities/swimming_pool.jpg"
+								alt="" /></a>
+							<p>Duis aute irure dolor in reprehenderit in voluptate velit
+								esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+								occaecat cupidatat non proident, sunt in culpa qui.</p>
+						</div>
+
+						<div class="span6">
+							<h3>
+								<span>Water</span> sports
+							</h3>
+							<a href="general.html"><img
+								src="web-resources/css/images/facilities/scuba.jpg" alt="" /></a>
+							<p>Duis aute irure dolor in reprehenderit in voluptate velit
+								esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+								occaecat cupidatat non proident, sunt in culpa qui.</p>
+						</div>
+
+						<div class="span6">
+							<h3>
+								<span>Food </span> &amp; drink
+							</h3>
+							<a href="general.html"><img
+								src="web-resources/css/images/facilities/restaurant.jpg" alt="" /></a>
+							<p>Duis aute irure dolor in reprehenderit in voluptate velit
+								esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+								occaecat cupidatat non proident, sunt in culpa qui.</p>
+						</div>
+
 					</div>
 
-					<div class="span6">
-						<h3>
-							<span>Spa </span> &amp; Massage
-						</h3>
-						<a href="general.html"><img
-							src="web-resources/css/images/facilities/massage.jpg" alt="" /></a>
-						<p>Duis aute irure dolor in reprehenderit in voluptate velit
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-							occaecat cupidatat non proident, sunt in culpa qui.</p>
-					</div>
 
-					<div class="span6">
-						<h3>
-							<span>fun</span> &amp; sports
-						</h3>
-						<a href="general.html"><img
-							src="web-resources/css/images/facilities/golf.jpg" alt="" /></a>
-						<p>Duis aute irure dolor in reprehenderit in voluptate velit
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-							occaecat cupidatat non proident, sunt in culpa qui.</p>
-					</div>
 
-					<div class="span6">
-						<h3>
-							<span>Swimming </span> pool
-						</h3>
-						<a href="general.html"><img
-							src="web-resources/css/images/facilities/swimming_pool.jpg"
-							alt="" /></a>
-						<p>Duis aute irure dolor in reprehenderit in voluptate velit
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-							occaecat cupidatat non proident, sunt in culpa qui.</p>
-					</div>
-
-					<div class="span6">
-						<h3>
-							<span>Water</span> sports
-						</h3>
-						<a href="general.html"><img
-							src="web-resources/css/images/facilities/scuba.jpg" alt="" /></a>
-						<p>Duis aute irure dolor in reprehenderit in voluptate velit
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-							occaecat cupidatat non proident, sunt in culpa qui.</p>
-					</div>
-
-					<div class="span6">
-						<h3>
-							<span>Food </span> &amp; drink
-						</h3>
-						<a href="general.html"><img
-							src="web-resources/css/images/facilities/restaurant.jpg" alt="" /></a>
-						<p>Duis aute irure dolor in reprehenderit in voluptate velit
-							esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-							occaecat cupidatat non proident, sunt in culpa qui.</p>
-					</div>
 
 				</div>
 
-
-
-
 			</div>
 
-		</div>
+			<div class="row">
+				<div class="span12 what_people_say">
+					<div id="quotes">
+						<blockquote class="textItem" style="display: none;">
+							<p>This is the best hotel I've ever been to.</p>
+							<small>Someone famous <cite title="Source Title">Source
+									Title</cite></small>
+						</blockquote>
 
-		<div class="row">
-			<div class="span12 what_people_say">
-				<div id="quotes">
-					<blockquote class="textItem" style="display: none;">
-						<p>This is the best hotel I've ever been to.</p>
-						<small>Someone famous <cite title="Source Title">Source
-								Title</cite></small>
-					</blockquote>
+						<blockquote class="textItem" style="display: none;">
+							<p>The food is incredible.</p>
+							<small>Someone famous <cite title="Source Title">Source
+									Title</cite></small>
+						</blockquote>
 
-					<blockquote class="textItem" style="display: none;">
-						<p>The food is incredible.</p>
-						<small>Someone famous <cite title="Source Title">Source
-								Title</cite></small>
-					</blockquote>
-
-					<blockquote class="textItem" style="display: none;">
-						<p>Beyond All Expectations</p>
-						<small>Someone famous <cite title="Source Title">Source
-								Title</cite></small>
-					</blockquote>
+						<blockquote class="textItem" style="display: none;">
+							<p>Beyond All Expectations</p>
+							<small>Someone famous <cite title="Source Title">Source
+									Title</cite></small>
+						</blockquote>
+					</div>
 				</div>
 			</div>
 		</div>

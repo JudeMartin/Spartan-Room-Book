@@ -9,7 +9,11 @@
 <jsp:include page="header.jsp" />
 </head>
 <body>
-<jsp:include page="menu.jsp" />
+	<div class="container-fluid">
+		<div class="row">
+			<!-- start header -->
+			<jsp:include page="menu.jsp" />
+			<!-- end header -->
 	<div class="row">
 		<div class="span12">
 			<br /> <br />
@@ -143,7 +147,8 @@
 		</div>
 
 	</div>
-	<div></div>
+	</div>
+	</div>
 	<!-- /container -->
 	<jsp:include page="footer.jsp" />
 	<script src="../../../maps.google.com/maps/api/js?sensor=false"
