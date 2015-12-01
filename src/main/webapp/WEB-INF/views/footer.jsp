@@ -4,13 +4,13 @@
 
 				<div class="span4">
 					<h4>
-						Bootstrap Hotel<span class="line"></span>
+						HotelSparta<span class="line"></span>
 					</h4>
 
 					<p>2247 Copperhead Road, Hartford, CT 06103</p>
 					<p>
 						Tel: +860-631-7795<br />Fax: +860-631-7796 <br />Email:
-						admin@appsarea.com
+						admin@sparta.com
 					</p>
 
 					<ul data-facebook-action="recommend" data-url="#"
