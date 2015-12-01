@@ -2,13 +2,19 @@ package sjsu.edu.cmpe275.model;
 
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
+@Entity
 public class Reservation {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -30,11 +36,12 @@ public class Reservation {
 	private Date checkInDate;
 
 	@DateTimeFormat(pattern="MM-dd-yyyy")
-	@Column(name="check_in_date")
+	@Column(name="check_out_date")
 	private Date checkOutDate;
 
 	private int adults;
 	private int children;
+	private int rooms;
 
 	private int amenityTypeId = RoomOtherType.SMOKING.getOtherTypeId();
 
@@ -70,6 +77,10 @@ public class Reservation {
 		this.reservationDate = reservationDate;
 	}
 
+	@Basic
+    @Temporal(TemporalType.DATE)
+    @NotNull
+    @Future
 	public Date getCheckInDate() {
 		return checkInDate;
 	}
@@ -78,6 +89,11 @@ public class Reservation {
 		this.checkInDate = checkInDate;
 	}
 
+	
+	@Basic
+    @Temporal(TemporalType.DATE)
+    @NotNull
+    @Future
 	public Date getCheckOutDate() {
 		return checkOutDate;
 	}
@@ -109,9 +125,5 @@ public class Reservation {
 	public void setAmenityTypeId(int amenityTypeId) {
 		this.amenityTypeId = amenityTypeId;
 	}
-	
-	
-	
-	
 	
 }
