@@ -22,7 +22,7 @@
 							href="https://twitter.com/intent/tweet?text=#"><span
 								class="social-icon icon-twitter"></span><span class="count"></span></a></li>
 						<li class="googleplus"><a title="Share on Google Plus"
-							href="https://plus.appsarea.com/share?url=#"><span
+							href="https://plus.google.com/share?url=#"><span
 								class="social-icon icon-googleplus"></span><span class="count"></span></a></li>
 					</ul>
 					<br />
