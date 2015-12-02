@@ -61,5 +61,10 @@ public class HomeController {
 	public ModelAndView loadBook(HttpServletResponse response) throws IOException{
 		return new ModelAndView("book");
 	}
+	@RequestMapping(value="/book-pay")
+	public ModelAndView loadBookPay(HttpServletResponse response) throws IOException{
+		return new ModelAndView("book-pay");
+	}
+	
 
 }	

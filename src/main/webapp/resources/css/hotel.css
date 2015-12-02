@@ -2724,6 +2724,7 @@ button.close {
   -moz-border-radius: 6px;
   border-radius: 6px;
 }
+
 .btn-large [class^="icon-"],
 .btn-large [class*=" icon-"] {
   margin-top: 4px;
@@ -8348,6 +8349,34 @@ span.line {
 }
 .book-now {
   width: 162px;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #d1170d;
+  background-image: -moz-linear-gradient(top, #b81007, #f62115);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b81007), to(#f62115));
+  background-image: -webkit-linear-gradient(top, #b81007, #f62115);
+  background-image: -o-linear-gradient(top, #b81007, #f62115);
+  background-image: linear-gradient(to bottom, #b81007, #f62115);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffb81007', endColorstr='#fff62115', GradientType=0);
+  border-color: #f62115 #f62115 #b81007;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #f62115;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-color: #b81007;
+  *background-color: #f62115;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-image: none;
+  background-repeat: no-repeat;
+  transition: all 0.2s linear 0s;
+}
+.add-now {
+  width: 75px;
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #d1170d;

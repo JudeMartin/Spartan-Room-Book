@@ -1,5 +1,5 @@
 function addBook() {
-	$('#roomDialog').dialog("option", "title", 'Add Book');
+	$('#roomDialog').dialog("option", "title", 'Add Room');
 	$('#roomDialog').dialog('open');
 }
 
