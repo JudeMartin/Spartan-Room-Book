@@ -148,7 +148,7 @@ public class RoomController {
 	@Autowired
 	private RoomService roomService;
 	
-	@RequestMapping(value={"room", "room/"}, method=RequestMethod.GET)
+	@RequestMapping(value={"room","room/"}, method=RequestMethod.GET)
 	public String listRooms(Model model){
 		List<Room> rmls = roomService.listRooms();
 		model.addAttribute("room", new Room());
@@ -169,7 +169,7 @@ public class RoomController {
 
 	}
 	
-	@RequestMapping(value={"room", "room/"}, method=RequestMethod.POST)
+	@RequestMapping(value={"room","room/"}, method=RequestMethod.POST)
 	public String createRoom(@Valid Room room, Model model){
 		roomService.createRoom(room);
 		System.out.println("create room");

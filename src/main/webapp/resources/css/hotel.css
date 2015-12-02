@@ -3906,7 +3906,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-static-top .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
-  width: 940px;
+  width: 1000px;
 }
 .navbar-fixed-top {
   top: 0;
@@ -7689,7 +7689,7 @@ blockquote.pull-right small:after {
 .navbar .nav > li {
   height: 30px;
   line-height: 30px;
-  text-align: center;
+  text-align: left;
   width: auto;
 }
 .navbar .nav > li > a {
@@ -8624,8 +8624,12 @@ form.book_now {
   color: #fff;
 }
 .main_menu {
-  width: 433px;
+  width: 500px;
 }
+.admin_menu {
+  width: 300px;
+}
+
 h5 {
   position: relative;
 }

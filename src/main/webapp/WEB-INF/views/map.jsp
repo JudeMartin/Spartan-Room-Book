@@ -50,13 +50,13 @@
 				<ul class="nav">
 					<li><a class="active" href="map"><span>Area</span>
 							Overview</a></li>
-					<li><a href="general.html"><span>Popular</span>
+					<li><a href="facilities"><span>Popular</span>
 							attractions</a></li>
-					<li><a href="general.html"><span>services</span> and
+					<li><a href="facilities"><span>services</span> and
 							facilities</a></li>
-					<li><a href="general.html"><span>nearby</span> shops</a></li>
-					<li><a href="general.html"><span>food &amp;</span> drink</a></li>
-					<li><a href="typography.html"><span>How to </span>get here</a></li>
+					<li><a href="facilities"><span>nearby</span> shops</a></li>
+					<li><a href="facilities"><span>food &amp;</span> drink</a></li>
+					<li><a href="facilities"><span>How to </span>get here</a></li>
 				</ul>
 				<br />
 				<form class="form-inline mini" action="">

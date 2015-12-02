@@ -15,7 +15,7 @@
 			<!-- start header -->
 			<jsp:include page="menu.jsp" />
 			<!-- end header -->
-			<div class="span6 pull-right main_menu">
+			<div class="span6 pull-right admin_menu">
 				<div class="navbar">
 					<div class="container">
 						<a class="btn btn-navbar" data-toggle="collapse"
@@ -33,13 +33,13 @@
 									</ul></li>
 								<li class=""><a class="dropdown-toggle"
 									data-toggle="dropdown" href="#">GUEST <span class="caret"></span></a>
-									<ul class="dropdown-menu">
+									<ul class="dropdown-menu dropdown-menu-right">
 										<li><a href="#">Check in/out</a></li>
-										<li><a href="#">Change Reservation</a></li>
+										<li><a href="#">Change reservation</a></li>
 									</ul></li>
+								<li><a href="home">Logout</a></li>	
 							</ul>
 						</div>
-
 						<!-- /.nav-collapse -->
 					</div>
 				</div>
@@ -123,3 +123,8 @@
 		src='<c:url value="/web-resources/js/js-for-listRooms.js"/>'></script>
 </body>
 </html>
+
+
+
+
+

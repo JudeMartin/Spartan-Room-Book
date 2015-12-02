@@ -631,7 +631,7 @@
     padding: 0;
   }
   .nav-collapse .dropdown-menu {
-    position: static;
+    position: relative;
     top: auto;
     left: auto;
     float: none;
@@ -647,6 +647,7 @@
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+    vertical-align: middle;
   }
   .nav-collapse .open > .dropdown-menu {
     display: block;
