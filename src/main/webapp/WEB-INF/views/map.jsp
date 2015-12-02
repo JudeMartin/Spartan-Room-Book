@@ -71,7 +71,7 @@
 										<div class="controls">
 											<input type="text"
 												class="span3 global-datepicker-from check-in-date"
-												value="11/01/2013" /> <a href="map"
+								value="11/01/2013" /> <a href="map"
 												id="global-datepicker-from"><i class="icon-calendar"></i></a>
 										</div>
 									</div>

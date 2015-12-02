@@ -8,6 +8,7 @@
 <meta charset="utf-8">
 <title>Facilities</title>
 <jsp:include page="includes/header.jsp" />
+
 </head>
 <body>
 	<div class="container-fluid">
@@ -146,8 +147,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- /container -->
-
 	<jsp:include page="includes/footer.jsp" />
 <jsp:include page="includes/scripts.jsp" />
 </body>

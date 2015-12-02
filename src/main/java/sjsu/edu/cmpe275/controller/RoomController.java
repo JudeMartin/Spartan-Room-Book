@@ -163,8 +163,10 @@ public class RoomController {
 		//Room Other Type List
 		//Room Type List
 		//printRoomsDetails(rmls);
+
 		//return "listrooms";
 		return "RoomManagement";
+
 	}
 	
 	@RequestMapping(value={"room", "room/"}, method=RequestMethod.POST)
