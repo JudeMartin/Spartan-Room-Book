@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<jsp:include page="header.jsp" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Home</title>
+<jsp:include page="includes/header.jsp" />
 </head>
 <body>
 	<div class="container-fluid">
@@ -61,31 +63,29 @@
 			<form class="form-inline" action="">
 				<div class="row-fluid home">
 					<div class="span3">
-						<div class="room_selector" data-price="34" data-adults="1"
+						<div class="room_selector" data-price="100" data-adults="1"
 							data-kids="1">
 							<h5>
 								<a href="home" class="pull-left"><i
-									class="icon-chevron-left"></i></a>Queen Sized room<a href="home"
+									class="icon-chevron-left"></i></a>King Size room<a href="home"
 									class="pull-right "><i class="icon-chevron-right"></i></a>
 							</h5>
 							<a href="listings.html"><img
 								src="web-resources/css/images/rooms/single_room.jpg" alt="" /></a>
-							<p>All queen sized rooms have one single queen sized bed and
-								sleeps one adult. A 25-inch TV is included.</p>
+							<p>All King size rooms have one king size bed for one adult and a kid. A 25-inch TV is included.</p>
 						</div>
-						<div class="room_selector" data-price="48" data-adults="2"
+						<div class="room_selector" data-price="200" data-adults="2"
 							data-kids="1" style="display: none;">
 							<h5>
 								<a href="home" class="pull-left "><i
-									class="icon-chevron-left"></i></a>King Sized Room<a href="home"
+									class="icon-chevron-left"></i></a>Queen Size Room<a href="home"
 									class="pull-right "><i class="icon-chevron-right"></i></a>
 							</h5>
 							<a href="listings.html"><img
 								src="web-resources/css/images/rooms/double_room.jpg" alt="" /></a>
-							<p>All king sized rooms have a single king sized bed and
-								sleeps two adults & a kid.A 50-inch TV is included</p>
+							<p>All Queen sized rooms have two queen size beds for two adults.A 50-inch TV is included</p>
 						</div>
-						<div class="room_selector" data-price="62" data-adults="3"
+						<div class="room_selector" data-price="300" data-adults="3"
 							data-kids="2" style="display: none;">
 							<h5>
 								<a href="home" class="pull-left "><i
@@ -97,7 +97,7 @@
 							<p>All triple rooms have one double bed and a single bed and
 								sleeps up to three people.</p>
 						</div>
-						<div class="room_selector" data-price="72" data-adults="4"
+						<div class="room_selector" data-price="400" data-adults="4"
 							data-kids="3" style="display: none;">
 							<h5>
 								<a href="home" class="pull-left "><i
@@ -109,7 +109,7 @@
 							<p>All rooms have two double beds and a balcony. Sleeps up to
 								four adults.</p>
 						</div>
-						<div class="room_selector" data-price="97" data-adults="4"
+						<div class="room_selector" data-price="500" data-adults="4"
 							data-kids="3" style="display: none;">
 							<h5>
 								<a href="home" class="pull-left "><i
@@ -121,7 +121,7 @@
 							<p>A private pool, two double beds and a sea view. Sleeps up
 								to four adults.</p>
 						</div>
-						<div class="room_selector" data-price="128" data-adults="5"
+						<div class="room_selector" data-price="500" data-adults="5"
 							data-kids="4" style="display: none;">
 							<h5>
 								<a href="home" class="pull-left "><i
@@ -203,18 +203,8 @@
 									</select>
 								</div>
 							</div>
-							<div class="control-group">
-								<label class="control-label" for="inputEmail">Amenities</label>
-								<div class="controls" style="margin-left: 122px;">
-									<select class="span1 select_kids" style="width: 125px;">
-										<option>Smoking</option>
-										<option>Non-Smoking</option>
-									</select>
-								</div>
-							</div>
-
 						</div>
-						<div id="total_price" class="price">128.00 GBP</div>
+						<div id="total_price" class="price">$ 700.00</div>
 						<a class="btn btn-primary btn-large book-now" href="book">Book
 							now!</a>
 					</div>
@@ -287,7 +277,7 @@
 		</div>
 	</div>
 	<!-- /container -->
-	<jsp:include page="footer.jsp" />
+	<jsp:include page="includes/footer.jsp" />
 	<jsp:include page="includes/scripts.jsp" />
 </body>
 </html>

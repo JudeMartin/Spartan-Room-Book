@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<jsp:include page="header.jsp" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Rooms</title>
+<jsp:include page="includes/header.jsp" />
 </head>
 <body>
 	<div class="container-fluid">
@@ -45,9 +47,9 @@
 
 						<div class="span4">
 							<h3>
-								<span>SINGLE</span> ROOM
+								<span>King Size</span> ROOM
 							</h3>
-							<a href="book-start.html"><img
+							<a href="book-start"><img
 								src="web-resources/css/images/rooms/single_room.jpg" alt="" /></a>
 							<ul class="thumbnails hotel-options no_margin_left">
 								<li class="no_margin_left"><a
@@ -72,7 +74,7 @@
 
 						<div class="span4">
 							<h3>
-								<span>Double</span> ROOM
+								<span>Queen size</span> ROOM
 							</h3>
 							<a href="book-start.html"><img
 								src="web-resources/css/images/rooms/double_room.jpg" alt="" /></a>
@@ -273,7 +275,7 @@
 		</div>
 	</div>
 		<!-- /container -->
-		<jsp:include page="footer.jsp" />
+		<jsp:include page="includes/footer.jsp" />
 		<jsp:include page="includes/scripts.jsp" />
 </body>
 </html>

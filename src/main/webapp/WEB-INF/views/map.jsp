@@ -2,9 +2,12 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<jsp:include page="header.jsp" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Map</title>
+<jsp:include page="includes/header.jsp" />
 </head>
 <body>
 	<div class="container-fluid">
@@ -45,7 +48,7 @@
 
 
 				<ul class="nav">
-					<li><a class="active" href="map.html"><span>Area</span>
+					<li><a class="active" href="map"><span>Area</span>
 							Overview</a></li>
 					<li><a href="general.html"><span>Popular</span>
 							attractions</a></li>
@@ -68,7 +71,7 @@
 										<div class="controls">
 											<input type="text"
 												class="span3 global-datepicker-from check-in-date"
-												value="11/01/2013" /> <a href="map.html#"
+												value="11/01/2013" /> <a href="map"
 												id="global-datepicker-from"><i class="icon-calendar"></i></a>
 										</div>
 									</div>
@@ -80,7 +83,7 @@
 										<div class="controls">
 											<input type="text"
 												class="span3 global-datepicker-to check-out-date"
-												value="12/01/2013" /> <a href="map.html#"
+												value="12/01/2013" /> <a href="map"
 												id="global-datepicker-to"><i class="icon-calendar"></i></a>
 										</div>
 									</div>
@@ -88,7 +91,7 @@
 							</div>
 
 							<a class="btn btn-primary btn-large book-now"
-								href="book-start.html">Check availability</a>
+								href="book-start">Check availability</a>
 						</div>
 					</div>
 
@@ -166,7 +169,7 @@
 	</div>
 </div>
 	<!-- /container -->
-	<jsp:include page="footer.jsp" />
+	<jsp:include page="includes/footer.jsp" />
 <jsp:include page="includes/scripts.jsp" />
 </body>
 </html>

@@ -26,8 +26,8 @@
 		<div class="pure-control-group">
 			<label for="other_type">Other Type</label>
 			<form:select path="otherTypeId">
-				<option value="1" ${room.otherTypeId == '1'? "selected":""}>Smoking</option>
-				<option value="2" ${room.otherTypeId == '2'? "selected":""}>Non smoking</option>
+				<option value="1" ${room.otherTypeId == '1'? "selected":""}>Yes</option>
+				<option value="2" ${room.otherTypeId == '2'? "selected":""}>No</option>
 			</form:select>
 			<!-- form:input path="otherTypeId" placeholder="Other Type" /-->
 		</div>

@@ -1,5 +1,5 @@
 	<div class="span5 logo">
-		<a href="index.html">
+		<a href="home">
 			<div class="row">
 				<div class="span3 logo">
 					<h1>

@@ -1,4 +1,4 @@
-	<script src="../../../maps.google.com/maps/api/js?sensor=false"
+	<script src="https://maps.googleapis.com/maps/api/js"
 		type="text/javascript"></script>
 	<script type="text/javascript" src="web-resources/js/Scripts/jquery.js"></script>
 	<script type="text/javascript"

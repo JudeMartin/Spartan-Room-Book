@@ -4,31 +4,40 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import sjsu.edu.cmpe275.model.Room;
 import sjsu.edu.cmpe275.model.RoomStatus;
+import sjsu.edu.cmpe275.service.RoomService;
 
 @Controller
+@RequestMapping("/")
 public class HomeController {
 
-	@RequestMapping(value="/")
+	@Autowired
+	private RoomService roomService;
+		
+	@RequestMapping(value="")
 	public ModelAndView loadMain(HttpServletResponse response) throws IOException{
 		return new ModelAndView("home");
 	}
 	
-	@RequestMapping(value="/home")
+	@RequestMapping(value="home")
 	public ModelAndView loadHome(HttpServletResponse response) throws IOException{
 		return new ModelAndView("home");
 	}
-	
+
 	@RequestMapping(value="/rooms")
 	public ModelAndView loadRooms(HttpServletResponse response) throws IOException{
 		return new ModelAndView("rooms");
 	}
 	
-	@RequestMapping(value="/facilities")
+	@RequestMapping(value="facilities")
 	public ModelAndView loadFacilities(HttpServletResponse response) throws IOException{
 		return new ModelAndView("facilities");
 	}
@@ -61,5 +70,5 @@ public class HomeController {
 	public ModelAndView loadPromotions(HttpServletResponse response) throws IOException{
 		return new ModelAndView("special");
 	}
-
+	
 }	

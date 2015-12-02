@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<jsp:include page="header.jsp" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>StartBooking</title>
+<jsp:include page="includes/header.jsp" />
 </head>
 <body>
 	<div class="container-fluid">
@@ -27,7 +29,7 @@
 						<li class=""><a href="facilities">Facilities</a></li>
 						<li class=""><a href="gallery">Gallery</a></li>
 						<li class=""><a href="map">Map</a></li>
-						<li class="active"><a href="-start">Book</a></li>
+						<li class="active"><a href="book-start">Book</a></li>
 					</ul>
 				</div>
 				<!-- /.nav-collapse -->
@@ -63,7 +65,7 @@
 								<h3>
 									<span>select</span> your room
 								</h3>
-								<div class="room_selector" data-price="34" data-adults="1"
+								<div class="room_selector" data-price="100" data-adults="1"
 									data-kids="1">
 									<h5>
 										<a href="book-start#" class="pull-left"><i
@@ -76,7 +78,7 @@
 									<p>All single rooms have one single bed and sleeps one
 										adult. A 25-inch TV is included.</p>
 								</div>
-								<div class="room_selector" data-price="48" data-adults="2"
+								<div class="room_selector" data-price="200" data-adults="2"
 									data-kids="1" style="display: none;">
 									<h5>
 										<a href="book-start#" class="pull-left "><i
@@ -89,7 +91,7 @@
 									<p>All double rooms have a single double bed and sleeps two
 										adults.</p>
 								</div>
-								<div class="room_selector" data-price="62" data-adults="3"
+								<div class="room_selector" data-price="300" data-adults="3"
 									data-kids="2" style="display: none;">
 									<h5>
 										<a href="book-start#" class="pull-left "><i
@@ -102,7 +104,7 @@
 									<p>All triple rooms have one double bed and a single bed
 										and sleeps up to three people.</p>
 								</div>
-								<div class="room_selector" data-price="72" data-adults="4"
+								<div class="room_selector" data-price="400" data-adults="4"
 									data-kids="3" style="display: none;">
 									<h5>
 										<a href="book-start#" class="pull-left "><i
@@ -115,7 +117,7 @@
 									<p>All rooms have two double beds and a balcony. Sleeps up
 										to four adults.</p>
 								</div>
-								<div class="room_selector" data-price="97" data-adults="4"
+								<div class="room_selector" data-price="500" data-adults="4"
 									data-kids="3" style="display: none;">
 									<h5>
 										<a href="book-start#" class="pull-left "><i
@@ -128,7 +130,7 @@
 									<p>A private pool, two double beds and a sea view. Sleeps
 										up to four adults.</p>
 								</div>
-								<div class="room_selector" data-price="128" data-adults="5"
+								<div class="room_selector" data-price="500" data-adults="5"
 									data-kids="4" style="display: none;">
 									<h5>
 										<a href="book-start#" class="pull-left "><i
@@ -166,8 +168,6 @@
 										</select>
 									</div>
 								</div>
-
-
 								<div class="control-group">
 									<label class="control-label" for="inputEmail">Adults
 										per room</label>
@@ -181,7 +181,6 @@
 										</select>
 									</div>
 								</div>
-
 								<div class="control-group">
 									<label class="control-label" for="inputEmail">Kids per
 										room</label>
@@ -195,11 +194,14 @@
 										</select>
 									</div>
 								</div>
+								<div class="control-group">
+							</div>
+								
 							</div>
 						</div>
 						<div class="row">
 							<div class="span3">
-								<h1 id="total_price">128.00 GBP</h1>
+								<h1 id="total_price">$ 700.00</h1>
 								<a class="btn btn-primary btn-large book-now" href="book">Book
 									now!</a>
 							</div>
@@ -218,7 +220,7 @@
 	</div>
 </div>	
 	<!-- /container -->
-	<jsp:include page="footer.jsp" />
+	<jsp:include page="includes/footer.jsp" />
 <jsp:include page="includes/scripts.jsp" />
 </body>
 </html>

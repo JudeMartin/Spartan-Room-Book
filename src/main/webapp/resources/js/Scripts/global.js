@@ -285,12 +285,13 @@ $(function() {
 *
 **************************/
 function update_extras_price() {
-	var base_price = 1280;
+	var base_price =100;
+	console.log("test");
 	var extras = $('input:checked').length;
 	var extras_price = (extras*15);
 	var total_price = base_price + extras_price;
-	$('#extras_price').html(extras_price.toFixed(2) + " GBP");
-	$('#total_price').html(total_price.toFixed(2) + " GBP");
+	$('#extras_price').html("$ "+ extras_price.toFixed(2));
+	$('#total_price').html("$ " + total_price.toFixed(2));
 }
 
 function update_total_price() {
@@ -327,7 +328,7 @@ function update_total_price() {
 	var days = returnNumberOfDaysBetweenTwoDates($('.datepicker_from').datepicker( "getDate" ), $('.datepicker_to').datepicker( "getDate" ));
 	total_price = total_price * days * parseInt($('.select_rooms').val());
 
-	$('#total_price').html(total_price.toFixed(2) + " GBP");
+	$('#total_price').html("$"+ total_price.toFixed(2));
 	$('#total_price').css('letterSpacing', '0px');
 	if(total_price < 100) {
 		$('#total_price').css('letterSpacing', '2px');
@@ -368,7 +369,7 @@ function initialize_map() {
 	if($('#map_canvas').length == 0)
 		return false;
 
-	var latlng = new google.maps.LatLng(4.171308062373071, 73.50106716156006);
+	var latlng = new google.maps.LatLng(37.335375, -121.881104);
 	var settings = {
 		zoom: 16,
 		center: latlng,
@@ -386,15 +387,15 @@ function initialize_map() {
 
 
 	var map = new google.maps.Map(document.getElementById("map_canvas"), settings);
-	var point = new google.maps.LatLng(4.171308062373071, 73.50106716156006);
+	var point = new google.maps.LatLng(37.335375, -121.881104);
 
-
+/*
 	var image = new google.maps.MarkerImage(
 		'css/images/icon_marker.png',
 		new google.maps.Size(42,62),
 		new google.maps.Point(0,0),
 		new google.maps.Point(21,62)
-		);
+		);*/
 
 
 	var shape = {
@@ -405,7 +406,6 @@ function initialize_map() {
 	var marker = new google.maps.Marker({
 		draggable: true,
 		raiseOnDrag: false,
-		icon: image,
 		shape: shape,
 		map: map,
 		position: point

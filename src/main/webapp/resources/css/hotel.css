@@ -1152,6 +1152,8 @@ input.span2, textarea.span2, .uneditable-input.span2 {
 input.span1, textarea.span1, .uneditable-input.span1 {
   width: 46px;
 }
+input.span13, textarea.span13, .uneditable-input.span13 {
+}
 .controls-row {
   *zoom: 1;
 }
@@ -1164,7 +1166,7 @@ input.span1, textarea.span1, .uneditable-input.span1 {
 .controls-row:after {
   clear: both;
 }
-.controls-row [class*="span"],
+.controls-row [class*=""],
 .row-fluid .controls-row [class*="span"] {
   float: left;
 }

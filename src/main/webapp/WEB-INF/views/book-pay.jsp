@@ -2,9 +2,12 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<jsp:include page="header.jsp" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Pay</title>
+<jsp:include page="includes/header.jsp" />
 </head>
 <body>
 	<div class="container-fluid">
@@ -263,10 +266,8 @@
 				</div>
 			</div>
 		</div>
-		<!-- /container -->
 	</div>
-	<div></div>
-	<jsp:include page="footer.jsp" />
+	<jsp:include page="includes/footer.jsp" />
 	<jsp:include page="includes/scripts.jsp" />
 </body>
 </html>
