@@ -30,6 +30,7 @@
 						<li class="active"><a href="gallery">Gallery</a></li>
 						<li class=""><a href="map">Map</a></li>
 						<li class=""><a href="book-start">Book</a></li>
+						<li class=""><a href="room">Login</a></li>
 					</ul>
 				</div>
 				<!-- /.nav-collapse -->

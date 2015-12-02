@@ -65,6 +65,4 @@ public class HomeController {
 	public ModelAndView loadBookPay(HttpServletResponse response) throws IOException{
 		return new ModelAndView("book-pay");
 	}
-	
-
 }	

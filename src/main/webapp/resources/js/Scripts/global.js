@@ -5,7 +5,6 @@
 **************************/
 (function($){
 	$.fn.extend({ 
-        //plugin name - rotaterator
         rotaterator: function(options) {
 
         	var defaults = {
