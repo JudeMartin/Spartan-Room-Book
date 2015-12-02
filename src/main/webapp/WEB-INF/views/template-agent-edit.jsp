@@ -330,22 +330,22 @@
 		    <ul class="thumbnails">
 				<li class="span2">
 					<div class="thumbnail">
-						<img src="css/images/airlines/virgin4.gif" alt="">
+						<img src="web-resources/css/images/airlines/virgin4.gif" alt="">
 					</div>
 				</li>				
 				<li class="span2">
 					<div class="thumbnail">
-						<img src="css/images/airlines/ba2.gif" alt="">
+						<img src="web-resources/css/images/airlines/ba2.gif" alt="">
 					</div>
 				</li>				
 				<li class="span2">
 					<div class="thumbnail">
-						<img src="css/images/airlines/delta3.gif" alt="">
+						<img src="web-resources/css/images/airlines/delta3.gif" alt="">
 					</div>
 				</li>										
 				<li class="span2">
 					<div class="thumbnail">
-						<img src="css/images/airlines/ac_white.jpg" alt="">
+						<img src="web-resources/css/images/airlines/ac_white.jpg" alt="">
 					</div>
 				</li>
 				
