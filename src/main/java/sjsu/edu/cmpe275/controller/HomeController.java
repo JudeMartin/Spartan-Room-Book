@@ -21,54 +21,55 @@ public class HomeController {
 
 	@Autowired
 	private RoomService roomService;
-		
-	@RequestMapping(value="")
-	public ModelAndView loadMain(HttpServletResponse response) throws IOException{
-		return new ModelAndView("home");
-	}
-	
-	@RequestMapping(value="home")
-	public ModelAndView loadHome(HttpServletResponse response) throws IOException{
+
+	@RequestMapping(value = "")
+	public ModelAndView loadMain(HttpServletResponse response) throws IOException {
 		return new ModelAndView("home");
 	}
 
-	@RequestMapping(value="/rooms")
-	public ModelAndView loadRooms(HttpServletResponse response) throws IOException{
+	@RequestMapping(value = "home")
+	public ModelAndView loadHome(HttpServletResponse response) throws IOException {
+		return new ModelAndView("home");
+	}
+
+	@RequestMapping(value = "/rooms")
+	public ModelAndView loadRooms(HttpServletResponse response) throws IOException {
 		return new ModelAndView("rooms");
 	}
-	
-	@RequestMapping(value="facilities")
-	public ModelAndView loadFacilities(HttpServletResponse response) throws IOException{
+
+	@RequestMapping(value = "facilities")
+	public ModelAndView loadFacilities(HttpServletResponse response) throws IOException {
 		return new ModelAndView("facilities");
 	}
-	
-	@RequestMapping(value="/gallery")
-	public ModelAndView loadGallery(HttpServletResponse response) throws IOException{
+
+	@RequestMapping(value = "/gallery")
+	public ModelAndView loadGallery(HttpServletResponse response) throws IOException {
 		return new ModelAndView("gallery");
-	
+
 	}
-	
-	@RequestMapping(value="/map")
-	public ModelAndView loadMap(HttpServletResponse response) throws IOException{
+
+	@RequestMapping(value = "/map")
+	public ModelAndView loadMap(HttpServletResponse response) throws IOException {
 		return new ModelAndView("map");
-	}	
-	
-	@RequestMapping(value="/book-start")
-	public ModelAndView loadBookStart(HttpServletResponse response) throws IOException{
+	}
+
+	@RequestMapping(value = "/book-start")
+	public ModelAndView loadBookStart(HttpServletResponse response) throws IOException {
 		return new ModelAndView("book-start");
 	}
-	@RequestMapping(value="/book")
-	public ModelAndView loadBook(HttpServletResponse response) throws IOException{
+
+	@RequestMapping(value = "/book")
+	public ModelAndView loadBook(HttpServletResponse response) throws IOException {
 		return new ModelAndView("book");
 	}
-	@RequestMapping(value="/book-pay")
-	public ModelAndView loadBookPay(HttpServletResponse response) throws IOException{
+
+	@RequestMapping(value = "/book-pay")
+	public ModelAndView loadBookPay(HttpServletResponse response) throws IOException {
 		return new ModelAndView("book-pay");
 	}
-	
-	@RequestMapping(value="/guests")
-	public ModelAndView listGuests(HttpServletResponse response) throws IOException
-	{
+
+	@RequestMapping(value = "/guests")
+	public ModelAndView listGuests(HttpServletResponse response) throws IOException {
 		return new ModelAndView("guestsManagement");
 	}
-}	
+}

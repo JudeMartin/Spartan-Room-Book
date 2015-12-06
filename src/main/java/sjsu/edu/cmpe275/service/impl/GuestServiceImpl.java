@@ -4,37 +4,48 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import sjsu.edu.cmpe275.dao.GuestDAO;
 import sjsu.edu.cmpe275.model.Guest;
 import sjsu.edu.cmpe275.service.GuestService;
 
-@Service
+@Service("guestService")
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class GuestServiceImpl implements GuestService {
-	
+
 	@Autowired
-	private GuestDAO guestDAO;
+	private GuestDAO guestDao;
 
 	@Transactional(readOnly = true)
-	public List<Guest> listGuests() {
+	@Override
+	public List<Guest> listGuest() {
 		// TODO Auto-generated method stub
-		return guestDAO.listGuests();
+		return guestDao.listGuest();
+	}
+
+	@Transactional
+	@Override
+	public Guest createGuest(Guest guest) {
+		// TODO Auto-generated method stub
+		return guestDao.createGuest(guest);
 	}
 
 	@Transactional(readOnly = true)
-	public Guest viewGuest(Long guest_id) {
+	@Override
+	public Guest viewGuest(Long guestId) {
 		// TODO Auto-generated method stub
-		return guestDAO.viewGuest(guest_id);
+		return guestDao.viewGuest(guestId);
 	}
 
 	@Transactional
 	public void updateGuest(Guest guest) {
-		// TODO Auto-generated method stub
-		guestDAO.updateGuest(guest);
-		
+		guestDao.updateGuest(guest);
 	}
-	
-	
 
+	@Transactional
+	public void deleteGuest(Long guestId) {
+		guestDao.deleteGuest(guestId);
+	}
 }
