@@ -10,6 +10,7 @@ public interface ReservationService {
 	Reservation cancelReservation(String reservationId);
 	List<Reservation> findReservation();
 	Reservation findReservation(String reservationId);
+	Reservation findReservationGuest(Long guest_id);
 	boolean checkAvailability(SearchCriteria searchCriteria);
 
 }

@@ -4,7 +4,7 @@ function addBook() {
 }
 
 function editRoom(id) {
-console.log("edit roon: " + id);
+console.log("edit room: " + id);
 	$.get("" + id, function(result) {
 
 		$("#roomDialog").html(result);

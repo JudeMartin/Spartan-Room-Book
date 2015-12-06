@@ -41,7 +41,7 @@ public class Reservation {
 
 	private int adults;
 	private int children;
-	private int rooms;
+	//private int rooms;
 
 	private int amenityTypeId = RoomOtherType.SMOKING.getOtherTypeId();
 

@@ -169,6 +169,7 @@ public class RoomController {
 
 	}
 	
+	
 	@RequestMapping(value={"room","room/"}, method=RequestMethod.POST)
 	public String createRoom(@Valid Room room, Model model){
 		roomService.createRoom(room);
