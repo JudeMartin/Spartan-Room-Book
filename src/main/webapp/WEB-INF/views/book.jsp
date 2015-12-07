@@ -9,6 +9,8 @@
 <meta charset="utf-8">
 <title>Book</title>
 <jsp:include page="includes/header.jsp" />
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -16,29 +18,29 @@
 			<!-- start header -->
 			<jsp:include page="menu.jsp" />
 			<!-- end header -->
-				<div class="span6 pull-right main_menu">
-		<div class="navbar">
-			<div class="container">
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a>
-				<div class="nav-collapse">
-					<ul class="nav nav-pills">
-						<li class=""><a href="home">Home</a></li>
-						<li class=""><a href="rooms">Rooms</a></li>
-						<li class=""><a href="facilities">Facilities</a></li>
-						<li class=""><a href="gallery">Gallery</a></li>
-						<li class=""><a href="map">Map</a></li>
-						<li class="active"><a href="book-start">Book</a></li>
-						<li class=""><a href="room">Login</a></li>
-					</ul>
+			<div class="span6 pull-right main_menu">
+				<div class="navbar">
+					<div class="container">
+						<a class="btn btn-navbar" data-toggle="collapse"
+							data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span>
+						</a>
+						<div class="nav-collapse">
+							<ul class="nav nav-pills">
+								<li class=""><a href="home">Home</a></li>
+								<li class=""><a href="rooms">Rooms</a></li>
+								<li class=""><a href="facilities">Facilities</a></li>
+								<li class=""><a href="gallery">Gallery</a></li>
+								<li class=""><a href="map">Map</a></li>
+								<li class="active"><a href="book-start">Book</a></li>
+								<li class=""><a href="room">Login</a></li>
+							</ul>
+						</div>
+						<!-- /.nav-collapse -->
+					</div>
 				</div>
-				<!-- /.nav-collapse -->
+				<!-- /navbar -->
 			</div>
-		</div>
-		<!-- /navbar -->
-	</div>
 			<div class="row booking_summary">
 
 				<div class="span12">
@@ -72,13 +74,14 @@
 										</div>
 
 										<div class="span3">
-											<label> <input type="text"
-												placeholder="First Name...">
+											<label> <input type="text" name="first_name"
+												id="first_name" class="stored" placeholder="First Name...">
 											</label>
 										</div>
 
 										<div class="span3">
-											<label> <input type="text" placeholder="Last Name...">
+											<label> <input type="text" name="last_name"
+												id="last_name" class="stored" placeholder="Last Name...">
 											</label>
 										</div>
 
@@ -91,45 +94,39 @@
 											</legend>
 										</div>
 										<div class="span3">
-											<label>Email address <input type="text">
+											<label>Email address <input type="email">
 											</label>
 										</div>
 
 										<div class="span3">
-											<label>Email address confirmation <input type="text">
+											<label>Email address confirmation <input name="email"
+												type="text" class="stored" id=email>
 											</label>
 										</div>
 
 										<div class="span3">
 											<label>Telephone number <input type="text"
+												name="phone" id="phone" class="stored"
 												placeholder="(+##)-###-###-####">
 											</label>
 										</div>
 									</div>
 									<br />
 									<div class="row">
-										<div class="span8">
-											<legend>
-												<span>Your</span> address
-											</legend>
-										</div>
-
 										<div class="span3">
-											<label>Address <textarea class="address_box" rows="3"
-													cols=""></textarea>
+											<label>Address <input type="text" placeholder=""
+												name="address" id="address" class="stored">
+											</label> <label>Zip/Postal <input type="text" name="zip"
+												id="zip" class="stored" placeholder="">
 											</label>
 										</div>
-
 										<div class="span3">
-											<label>City <input type="text">
-											</label> <label>ZIP/Postal <input type="text">
-											</label>
-										</div>
-
-										<div class="span3">
-											<label>State/Province <input type="text">
-											</label> <label>Country <select name="country"><option
-														value="US">United States</option>
+											<label>City <input type="text" name="city" id="city"
+												class="stored">
+											</label> <label>Country <select id="country" name="country"
+												class="stored">
+													<option value="null">Select</option>
+													<option value="US">United States</option>
 													<option value="AD">Andorra</option>
 													<option value="AE">United Arab Emirates</option>
 													<option value="AF">Afghanistan</option>
@@ -400,10 +397,17 @@
 													<option value="ZA">South Africa</option>
 													<option value="ZM">Zambia</option>
 													<option value="ZW">Zimbabwe</option>
-													<option value="ZZ">Unknown or Invalid Region</option></select>
+													<option value="ZZ">Unknown or Invalid Region</option>
+											</select>
 											</label>
 										</div>
-
+										<div class="span3">
+											<label>State/Province <input type="text" id="state"
+												name="state" class="stored">
+											</label> <label>Driver License <input type="text"
+												id="driver_license" name="driver_license" class="stored">
+											</label>
+										</div>
 									</div>
 									<br />
 									<div class="row">
@@ -413,9 +417,7 @@
 											</legend>
 											<textarea class="span9" rows="3" cols=""></textarea>
 										</div>
-
 									</div>
-
 									<div class="row">
 										<div class="span9">
 											<br /> <a href="book-pay"
@@ -452,8 +454,59 @@
 			</div>
 		</div>
 	</div>
-		<!-- /container -->
-		<jsp:include page="includes/footer.jsp" />
-		<jsp:include page="includes/scripts.jsp" />
+	<script>
+		alert("Hello");
+		$(document).ready(function() {
+			function init() {
+				if (localStorage["first_name"]) {
+					$('#first_name').val(localStorage["first_name"]);
+				}
+				if (localStorage["last_name"]) {
+					$('#last_name').val(localStorage["last_name"]);
+				}
+				if (localStorage["address"]) {
+					$('#address').val(localStorage["address"]);
+				}
+				if (localStorage["email"]) {
+					$('#email').val(localStorage["email"]);
+				}
+				if (localStorage["city"]) {
+					$('#city').val(localStorage["city"]);
+				}
+				if (localStorage["state"]) {
+					$('#state').val(localStorage["state"]);
+				}
+				if (localStorage["country"]) {
+					$('#country').val(localStorage["country"]);
+				}
+				if (localStorage["driver_license"]) {
+					$('#driver_license').val(localStorage["driver_license"]);
+				}
+				if (localStorage["email"]) {
+					$('#email').val(localStorage["email"]);
+				}
+				if (localStorage["country"]) {
+					$('#country').val(localStorage["country"]);
+				}
+				if (localStorage["zip"]) {
+					$('#zip').val(localStorage["zip"]);
+				}
+
+			}
+
+			init();
+		});
+
+		$('.stored').change(function() {
+			localStorage[$(this).attr('name')] = $(this).val();
+		});
+
+		$('#localStorageTest').submit(function() {
+			localStorage.clear();
+		});
+	</script>
+	<!-- /container -->
+	<jsp:include page="includes/footer.jsp" />
+	<jsp:include page="includes/scripts.jsp" />
 </body>
 </html>

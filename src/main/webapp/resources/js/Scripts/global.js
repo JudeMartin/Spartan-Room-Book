@@ -283,6 +283,7 @@ $(function() {
 *	begin functions
 *
 **************************/
+
 function update_extras_price() {
 	var base_price =100;
 	console.log("test");
@@ -290,9 +291,9 @@ function update_extras_price() {
 	var extras_price = (extras*15);
 	var total_price = base_price + extras_price;
 	$('#extras_price').html("$ "+ extras_price.toFixed(2));
-	$('#total_price').html("$ " + total_price.toFixed(2));
+	$('#total').html("$ " + total_price.toFixed(2));
 }
-
+/*
 function update_total_price() {
 	if($('.room_selector').length == 0)
 		return false;
@@ -327,16 +328,16 @@ function update_total_price() {
 	var days = returnNumberOfDaysBetweenTwoDates($('.datepicker_from').datepicker( "getDate" ), $('.datepicker_to').datepicker( "getDate" ));
 	total_price = total_price * days * parseInt($('.select_rooms').val());
 
-	$('#total_price').html("$"+ total_price.toFixed(2));
-	$('#total_price').css('letterSpacing', '0px');
+	$('#total').html("$"+ total_price.toFixed(2));
+	$('#total').css('letterSpacing', '0px');
 	if(total_price < 100) {
-		$('#total_price').css('letterSpacing', '2px');
+		$('#total').css('letterSpacing', '2px');
 	}
 	if(total_price >= 1000) {
-		$('#total_price').css('letterSpacing', '-2px');
+		$('#total').css('letterSpacing', '-2px');
 	}
 	if(total_price >= 10000) {
-		$('#total_price').css('letterSpacing', '-4px');
+		$('#total').css('letterSpacing', '-4px');
 	}
 	
 }
@@ -358,7 +359,7 @@ function highlightDays(date) {
 	}
 	return [false, '', ''];
 } 
-
+*/
 /**************************
 *
 *	Google Maps API

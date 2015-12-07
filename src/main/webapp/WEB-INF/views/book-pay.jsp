@@ -8,6 +8,8 @@
 <meta charset="utf-8">
 <title>Pay</title>
 <jsp:include page="includes/header.jsp" />
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -73,7 +75,7 @@
 
 								<div class="span3 pull-right">
 									<p>Base price</p>
-									<span class="price">1280.00 GBP</span>
+									<span class="price base_price" id="base_price">100.00 $</span>
 								</div>
 
 							</div>
@@ -164,7 +166,8 @@
 
 								<div class="span3 pull-right">
 									<p>Extras</p>
-									<span class="price" id="extras_price">0.00 GBP</span>
+									<span class="price extras_price" id="extras_price"
+										onchange="add();">0.00 GBP</span>
 								</div>
 							</div>
 
@@ -250,12 +253,13 @@
 									<p>
 										<strong>Total price</strong>
 									</p>
-									<span class="price strong" id="total_price">1280.00 GBP</span>
+									<span class="price strong" id="total" name="total">00.00
+										$</span>
 								</div>
 
 								<div class="span12">
-									<button class="btn btn-primary btn-large book-now pull-right">Submit
-										payment</button>
+									<button class="btn btn-primary btn-large book-now pull-right"
+										onclick="totalLocal();">Submit payment</button>
 									<br /> <br />
 								</div>
 
@@ -268,6 +272,14 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		function totalLocal() {
+			alert("Submit button");
+			var totalVal = $('#total').val();
+			alert(totalVal);
+			localStorage.setItem('total', totalVal);
+		}
+	</script>
 	<jsp:include page="includes/footer.jsp" />
 	<jsp:include page="includes/scripts.jsp" />
 </body>

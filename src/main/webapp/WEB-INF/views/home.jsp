@@ -8,6 +8,8 @@
 <meta charset="utf-8">
 <title>Home</title>
 <jsp:include page="includes/header.jsp" />
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -73,7 +75,8 @@
 							</h5>
 							<a href="listings.html"><img
 								src="web-resources/css/images/rooms/single_room.jpg" alt="" /></a>
-							<p>All King size rooms have one king size bed for one adult and a kid. A 25-inch TV is included.</p>
+							<p>All King size rooms have one king size bed for one adult
+								and a kid. A 25-inch TV is included.</p>
 						</div>
 						<div class="room_selector" data-price="200" data-adults="2"
 							data-kids="1" style="display: none;">
@@ -84,7 +87,8 @@
 							</h5>
 							<a href="listings.html"><img
 								src="web-resources/css/images/rooms/double_room.jpg" alt="" /></a>
-							<p>All Queen sized rooms have two queen size beds for two adults.A 50-inch TV is included</p>
+							<p>All Queen sized rooms have two queen size beds for two
+								adults.A 50-inch TV is included</p>
 						</div>
 						<div class="room_selector" data-price="300" data-adults="3"
 							data-kids="2" style="display: none;">
@@ -140,145 +144,184 @@
 							<div class="control-group">
 								<label class="control-label pull-left" for="inputEmail">Arrive</label>
 								<div class="controls">
-									<input type="text" value="" class="span2 check-in-date"
-										value="2012/11/22" />
+									<input type="text" value="" class="span2 check-in-date stored"
+										id="check_in_date" name="check_in_date" />
 								</div>
 							</div>
 						</div>
-						<div class="datepicker_from"></div>
+						<div class="datepicker_from "></div>
 					</div>
 					<div class="span3 home_calendar">
 						<div class="form-horizontal">
 							<div class="control-group">
 								<label class="control-label pull-left" for="inputEmail">Depart</label>
 								<div class="controls">
-									<input type="text" value="" class="span2 check-out-date"
-										value="2012/11/22" />
+									<input type="text"
+										class="span2 check-out-date stored datepicker_to"
+										id="check_out_date" name="test4" />
 								</div>
 							</div>
 						</div>
-						<div class="datepicker_to"></div>
+						<div class="datepicker_to stored"></div>
 					</div>
 
 					<div class="span3">
-						<div class="form-horizontal">
-
-							<div class="control-group">
-								<label class="control-label" for="inputEmail">Rooms</label>
-								<div class="controls">
-									<select class="span1 select_rooms">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-									</select>
-								</div>
-							</div>
-
-
-							<div class="control-group">
-								<label class="control-label" for="inputEmail">Adults per
-									room</label>
-								<div class="controls">
-									<select class="span1 select_adults">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-									</select>
-								</div>
-							</div>
-
-							<div class="control-group">
-								<label class="control-label" for="inputEmail">Kids per
-									room</label>
-								<div class="controls">
-									<select class="span1 select_kids">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-									</select>
-								</div>
+						<div class="control-group">
+							<label class="control-label" for="inputEmail">Rooms</label>
+							<div class="controls">
+								<select class="span1 select_rooms stored" id="rooms"
+									name="rooms">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
 							</div>
 						</div>
-						<div id="total_price" class="price">$ 700.00</div>
-						<a class="btn btn-primary btn-large book-now" href="book">Book
-							now!</a>
+						<div class="control-group">
+							<label class="control-label" for="inputEmail">Adults per
+								room</label>
+							<div class="controls">
+								<select class="span1 select_kids stored" id="adults"
+									name="adults">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="inputEmail">Kids per
+								room</label>
+							<div class="controls">
+								<select class="span1 select_kids stored" id="children"
+									name="children">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</div>
+						</div>
 					</div>
+					<div id="total" class="price">$ 100.00</div>
+					<a class="btn btn-primary btn-large book-now" href="book"
+						onclick="datesLocalStorage()">Book now!</a>
 				</div>
-			</form>
-			<hr />
-			<div class="row-fluid">
-
-				<div class="span3">
-					<h3>
-						<span>R</span>ooms
-					</h3>
-					<a href="rooms"><img src="web-resources/css/images/rooms.jpg"
-						alt="" /></a>
-					<p>View our range of availiable rooms and options</p>
-				</div>
-				<div class="span3">
-					<h3>
-						<span>S</span>ervices
-					</h3>
-					<a href="facilities"><img
-						src="web-resources/css/images/services.png" alt="" /></a>
-					<p>We have a gym, swimming pool, golf course, and much more</p>
-				</div>
-				<div class="span3">
-					<h3>
-						<span>P</span>romotions
-					</h3>
-					<a href="promotions"><img
-						src="web-resources/css/images/promotions.png" alt="" /></a>
-					<p>
-						Stay five nights and get one night totally <b>FREE</b>!
-					</p>
-				</div>
-				<div class="span3">
-					<h3>
-						<span>L</span>ocation
-					</h3>
-					<a href="map"><img src="web-resources/css/images/location.jpg"
-						alt="" /></a>
-					<p>We're easily accessible - go anywhere quickly.</p>
-				</div>
-			</div>
-
-
-			<div class="row">
-				<div class="span12 what_people_say">
-					<div id="quotes">
-						<blockquote class="textItem" style="display: none;">
-							<p>This is the best hotel I've ever been to.</p>
-							<small>Someone famous <cite title="Source Title">Source
-									Title</cite></small>
-						</blockquote>
-
-						<blockquote class="textItem" style="display: none;">
-							<p>The food is incredible.</p>
-							<small>Someone famous <cite title="Source Title">Source
-									Title</cite></small>
-						</blockquote>
-
-						<blockquote class="textItem" style="display: none;">
-							<p>Beyond All Expectations</p>
-							<small>Someone famous <cite title="Source Title">Source
-									Title</cite></small>
-						</blockquote>
-					</div>
-				</div>
-			</div>
-			<div></div>
 		</div>
+		</form>
+		<hr />
+		<div class="row-fluid">
+
+			<div class="span3">
+				<h3>
+					<span>R</span>ooms
+				</h3>
+				<a href="rooms"><img src="web-resources/css/images/rooms.jpg"
+					alt="" /></a>
+				<p>View our range of availiable rooms and options</p>
+			</div>
+			<div class="span3">
+				<h3>
+					<span>S</span>ervices
+				</h3>
+				<a href="facilities"><img
+					src="web-resources/css/images/services.png" alt="" /></a>
+				<p>We have a gym, swimming pool, golf course, and much more</p>
+			</div>
+			<div class="span3">
+				<h3>
+					<span>P</span>romotions
+				</h3>
+				<a href="promotions"><img
+					src="web-resources/css/images/promotions.png" alt="" /></a>
+				<p>
+					Stay five nights and get one night totally <b>FREE</b>!
+				</p>
+			</div>
+			<div class="span3">
+				<h3>
+					<span>L</span>ocation
+				</h3>
+				<a href="map"><img src="web-resources/css/images/location.jpg"
+					alt="" /></a>
+				<p>We're easily accessible - go anywhere quickly.</p>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="span12 what_people_say">
+				<div id="quotes">
+					<blockquote class="textItem" style="display: none;">
+						<p>This is the best hotel I've ever been to.</p>
+						<small>Someone famous <cite title="Source Title">Source
+								Title</cite></small>
+					</blockquote>
+
+					<blockquote class="textItem" style="display: none;">
+						<p>The food is incredible.</p>
+						<small>Someone famous <cite title="Source Title">Source
+								Title</cite></small>
+					</blockquote>
+
+					<blockquote class="textItem" style="display: none;">
+						<p>Beyond All Expectations</p>
+						<small>Someone famous <cite title="Source Title">Source
+								Title</cite></small>
+					</blockquote>
+				</div>
+			</div>
+		</div>
+		<div></div>
+	</div>
 	</div>
 	<!-- /container -->
 	<jsp:include page="includes/footer.jsp" />
 	<jsp:include page="includes/scripts.jsp" />
+	<script>
+		alert("Hello");
+		$(document).ready(function() {
+			function init() {
+				if (localStorage["rooms"]) {
+					$('#rooms').val(localStorage["rooms"]);
+				}
+				if (localStorage["children"]) {
+					$('#children').val(localStorage["children"]);
+				}
+				if (localStorage["adults"]) {
+					$('#adults').val(localStorage["adults"]);
+				}
+			}
+
+			init();
+		});
+
+		$('.stored').change(function() {
+			localStorage[$(this).attr('name')] = $(this).val();
+
+		});
+
+		$('#localStorageTest').submit(function() {
+			localStorage.clear();
+		});
+
+		function datesLocalStorage() {
+			alert("Book now button");
+			var check_in_date = $('#check_in_date').val();
+			var check_out_date = $('#check_out_date').val();
+			//localStorage.setItem("check_in_date", check_in_date);
+			//localStorage.setItem("check_out_date", check_out_date);
+			localStorage.setItem('date_from', check_in_date + " "
+					+ $('.datepicker_from .ui-datepicker-year').text());
+			localStorage.setItem('date_to', check_out_date + " "
+					+ $('.datepicker_to .ui-datepicker-year').text());
+		}
+	</script>
 </body>
 </html>
