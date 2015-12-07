@@ -34,6 +34,12 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${spring-version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>3.2.0.RELEASE</version>
+		</dependency>
+		
 
 		<!-- Hibernate -->
 		<dependency>
@@ -105,21 +111,21 @@
 			<version>1.0.0.GA</version>
 			<scope>provided</scope>
 		</dependency>
-
-		<!--Joda Time -->
+		
+		<!--Joda Time-->
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>1.5.2</version>
 		</dependency>
+		
+		<!-- Java Mail API -->
+	    <dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4.3</version>
+	    </dependency>
 
-		<!-- Json -->
-
-		<dependency>
-			<groupId>com.googlecode.json-simple</groupId>
-			<artifactId>json-simple</artifactId>
-			<version>1.1.1</version>
-		</dependency>
 
 	</dependencies>
 
