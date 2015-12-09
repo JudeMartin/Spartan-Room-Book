@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:url var="actionUrl" value="book" />
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
+<!-- meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8"-->
 <title>Home</title>
+<!-- script type="text/javascript"
+	src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script-->
+
 <jsp:include page="includes/header.jsp" />
 </head>
 <body>
@@ -61,33 +66,36 @@
 					</h2>
 				</div>
 			</div>
-			<form class="form-inline" action="">
+			<form method="POST" action="${actionUrl}" class="form-inline"
+				id="form1">
 				<div class="row-fluid home">
 					<div class="span3">
-						<div class="room_selector" data-price="100" data-adults="1"
-							data-kids="1">
+						<div class="room_selector" data-type="1" data-price="100"
+							data-adults="1" data-kids="1">
 							<h5>
 								<a href="home" class="pull-left"><i
-									class="icon-chevron-left"></i></a>King Size room<a href="home"
+									class="icon-chevron-left"></i></a>Queen Sized room<a href="home"
 									class="pull-right "><i class="icon-chevron-right"></i></a>
 							</h5>
 							<a href="listings.html"><img
 								src="web-resources/css/images/rooms/single_room.jpg" alt="" /></a>
-							<p>All King size rooms have one king size bed for one adult and a kid. A 25-inch TV is included.</p>
+							<p>All queen sized rooms have one single queen sized bed and
+								sleeps one adult. A 25-inch TV is included.</p>
 						</div>
-						<div class="room_selector" data-price="200" data-adults="2"
-							data-kids="1" style="display: none;">
+						<div class="room_selector" data-type="2" data-price="200"
+							data-adults="2" data-kids="1" style="display: none;">
 							<h5>
 								<a href="home" class="pull-left "><i
-									class="icon-chevron-left"></i></a>Queen Size Room<a href="home"
+									class="icon-chevron-left"></i></a>King Sized Room<a href="home"
 									class="pull-right "><i class="icon-chevron-right"></i></a>
 							</h5>
 							<a href="listings.html"><img
 								src="web-resources/css/images/rooms/double_room.jpg" alt="" /></a>
-							<p>All Queen sized rooms have two queen size beds for two adults.A 50-inch TV is included</p>
+							<p>All king sized rooms have a single king sized bed and
+								sleeps two adults & a kid.A 50-inch TV is included</p>
 						</div>
-						<div class="room_selector" data-price="300" data-adults="3"
-							data-kids="2" style="display: none;">
+						<div class="room_selector" data-type="3" data-price="300"
+							data-adults="3" data-kids="2" style="display: none;">
 							<h5>
 								<a href="home" class="pull-left "><i
 									class="icon-chevron-left"></i></a>Triple Room<a href="home"
@@ -98,8 +106,8 @@
 							<p>All triple rooms have one double bed and a single bed and
 								sleeps up to three people.</p>
 						</div>
-						<div class="room_selector" data-price="400" data-adults="4"
-							data-kids="3" style="display: none;">
+						<div class="room_selector" data-type="4" data-price="400"
+							data-adults="4" data-kids="3" style="display: none;">
 							<h5>
 								<a href="home" class="pull-left "><i
 									class="icon-chevron-left"></i></a>Luxury Room<a href="home"
@@ -110,8 +118,8 @@
 							<p>All rooms have two double beds and a balcony. Sleeps up to
 								four adults.</p>
 						</div>
-						<div class="room_selector" data-price="500" data-adults="4"
-							data-kids="3" style="display: none;">
+						<div class="room_selector" data-type="5" data-price="500"
+							data-adults="4" data-kids="3" style="display: none;">
 							<h5>
 								<a href="home" class="pull-left "><i
 									class="icon-chevron-left"></i></a>Private pool room<a href="home"
@@ -122,8 +130,8 @@
 							<p>A private pool, two double beds and a sea view. Sleeps up
 								to four adults.</p>
 						</div>
-						<div class="room_selector" data-price="500" data-adults="5"
-							data-kids="4" style="display: none;">
+						<div class="room_selector" data-type="6" data-price="600"
+							data-adults="5" data-kids="4" style="display: none;">
 							<h5>
 								<a href="home" class="pull-left "><i
 									class="icon-chevron-left"></i></a>Private villa<a href="home"
@@ -140,8 +148,8 @@
 							<div class="control-group">
 								<label class="control-label pull-left" for="inputEmail">Arrive</label>
 								<div class="controls">
-									<input type="text" value="" class="span2 check-in-date"
-										value="2012/11/22" />
+									<input name="checkInDate" type="datetime"
+										class="span2 check-in-date" value="" />
 								</div>
 							</div>
 						</div>
@@ -152,8 +160,8 @@
 							<div class="control-group">
 								<label class="control-label pull-left" for="inputEmail">Depart</label>
 								<div class="controls">
-									<input type="text" value="" class="span2 check-out-date"
-										value="2012/11/22" />
+									<input type="datetime" name="checkOutDate" value=""
+										class="span2 check-out-date" />
 								</div>
 							</div>
 						</div>
@@ -166,12 +174,12 @@
 							<div class="control-group">
 								<label class="control-label" for="inputEmail">Rooms</label>
 								<div class="controls">
-									<select class="span1 select_rooms">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
+									<select class="span1 select_rooms" name="rooms">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
 									</select>
 								</div>
 							</div>
@@ -181,12 +189,12 @@
 								<label class="control-label" for="inputEmail">Adults per
 									room</label>
 								<div class="controls">
-									<select class="span1 select_adults">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
+									<select name="adults" class="span1 select_adults">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
 									</select>
 								</div>
 							</div>
@@ -195,22 +203,42 @@
 								<label class="control-label" for="inputEmail">Kids per
 									room</label>
 								<div class="controls">
-									<select class="span1 select_kids">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
+									<select name="children" class="span1 select_kids">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
 									</select>
 								</div>
 							</div>
+
+
+
 						</div>
-						<div id="total_price" class="price">$ 700.00</div>
-						<a class="btn btn-primary btn-large book-now" href="book">Book
-							now!</a>
+						<div id="total_price" class="price">128.00 $</div>
+						<input type="submit" value="Check availability"
+							class="btn btn-primary btn-large book-now" id="checkAvail" /> <input
+							name="roomId" id="roomId" type="hidden" value="" /> <input
+							name="roomType" id="roomType" type="hidden" value="" /> <input
+							name="totalPrice" id="totalPrice" type="hidden" value="" />
+
+						<div class="roomAvailable" id="roomAvailable" style="visibility: hidden">
+							<input path="id" type="hidden" /> <input
+								class="btn btn-primary btn-large book-now" type="submit"
+								value="Book a room !!" />
+							<p>Room is available!! Please book</p>
+						</div>
+						<div class="roomNotAvailable" id="roomNotAvailable" style="visibility: hidden">
+							<p>Room not available!! Please try other options</p>
+						</div>
+
+
+
 					</div>
 				</div>
 			</form>
+
 			<hr />
 			<div class="row-fluid">
 
@@ -280,5 +308,53 @@
 	<!-- /container -->
 	<jsp:include page="includes/footer.jsp" />
 	<jsp:include page="includes/scripts.jsp" />
+	<script type="text/javascript">
+		//var jq = jQuery.noConflict();
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#checkAvail").click(function(event) {
+				console.log("checkAvail");
+				$.ajax({
+					type : 'GET',
+					url : "book/availability",
+					context : document.body,
+					data : $("#form1").serialize(),
+					async : true,
+					dataType: "json",
+					success : function(result) {
+						var res = result;
+						var roomId = result["result"];
+						if (roomId > 0) {
+							console.log("At " + JSON.stringify(result));
+							document.getElementById("roomAvailable").style.visibility = "visible";
+							document.getElementById("roomNotAvailable").style.visibility = "hidden";
+							
+							//jq(".roomAvailable").css("visibility", "visible");
+							//jq(".roomNotAvailable").css("visibility", "hidden");
+							//setting the value of the room id which is available for booking and 
+							//assigned to the user by default based on his selection criteria
+							document.getElementById('roomId').value = roomId;
+						} else {
+							//throw new Error("not available");
+							//jq(".roomAvailable").css("visibility", "hidden");
+							//jq(".roomNotAvailable").css("visibility", "visible");
+							document.getElementById("roomNotAvailable").style.visibility = "visible";
+							document.getElementById("roomAvailable").style.visibility = "hidden";
+						}
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						//jq(".roomAvailable").css("visibility", "hidden");
+						//jq(".roomNotAvailable").css("visibility", "visible");
+						//console.log(jqXHR.status + " " + jqXHR.responseText);
+						document.getElementById("roomNotAvailable").style.visibility = "visible";
+						document.getElementById("roomAvailable").style.visibility = "hidden";
+					}
+				});
+				event.preventDefault();
+			});
+		});
+	</script>
 </body>
 </html>

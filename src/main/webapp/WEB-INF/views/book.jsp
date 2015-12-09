@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:url var="actionUrl" value="/bookpay" />
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
@@ -45,7 +46,7 @@
 
 					<div class="row">
 						<div class="span9">
-							<form class="form-horizontal" action="">
+							<form class="form-horizontal" action="${actionUrl}" method="POST" id="form2">
 
 								<fieldset>
 									<br /> <br />
@@ -72,13 +73,13 @@
 										</div>
 
 										<div class="span3">
-											<label> <input type="text"
+											<label> <input name="first_name" type="text"
 												placeholder="First Name...">
 											</label>
 										</div>
 
 										<div class="span3">
-											<label> <input type="text" placeholder="Last Name...">
+											<label> <input name="last_name" type="text" placeholder="Last Name...">
 											</label>
 										</div>
 
@@ -91,7 +92,7 @@
 											</legend>
 										</div>
 										<div class="span3">
-											<label>Email address <input type="text">
+											<label>Email address <input name="email" type="text">
 											</label>
 										</div>
 
@@ -101,7 +102,7 @@
 										</div>
 
 										<div class="span3">
-											<label>Telephone number <input type="text"
+											<label>Telephone number <input name="phone" type="text"
 												placeholder="(+##)-###-###-####">
 											</label>
 										</div>
@@ -115,19 +116,19 @@
 										</div>
 
 										<div class="span3">
-											<label>Address <textarea class="address_box" rows="3"
+											<label>Address <textarea name="address" class="address_box" rows="3"
 													cols=""></textarea>
 											</label>
 										</div>
 
 										<div class="span3">
 											<label>City <input type="text">
-											</label> <label>ZIP/Postal <input type="text">
+											</label> <label>ZIP/Postal <input name="zip" type="text">
 											</label>
 										</div>
 
 										<div class="span3">
-											<label>State/Province <input type="text">
+											<label>State/Province <input type="text" name="state">
 											</label> <label>Country <select name="country"><option
 														value="US">United States</option>
 													<option value="AD">Andorra</option>
@@ -418,13 +419,37 @@
 
 									<div class="row">
 										<div class="span9">
-											<br /> <a href="book-pay"
-												class="btn btn-primary btn-large book-now pull-right">Continue</a>
+											<br /> <!-- a href="book-pay"
+												class="btn btn-primary btn-large book-now pull-right">Continue</a-->
+<!-- input class="btn btn-primary btn-large book-now" type="submit" value="Submit"/-->
+<input type="submit" value="Continue" class="btn btn-primary btn-large book-now"
+				id="checkAvail" />
 											<br /> <br />
 										</div>
 									</div>
+
+									<input name="checkInDate"
+										value="<%=request.getParameter("checkInDate")%>"
+										type="hidden" /> <input name="checkOutDate"
+										value="<%=request.getParameter("checkOutDate")%>"
+										type="hidden" /> <input name="rooms"
+										value="<%=request.getParameter("rooms")%>" type="hidden" /> <input
+										name="adults" value="<%=request.getParameter("adults")%>"
+										type="hidden" /> <input name="children"
+										value="<%=request.getParameter("children")%>" type="hidden" />
+									<input name="roomId"
+										value="<%=request.getParameter("roomId")%>" type="hidden" />
+									<input name="totalPrice"
+										value="<%=request.getParameter("totalPrice")%>" type="hidden" />
+
+
+
 								</fieldset>
 							</form>
+
+
+
+
 						</div>
 
 						<div class="span3">
@@ -434,17 +459,19 @@
 							</h3>
 							<p>Your choosen dates are:</p>
 							<div class="pull-left">
-								Arrival : <i>Thu 10, Jan 2013</i>
+								Arrival : <i><em><%=request.getParameter("checkInDate")%></em></i>
 							</div>
 							<br />
 							<div class="pull-left">
-								Departure : <i>Fri 11, January 2013</i>
+								Departure : <i><%=request.getParameter("checkOutDate")%></i>
 							</div>
 							<br /> <br /> Your choosen room is:
 							<div class="pull-left">
-								<i>A Luxury Room for 2 adults and 1 child</i>
+								<i>A Luxury Room for <%=request.getParameter("adults")%>
+									adults and <%=request.getParameter("children")%> child
+								</i>
 							</div>
-							<br /> <br /> <br />
+							<br /> <br /> <br /> <br />
 							<p></p>
 						</div>
 					</div>
@@ -455,5 +482,42 @@
 		<!-- /container -->
 		<jsp:include page="includes/footer.jsp" />
 		<jsp:include page="includes/scripts.jsp" />
+		<script type="text/javascript">
+	
+	$("#checkAvail").click(function(event){
+	    console.log("checkAvail");
+	    $.ajax({
+			type : 'POST',
+			url : "bookpay",
+			context:document.body,
+			data:$("#form2").serialize(),
+			async : false,
+			success : function(result) {
+				console.log("success");
+				/*var res = result;
+				var roomId = result["result"];
+				if(roomId > 0){
+					console.log("At " + JSON.stringify(result));
+					jq(".roomAvailable").css("visibility", "visible");
+					jq(".roomNotAvailable").css("visibility", "hidden");
+					//setting the value of the room id which is available for booking and 
+					//assigned to the user by default based on his selection criteria
+					document.getElementById('roomId').value = roomId;
+				}else{
+					//throw new Error("not available");
+					jq(".roomAvailable").css("visibility", "hidden");
+					jq(".roomNotAvailable").css("visibility", "visible");
+				}*/
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				console.log("error");
+				//jq(".roomAvailable").css("visibility", "hidden");
+				//jq(".roomNotAvailable").css("visibility", "visible");
+				//console.log(jqXHR.status + " " + jqXHR.responseText);
+			}
+		});
+		//event.preventDefault();
+	});
+	</script>
 </body>
 </html>

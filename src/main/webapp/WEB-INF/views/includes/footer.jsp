@@ -4,13 +4,13 @@
 
 				<div class="span4">
 					<h4>
-						HotelSparta<span class="line"></span>
+						Hotel Sparta<span class="line"></span>
 					</h4>
 
-					<p>2247 Copperhead Road, Hartford, CT 06103</p>
+					<p>101 E. San Fernando Street, Apt #454, </p>
 					<p>
-						Tel: +860-631-7795<br />Fax: +860-631-7796 <br />Email:
-						admin@sparta.com
+						Tel: +999-999-9999<br />Fax: +999-999-9999 <br />Email:
+						support@hotelsparta.com
 					</p>
 
 					<ul data-facebook-action="recommend" data-url="#"
@@ -28,7 +28,7 @@
 					<br />
 					<p class="copy">
 						All content &copy; 2013 <a
-							href="../../../www.appsarea.com/home.jsp">AppsArea</a>
+							href="#">Hotel Sparta</a>
 					</p>
 
 				</div>
@@ -37,15 +37,13 @@
 						Special offers<span class="line"></span>
 					</h4>
 					<p>
-						<b>FREE</b> Breakfast, <b>FREE</b> Internet, <b>FREE</b> Tour =
-						Savings!
+						<b>FREE</b> Service 1, <b>FREE</b>  Service 2, <b>FREE</b>  Service 3
 					</p>
 					<p>
-						Stay five nights and get one night totally <b>FREE</b>!
+						 Service 4 <b>FREE</b>!
 					</p>
 					<p>
-						Save up to <b>20% OFF</b> our Best Available Rate by booking with
-						us in advance.
+						 Service 5
 					</p>
 				</div>
 				<div class="span4">
