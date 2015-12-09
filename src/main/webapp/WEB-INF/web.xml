@@ -20,12 +20,12 @@
 	</servlet-mapping>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>/WEB-INF/spring/root-context.xml,/WEB-INF/spring/dispatcherServlet/spring-security.xml</param-value>
 	</context-param>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
+
 	<!-- Enables use of HTTP methods PUT and DELETE -->
 	<filter>
 		<filter-name>httpMethodFilter</filter-name>
@@ -38,20 +38,21 @@
 	</filter-mapping>
 
 
- 	
-	<!-- filter-mapping>
-	<filter-name>MultipartFilter</filter-name>
-		<servlet-name>dispatcher</servlet-name>  
-	</filter-mapping>
+
+	<!-- filter-mapping> <filter-name>MultipartFilter</filter-name> <servlet-name>dispatcher</servlet-name> 
+		</filter-mapping> <filter> <filter-name>httpMethodFilter</filter-name> <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class> 
+		</filter> <filter-mapping> <filter-name>httpMethodFilter</filter-name> <servlet-name>springDispatcher</servlet-name> 
+		</filter-mapping -->
+
+	<!-- Spring Security -->
 	<filter>
-		<filter-name>httpMethodFilter</filter-name>
-		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
+
 	<filter-mapping>
-		<filter-name>httpMethodFilter</filter-name>
-		<servlet-name>springDispatcher</servlet-name>
-	</filter-mapping-->
-	
-	
-	
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 </web-app>
