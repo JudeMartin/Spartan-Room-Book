@@ -79,7 +79,7 @@ $(function(){
 		showOtherMonths: true,
 		numberOfMonths: 1,
 		altField: ".check-in-date",
-		altFormat: "d M, '3:00 PM'",
+		altFormat: "d M yy",
 		minDate: 0,
 		onSelect: function(date) {
 			update_total_price();
@@ -90,7 +90,7 @@ $(function(){
 		showOtherMonths: true,
 		numberOfMonths: 1,
 		altField: ".check-out-date",
-		altFormat: "d M, '12:00 PM'",
+		altFormat: "d M yy",
 		minDate: 1,
 		defaultDate: "+1w",
 		onSelect: function(date) {
@@ -300,6 +300,9 @@ function update_total_price() {
 	//first we update the select boxes
 	var max_adults = parseInt(room.data('adults'));
 	var max_kids = parseInt(room.data('kids'));
+	var roomType = parseInt(room.data('type'));
+	console.log(roomType);
+	document.getElementById('roomType').value = roomType;
 	var adults_options = [];
 	var kids_options = [0];
 	for(var i = 1; i <= max_adults; i++){

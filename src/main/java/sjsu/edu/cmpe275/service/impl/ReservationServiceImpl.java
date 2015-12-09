@@ -35,16 +35,24 @@ public class ReservationServiceImpl implements ReservationService {
 		return null;
 	}
 
-	@Override
+	@Transactional(readOnly = true)
 	public Reservation findReservation(String reservationId) {
 		// TODO Auto-generated method stub
-		return null;
+		Reservation reservation = reservationDAO.findReservation(reservationId);
+		return reservation;
+		
+	}
+
+	@Transactional
+	public Integer checkAvailability(SearchCriteria searchCriteria) {
+		int checkAvailableRoom = reservationDAO.checkAvailability(searchCriteria);
+		return checkAvailableRoom;
 	}
 
 	@Override
-	public boolean checkAvailability(SearchCriteria searchCriteria) {
+	public Reservation findReservationGuest(Long guest_id) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 }

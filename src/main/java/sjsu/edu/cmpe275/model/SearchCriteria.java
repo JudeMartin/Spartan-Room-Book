@@ -2,13 +2,19 @@ package sjsu.edu.cmpe275.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SearchCriteria {
 
 	int rooms = 0 ;
 	private int adults = 0;
 	private int children = 0;
+	//@DateTimeFormat(pattern = "MM-dd-yyyy")
+	//@DateTimeFormat(pattern = "dd/mm/yy")
 	private Date checkInDate;
+	//@DateTimeFormat(pattern = "dd/mm/yy")
 	private Date checkOutDate;
+	private int roomType;
 	
 	public int getRooms() {
 		return rooms;
@@ -39,6 +45,18 @@ public class SearchCriteria {
 	}
 	public void setCheckOutDate(Date checkOutDate) {
 		this.checkOutDate = checkOutDate;
+	}
+	public int getRoomType() {
+		return roomType;
+	}
+	public void setRoomType(int roomType) {
+		this.roomType = roomType;
+	}
+	
+	@Override
+	public String toString() {
+		return "SearchCriteria [rooms=" + rooms + ", adults=" + adults + ", children=" + children + ", checkInDate="
+				+ checkInDate + ", checkOutDate=" + checkOutDate + ", roomType=" + roomType + "]";
 	}
 	
 	

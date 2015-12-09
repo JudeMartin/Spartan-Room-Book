@@ -10,5 +10,6 @@ public interface ReservationDAO {
 	Reservation cancelReservation(String reservationId);
 	List<Reservation> findReservation();
 	Reservation findReservation(String reservationId);
-	boolean checkAvailability(SearchCriteria searchCriteria);
+	Reservation findReservationGuest(Long guest_id);
+	Integer checkAvailability(SearchCriteria searchCriteria);
 }

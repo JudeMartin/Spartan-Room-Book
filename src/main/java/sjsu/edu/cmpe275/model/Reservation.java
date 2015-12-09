@@ -3,16 +3,21 @@ package sjsu.edu.cmpe275.model;
 import java.util.Date;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Reservation {
@@ -24,8 +29,10 @@ public class Reservation {
 	@Column(name="guest_id")
 	private Long guestId;
 	
-	@Column(name="room_id")
-	private Long roomId;
+	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	@JoinColumn(name="room_id")
+	@NotFound(action=NotFoundAction.IGNORE)
+	private Room room;
 	
 	@DateTimeFormat(pattern="MM-dd-yyyy")
 	@Column(name="reservation_date")
@@ -39,9 +46,9 @@ public class Reservation {
 	@Column(name="check_out_date")
 	private Date checkOutDate;
 
-	private int adults;
-	private int children;
-	private int rooms;
+	private int adults = 0;
+	private int children = 0;
+	private int rooms = 0;
 
 	private int amenityTypeId = RoomOtherType.SMOKING.getOtherTypeId();
 
@@ -61,13 +68,6 @@ public class Reservation {
 		this.guestId = guestId;
 	}
 
-	public Long getRoomId() {
-		return roomId;
-	}
-
-	public void setRoomId(Long roomId) {
-		this.roomId = roomId;
-	}
 
 	public Date getReservationDate() {
 		return reservationDate;
@@ -125,5 +125,30 @@ public class Reservation {
 	public void setAmenityTypeId(int amenityTypeId) {
 		this.amenityTypeId = amenityTypeId;
 	}
+
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+
+	public int getRooms() {
+		return rooms;
+	}
+
+	public void setRooms(int rooms) {
+		this.rooms = rooms;
+	}
+
+	@Override
+	public String toString() {
+		return "Reservation [reservationId=" + reservationId + ", guestId=" + guestId + ", room=" + room
+				+ ", reservationDate=" + reservationDate + ", checkInDate=" + checkInDate + ", checkOutDate="
+				+ checkOutDate + ", adults=" + adults + ", children=" + children + ", rooms=" + rooms
+				+ ", amenityTypeId=" + amenityTypeId + "]";
+	}
+
 	
 }
