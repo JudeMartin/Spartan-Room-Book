@@ -9,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import sjsu.edu.cmpe275.model.Guest;
 import sjsu.edu.cmpe275.service.GuestService;
@@ -47,7 +49,7 @@ public class GuestController {
 		model.addAttribute("guests", guests);
 		return "guestList";
 	}
-
+	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String deleteGuest(Model model, @ModelAttribute("command") Guest guest, BindingResult result) {
 		if(result.hasErrors()){

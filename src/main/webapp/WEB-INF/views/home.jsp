@@ -35,7 +35,7 @@
 								<li class=""><a href="gallery">Gallery</a></li>
 								<li class=""><a href="map">Map</a></li>
 								<li class=""><a href="book-start">Book</a></li>
-								<li class=""><a href="room">Login</a></li>
+								<li class=""><a href="login">Login</a></li>
 							</ul>
 						</div>
 						<!-- /.nav-collapse -->
@@ -74,25 +74,23 @@
 							data-adults="1" data-kids="1">
 							<h5>
 								<a href="home" class="pull-left"><i
-									class="icon-chevron-left"></i></a>Queen Sized room<a href="home"
+									class="icon-chevron-left"></i></a>King Size room<a href="home"
 									class="pull-right "><i class="icon-chevron-right"></i></a>
 							</h5>
 							<a href="listings.html"><img
 								src="web-resources/css/images/rooms/single_room.jpg" alt="" /></a>
-							<p>All queen sized rooms have one single queen sized bed and
-								sleeps one adult. A 25-inch TV is included.</p>
+							<p>All King size rooms have one king size bed for one adult and a kid. A 25-inch TV is included.</p>
 						</div>
 						<div class="room_selector" data-type="2" data-price="200"
 							data-adults="2" data-kids="1" style="display: none;">
 							<h5>
 								<a href="home" class="pull-left "><i
-									class="icon-chevron-left"></i></a>King Sized Room<a href="home"
+									class="icon-chevron-left"></i></a>Queen Size Room<a href="home"
 									class="pull-right "><i class="icon-chevron-right"></i></a>
 							</h5>
 							<a href="listings.html"><img
 								src="web-resources/css/images/rooms/double_room.jpg" alt="" /></a>
-							<p>All king sized rooms have a single king sized bed and
-								sleeps two adults & a kid.A 50-inch TV is included</p>
+							<p>All Queen sized rooms have two queen size beds for two adults.A 50-inch TV is included</p>
 						</div>
 						<div class="room_selector" data-type="3" data-price="300"
 							data-adults="3" data-kids="2" style="display: none;">
@@ -216,7 +214,7 @@
 
 
 						</div>
-						<div id="total_price" class="price">128.00 $</div>
+						<div id="total_price" class="price">$ 700.00</div>
 						<input type="submit" value="Check availability"
 							class="btn btn-primary btn-large book-now" id="checkAvail" onclick="datesLocalStorage();" /> <input
 							name="roomId" id="roomId" type="hidden" value="" /> <input
@@ -226,7 +224,7 @@
 						<div class="roomAvailable" id="roomAvailable" style="visibility: hidden">
 							<input path="id" type="hidden" /> <input
 								class="btn btn-primary btn-large book-now" type="submit"
-								value="Book a room !!" />
+								value="Book Now!!" />
 							<p>Room is available!! Please book</p>
 						</div>
 						<div class="roomNotAvailable" id="roomNotAvailable" style="visibility: hidden">

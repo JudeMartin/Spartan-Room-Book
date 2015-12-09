@@ -69,27 +69,25 @@
 										data-kids="1">
 										<h5>
 											<a href="book-start#" class="pull-left"><i
-												class="icon-chevron-left"></i></a>Single room<a
-												href="book-startl#" class="pull-right "><i
+												class="icon-chevron-left"></i></a>King Size<a
+												href="book-start#" class="pull-right "><i
 												class="icon-chevron-right"></i></a>
 										</h5>
 										<a href="listings.html"><img
 											src="web-resources/css/images/rooms/single_room.jpg" alt="" /></a>
-										<p>All single rooms have one single bed and sleeps one
-											adult. A 25-inch TV is included.</p>
+										<p>All King size rooms have one king size bed for one adult and a kid. A 25-inch TV is included.</p>
 									</div>
 									<div class="room_selector" data-price="200" data-adults="2"
 										data-kids="1" style="display: none;">
 										<h5>
 											<a href="book-start#" class="pull-left "><i
-												class="icon-chevron-left"></i></a>Double Room<a
-												href="book-star#" class="pull-right "><i
+												class="icon-chevron-left"></i></a>Queen Size Room<a
+												href="book-start#" class="pull-right "><i
 												class="icon-chevron-right"></i></a>
 										</h5>
 										<a href="listings.html"><img
 											src="web-resources/css/images/rooms/double_room.jpg" alt="" /></a>
-										<p>All double rooms have a single double bed and sleeps
-											two adults.</p>
+										<p>All Queen sized rooms have two queen size beds for two adults.A 50-inch TV is included.</p>
 									</div>
 									<div class="room_selector" data-price="300" data-adults="3"
 										data-kids="2" style="display: none;">
