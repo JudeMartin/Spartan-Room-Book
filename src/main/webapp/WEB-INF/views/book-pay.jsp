@@ -8,8 +8,6 @@
 <meta charset="utf-8">
 <title>Pay</title>
 <jsp:include page="includes/header.jsp" />
-<script type="text/javascript"
-				src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -75,7 +73,7 @@
 
 								<div class="span3 pull-right">
 									<p>Base price</p>
-									<span class="price base_price" id="base_price">100.00 $</span>
+									<span class="price">1280.00 GBP</span>
 								</div>
 
 							</div>
@@ -166,8 +164,7 @@
 
 								<div class="span3 pull-right">
 									<p>Extras</p>
-									<span class="price extras_price" id="extras_price"
-													onchange="add();">0.00 GBP</span>
+									<span class="price" id="extras_price">0.00 GBP</span>
 								</div>
 							</div>
 
@@ -185,7 +182,7 @@
 										<span>Payment</span> information
 									</h3>
 
-									<form class="form-horizontal" action="">
+								<!-- 	<form class="form-horizontal" id="form1" action="/bill/saveData"  method="post"> -->
 										<div class="control-group">
 											<label for="inputWarning" class="control-label pay strong">Card
 												Type</label>
@@ -245,7 +242,7 @@
 												<input type="text" class="span4 card_holder">
 											</div>
 										</div>
-									</form>
+									<!-- </form> -->
 								</div>
 
 
@@ -253,12 +250,12 @@
 									<p>
 										<strong>Total price</strong>
 									</p>
-									<span class="price strong" id="total_price" name="total">00.00 $</span>
+									<span class="price strong" id="total_price">$ 100.00 </span>
 								</div>
 
-								<div class="span12">
-									<button class="btn btn-primary btn-large book-now pull-right" onclick="totalLocal();">Submit
-										payment</button>
+								<div class="span12"><a href="Thankyou">
+									<button class="btn btn-primary btn-large book-now pull-right" onclick="postData();">Submit
+										payment</button></a>>
 									<br /> <br />
 								</div>
 
@@ -272,21 +269,19 @@
 		</div>
 	</div>
 	<script>
-		function totalLocal() {
-			alert("Submit button");
-			var totalVal = $('#total').val();
-			alert(totalVal);
-			localStorage.setItem('total', totalVal);
+		function postData(){
+			 alert (JSON.stringify(localStorage));
+			//console.log(JSON.stringify(localStorage));
 			$.ajax({
-			    url: "bill/saveData",
-			    type: "POST",
-			    data: JSON.stringify(localStorage),
-			    contentType: "application/json",
-			    success : function(result) {
-			    	
-			    }
-			});
-		}
+					type : 'POST',
+					url : "bill/saveData",
+					contentType: 'application/json; charset=utf-8',
+					data :JSON.stringify(localStorage),
+					dataType: "json",
+					success : function(result) {
+					}
+			  });
+		}	
 	</script>
 	<jsp:include page="includes/footer.jsp" />
 	<jsp:include page="includes/scripts.jsp" />

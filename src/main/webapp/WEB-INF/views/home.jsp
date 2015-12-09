@@ -147,7 +147,7 @@
 								<label class="control-label pull-left" for="inputEmail">Arrive</label>
 								<div class="controls">
 									<input name="checkInDate" type="text"
-										class="span2 check-in-date stored" id="check_in_date" value="" />
+										class="span2 check-in-date stored" value="" id="check_in_date"/>
 								</div>
 							</div>
 						</div>
@@ -158,7 +158,7 @@
 							<div class="control-group">
 								<label class="control-label pull-left" for="inputEmail">Depart</label>
 								<div class="controls">
-									<input type="datetime" name="checkOutDate" value=""
+									<input type="text" name="checkOutDate" value=""
 										class="span2 check-out-date stored" id="check_out_date" />
 								</div>
 							</div>
@@ -172,7 +172,8 @@
 							<div class="control-group">
 								<label class="control-label" for="inputEmail">Rooms</label>
 								<div class="controls">
-									<select class="span1 select_rooms stored" id="rooms" name="rooms">
+									<select class="span1 select_rooms stored" id="rooms"
+									name="rooms" name="rooms">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -187,7 +188,8 @@
 								<label class="control-label" for="inputEmail">Adults per
 									room</label>
 								<div class="controls">
-									<select name="adults" class="span1 select_adults stored" id="adults">
+									<select name="adults" class="span1 select_adults stored" id="adults"
+									name="adults">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -215,8 +217,8 @@
 
 						</div>
 						<div id="total_price" class="price">$ 700.00</div>
-						<input type="submit" value="Check availability"
-							class="btn btn-primary btn-large book-now" id="checkAvail" onclick="datesLocalStorage();" /> <input
+						<input type="submit" value="Check availability" onclick="datesLocalStorage();"
+							class="btn btn-primary btn-large book-now" id="checkAvail" /> <input
 							name="roomId" id="roomId" type="hidden" value="" /> <input
 							name="roomType" id="roomType" type="hidden" value="" /> <input
 							name="totalPrice" id="totalPrice" type="hidden" value="" />
@@ -324,6 +326,8 @@
 					success : function(result) {
 						var res = result;
 						var roomId = result["result"];
+						localStorage.setItem("roomId",roomId);
+						alert(roomId);
 						if (roomId > 0) {
 							console.log("At " + JSON.stringify(result));
 							document.getElementById("roomAvailable").style.visibility = "visible";
@@ -353,7 +357,6 @@
 				event.preventDefault();
 			});
 		});
-		 
 		alert("Hello");
 		$(document).ready(function() {
 			function init() {
@@ -381,10 +384,8 @@
 			var check_out_date = $('#check_out_date').val();
 			//localStorage.setItem("check_in_date", check_in_date);
 			//localStorage.setItem("check_out_date", check_out_date);
-			localStorage.setItem('date_from', check_in_date);/* // + " "
-					+ $('.datepicker_from .ui-datepicker-year').text()); */
-			localStorage.setItem('date_to', check_out_date);/*  + " "
-					+ $('.datepicker_to .ui-datepicker-year').text()); */
+			localStorage.setItem('date_from', check_in_date);
+			localStorage.setItem('date_to', check_out_date );
 		}
 	</script>
 </body>
