@@ -148,8 +148,8 @@
 							<div class="control-group">
 								<label class="control-label pull-left" for="inputEmail">Arrive</label>
 								<div class="controls">
-									<input name="checkInDate" type="datetime"
-										class="span2 check-in-date" value="" />
+									<input name="checkInDate" type="text"
+										class="span2 check-in-date stored" id="check_in_date" value="" />
 								</div>
 							</div>
 						</div>
@@ -161,7 +161,7 @@
 								<label class="control-label pull-left" for="inputEmail">Depart</label>
 								<div class="controls">
 									<input type="datetime" name="checkOutDate" value=""
-										class="span2 check-out-date" />
+										class="span2 check-out-date stored" id="check_out_date" />
 								</div>
 							</div>
 						</div>
@@ -174,7 +174,7 @@
 							<div class="control-group">
 								<label class="control-label" for="inputEmail">Rooms</label>
 								<div class="controls">
-									<select class="span1 select_rooms" name="rooms">
+									<select class="span1 select_rooms stored" id="rooms" name="rooms">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -189,7 +189,7 @@
 								<label class="control-label" for="inputEmail">Adults per
 									room</label>
 								<div class="controls">
-									<select name="adults" class="span1 select_adults">
+									<select name="adults" class="span1 select_adults stored" id="adults">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -203,7 +203,7 @@
 								<label class="control-label" for="inputEmail">Kids per
 									room</label>
 								<div class="controls">
-									<select name="children" class="span1 select_kids">
+									<select name="children" class="span1 select_kids stored" id="children">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -218,7 +218,7 @@
 						</div>
 						<div id="total_price" class="price">128.00 $</div>
 						<input type="submit" value="Check availability"
-							class="btn btn-primary btn-large book-now" id="checkAvail" /> <input
+							class="btn btn-primary btn-large book-now" id="checkAvail" onclick="datesLocalStorage();" /> <input
 							name="roomId" id="roomId" type="hidden" value="" /> <input
 							name="roomType" id="roomType" type="hidden" value="" /> <input
 							name="totalPrice" id="totalPrice" type="hidden" value="" />
@@ -355,6 +355,39 @@
 				event.preventDefault();
 			});
 		});
+		 
+		alert("Hello");
+		$(document).ready(function() {
+			function init() {
+				if (localStorage["rooms"]) {
+					$('#rooms').val(localStorage["rooms"]);
+				}
+				if (localStorage["children"]) {
+					$('#children').val(localStorage["children"]);
+				}
+				if (localStorage["adults"]) {
+					$('#adults').val(localStorage["adults"]);
+				}
+			}
+			init();
+		});
+		$('.stored').change(function() {
+			localStorage[$(this).attr('name')] = $(this).val();
+		});
+		$('#localStorageTest').submit(function() {
+			localStorage.clear();
+		});
+		function datesLocalStorage() {
+			alert("Book now button");
+			var check_in_date = $('#check_in_date').val();
+			var check_out_date = $('#check_out_date').val();
+			//localStorage.setItem("check_in_date", check_in_date);
+			//localStorage.setItem("check_out_date", check_out_date);
+			localStorage.setItem('date_from', check_in_date);/* // + " "
+					+ $('.datepicker_from .ui-datepicker-year').text()); */
+			localStorage.setItem('date_to', check_out_date);/*  + " "
+					+ $('.datepicker_to .ui-datepicker-year').text()); */
+		}
 	</script>
 </body>
 </html>

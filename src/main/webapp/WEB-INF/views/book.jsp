@@ -17,36 +17,37 @@
 			<!-- start header -->
 			<jsp:include page="menu.jsp" />
 			<!-- end header -->
-				<div class="span6 pull-right main_menu">
-		<div class="navbar">
-			<div class="container">
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a>
-				<div class="nav-collapse">
-					<ul class="nav nav-pills">
-						<li class=""><a href="home">Home</a></li>
-						<li class=""><a href="rooms">Rooms</a></li>
-						<li class=""><a href="facilities">Facilities</a></li>
-						<li class=""><a href="gallery">Gallery</a></li>
-						<li class=""><a href="map">Map</a></li>
-						<li class="active"><a href="book-start">Book</a></li>
-						<li class=""><a href="room">Login</a></li>
-					</ul>
+			<div class="span6 pull-right main_menu">
+				<div class="navbar">
+					<div class="container">
+						<a class="btn btn-navbar" data-toggle="collapse"
+							data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span>
+						</a>
+						<div class="nav-collapse">
+							<ul class="nav nav-pills">
+								<li class=""><a href="home">Home</a></li>
+								<li class=""><a href="rooms">Rooms</a></li>
+								<li class=""><a href="facilities">Facilities</a></li>
+								<li class=""><a href="gallery">Gallery</a></li>
+								<li class=""><a href="map">Map</a></li>
+								<li class="active"><a href="book-start">Book</a></li>
+								<li class=""><a href="room">Login</a></li>
+							</ul>
+						</div>
+						<!-- /.nav-collapse -->
+					</div>
 				</div>
-				<!-- /.nav-collapse -->
+				<!-- /navbar -->
 			</div>
-		</div>
-		<!-- /navbar -->
-	</div>
 			<div class="row booking_summary">
 
 				<div class="span12">
 
 					<div class="row">
 						<div class="span9">
-							<form class="form-horizontal" action="${actionUrl}" method="POST" id="form2">
+							<form class="form-horizontal" action="${actionUrl}" method="POST"
+								id="form2">
 
 								<fieldset>
 									<br /> <br />
@@ -74,12 +75,13 @@
 
 										<div class="span3">
 											<label> <input name="first_name" type="text"
-												placeholder="First Name...">
+												placeholder="First Name..." class="stored">
 											</label>
 										</div>
 
 										<div class="span3">
-											<label> <input name="last_name" type="text" placeholder="Last Name...">
+											<label> <input name="last_name" type="text"
+												placeholder="Last Name..." id="last_name" class="stored">
 											</label>
 										</div>
 
@@ -97,12 +99,14 @@
 										</div>
 
 										<div class="span3">
-											<label>Email address confirmation <input type="text">
+											<label>Email address confirmation <input type="text"
+												class="stored" id="email" name="email">
 											</label>
 										</div>
 
 										<div class="span3">
-											<label>Telephone number <input name="phone" type="text"
+											<label>Telephone number <input name="phone"
+												id="phone" class="stored" type="text"
 												placeholder="(+##)-###-###-####">
 											</label>
 										</div>
@@ -116,21 +120,27 @@
 										</div>
 
 										<div class="span3">
-											<label>Address <textarea name="address" class="address_box" rows="3"
-													cols=""></textarea>
+											<label>Address <input type="text" name="address"
+												class="stored" id="address" />
+											</label> <label>ZIP/Postal <input name="zip" type="text"
+												id="zip" class="stored">
 											</label>
 										</div>
 
 										<div class="span3">
-											<label>City <input type="text">
-											</label> <label>ZIP/Postal <input name="zip" type="text">
+											<label>City <input type="text" class="stored"
+												id="city" name="city">
+											</label>
+											<label>State/Province <input type="text" id="state"
+												name="state" class="stored">
 											</label>
 										</div>
 
 										<div class="span3">
-											<label>State/Province <input type="text" name="state">
-											</label> <label>Country <select name="country"><option
-														value="US">United States</option>
+											</label> <label>Country <select name="country" id="country"
+												name="country" class="stored">
+													<option value="null">Select</option>
+													<option value="US">United States</option>
 													<option value="AD">Andorra</option>
 													<option value="AE">United Arab Emirates</option>
 													<option value="AF">Afghanistan</option>
@@ -401,10 +411,15 @@
 													<option value="ZA">South Africa</option>
 													<option value="ZM">Zambia</option>
 													<option value="ZW">Zimbabwe</option>
-													<option value="ZZ">Unknown or Invalid Region</option></select>
+													<option value="ZZ">Unknown or Invalid Region</option>
+											</select>
+											</label> <label>Driver License <input type="text"
+												id="driver_license" name="driver_license" class="stored">
 											</label>
 										</div>
-
+										<div class="span3">
+											
+										</div>
 									</div>
 									<br />
 									<div class="row">
@@ -419,18 +434,19 @@
 
 									<div class="row">
 										<div class="span9">
-											<br /> <!-- a href="book-pay"
+											<br />
+											<!-- a href="book-pay"
 												class="btn btn-primary btn-large book-now pull-right">Continue</a-->
-<!-- input class="btn btn-primary btn-large book-now" type="submit" value="Submit"/-->
-<input type="submit" value="Continue" class="btn btn-primary btn-large book-now"
-				id="checkAvail" />
+											<!-- input class="btn btn-primary btn-large book-now" type="submit" value="Submit"/-->
+											<input type="submit" value="Continue"
+												class="btn btn-primary btn-large book-now" id="checkAvail" />
 											<br /> <br />
 										</div>
 									</div>
 
 									<input name="checkInDate"
-										value="<%=request.getParameter("checkInDate")%>"
-										type="hidden" /> <input name="checkOutDate"
+										value="<%=request.getParameter("checkInDate")%>" type="hidden" />
+									<input name="checkOutDate"
 										value="<%=request.getParameter("checkOutDate")%>"
 										type="hidden" /> <input name="rooms"
 										value="<%=request.getParameter("rooms")%>" type="hidden" /> <input
@@ -459,7 +475,7 @@
 							</h3>
 							<p>Your choosen dates are:</p>
 							<div class="pull-left">
-								Arrival : <i><em><%=request.getParameter("checkInDate")%></em></i>
+								Arrival : <i><em><%=request.getParameter("checkInDate")%> </em></i>
 							</div>
 							<br />
 							<div class="pull-left">
@@ -479,45 +495,90 @@
 			</div>
 		</div>
 	</div>
-		<!-- /container -->
-		<jsp:include page="includes/footer.jsp" />
-		<jsp:include page="includes/scripts.jsp" />
-		<script type="text/javascript">
-	
-	$("#checkAvail").click(function(event){
-	    console.log("checkAvail");
-	    $.ajax({
-			type : 'POST',
-			url : "bookpay",
-			context:document.body,
-			data:$("#form2").serialize(),
-			async : false,
-			success : function(result) {
-				console.log("success");
-				/*var res = result;
-				var roomId = result["result"];
-				if(roomId > 0){
-					console.log("At " + JSON.stringify(result));
-					jq(".roomAvailable").css("visibility", "visible");
-					jq(".roomNotAvailable").css("visibility", "hidden");
-					//setting the value of the room id which is available for booking and 
-					//assigned to the user by default based on his selection criteria
-					document.getElementById('roomId').value = roomId;
-				}else{
-					//throw new Error("not available");
-					jq(".roomAvailable").css("visibility", "hidden");
-					jq(".roomNotAvailable").css("visibility", "visible");
-				}*/
-			},
-			error : function(jqXHR, textStatus, errorThrown) {
-				console.log("error");
-				//jq(".roomAvailable").css("visibility", "hidden");
-				//jq(".roomNotAvailable").css("visibility", "visible");
-				//console.log(jqXHR.status + " " + jqXHR.responseText);
-			}
+	<!-- /container -->
+	<jsp:include page="includes/footer.jsp" />
+	<jsp:include page="includes/scripts.jsp" />
+	<script type="text/javascript">
+		$("#checkAvail").click(function(event) {
+			console.log("checkAvail");
+			$.ajax({
+				type : 'POST',
+				url : "bookpay",
+				context : document.body,
+				data : $("#form2").serialize(),
+				async : false,
+				success : function(result) {
+					console.log("success");
+					/*var res = result;
+					var roomId = result["result"];
+					if(roomId > 0){
+						console.log("At " + JSON.stringify(result));
+						jq(".roomAvailable").css("visibility", "visible");
+						jq(".roomNotAvailable").css("visibility", "hidden");
+						//setting the value of the room id which is available for booking and 
+						//assigned to the user by default based on his selection criteria
+						document.getElementById('roomId').value = roomId;
+					}else{
+						//throw new Error("not available");
+						jq(".roomAvailable").css("visibility", "hidden");
+						jq(".roomNotAvailable").css("visibility", "visible");
+					}*/
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					console.log("error");
+					//jq(".roomAvailable").css("visibility", "hidden");
+					//jq(".roomNotAvailable").css("visibility", "visible");
+					//console.log(jqXHR.status + " " + jqXHR.responseText);
+				}
+			});
+			//event.preventDefault();
 		});
-		//event.preventDefault();
-	});
+
+		alert("Hello");
+		$(document).ready(function() {
+			function init() {
+				if (localStorage["first_name"]) {
+					$('#first_name').val(localStorage["first_name"]);
+				}
+				if (localStorage["last_name"]) {
+					$('#last_name').val(localStorage["last_name"]);
+				}
+				if (localStorage["address"]) {
+					$('#address').val(localStorage["address"]);
+				}
+				if (localStorage["email"]) {
+					$('#email').val(localStorage["email"]);
+				}
+				if (localStorage["city"]) {
+					$('#city').val(localStorage["city"]);
+				}
+				if (localStorage["state"]) {
+					$('#state').val(localStorage["state"]);
+				}
+				if (localStorage["country"]) {
+					$('#country').val(localStorage["country"]);
+				}
+				if (localStorage["driver_license"]) {
+					$('#driver_license').val(localStorage["driver_license"]);
+				}
+				if (localStorage["email"]) {
+					$('#email').val(localStorage["email"]);
+				}
+				if (localStorage["country"]) {
+					$('#country').val(localStorage["country"]);
+				}
+				if (localStorage["zip"]) {
+					$('#zip').val(localStorage["zip"]);
+				}
+			}
+			init();
+		});
+		$('.stored').change(function() {
+			localStorage[$(this).attr('name')] = $(this).val();
+		});
+		$('#localStorageTest').submit(function() {
+			localStorage.clear();
+		});
 	</script>
 </body>
 </html>
