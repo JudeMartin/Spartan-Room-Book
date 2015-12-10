@@ -2,8 +2,7 @@ package sjsu.edu.cmpe275.controller;
 
 import java.util.Map;
 
-import np.com.mshrestha.bookstore.model.Book;
-import np.com.mshrestha.bookstore.service.BookService;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import sjsu.edu.cmpe275.model.Book;
+import sjsu.edu.cmpe275.service.BookService;
 
 @Controller
 @RequestMapping("/book")
