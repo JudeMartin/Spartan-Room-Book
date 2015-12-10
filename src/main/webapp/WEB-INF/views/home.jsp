@@ -56,7 +56,6 @@
 					<div id="nivoslider-125-caption-0" class="nivo-html-caption">You
 						can add captions too&#8230;</div>
 				</div>
-
 			</div>
 			<div class="row-fluid home">
 				<div class="span12">
@@ -79,7 +78,8 @@
 							</h5>
 							<a href="listings.html"><img
 								src="web-resources/css/images/rooms/single_room.jpg" alt="" /></a>
-							<p>All King size rooms have one king size bed for one adult and a kid. A 25-inch TV is included.</p>
+							<p>All King size rooms have one king size bed for one adult
+								and a kid. A 25-inch TV is included.</p>
 						</div>
 						<div class="room_selector" data-type="2" data-price="200"
 							data-adults="2" data-kids="1" style="display: none;">
@@ -90,7 +90,8 @@
 							</h5>
 							<a href="listings.html"><img
 								src="web-resources/css/images/rooms/double_room.jpg" alt="" /></a>
-							<p>All Queen sized rooms have two queen size beds for two adults.A 50-inch TV is included</p>
+							<p>All Queen sized rooms have two queen size beds for two
+								adults.A 50-inch TV is included</p>
 						</div>
 						<div class="room_selector" data-type="3" data-price="300"
 							data-adults="3" data-kids="2" style="display: none;">
@@ -147,7 +148,7 @@
 								<label class="control-label pull-left" for="inputEmail">Arrive</label>
 								<div class="controls">
 									<input name="checkInDate" type="text"
-										class="span2 check-in-date stored" value="" id="check_in_date"/>
+										class="span2 check-in-date stored" value="" id="check_in_date" />
 								</div>
 							</div>
 						</div>
@@ -165,15 +166,13 @@
 						</div>
 						<div class="datepicker_to"></div>
 					</div>
-
 					<div class="span3">
 						<div class="form-horizontal">
-
 							<div class="control-group">
 								<label class="control-label" for="inputEmail">Rooms</label>
 								<div class="controls">
 									<select class="span1 select_rooms stored" id="rooms"
-									name="rooms" name="rooms">
+										name="rooms" name="rooms">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -182,14 +181,12 @@
 									</select>
 								</div>
 							</div>
-
-
 							<div class="control-group">
 								<label class="control-label" for="inputEmail">Adults per
 									room</label>
 								<div class="controls">
-									<select name="adults" class="span1 select_adults stored" id="adults"
-									name="adults">
+									<select name="adults" class="span1 select_adults stored"
+										id="adults" name="adults">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -203,7 +200,8 @@
 								<label class="control-label" for="inputEmail">Kids per
 									room</label>
 								<div class="controls">
-									<select name="children" class="span1 select_kids stored" id="children">
+									<select name="children" class="span1 select_kids stored"
+										id="children">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -212,31 +210,27 @@
 									</select>
 								</div>
 							</div>
-
-
-
 						</div>
-						<div id="total_price" class="price">$ 700.00</div>
-						<input type="submit" value="Check availability" onclick="datesLocalStorage();"
+						<div id="base_price" class="price">$ 700.00</div>
+						<input type="submit" value="Check availability"
+							onclick="datesLocalStorage();"
 							class="btn btn-primary btn-large book-now" id="checkAvail" /> <input
 							name="roomId" id="roomId" type="hidden" value="" /> <input
 							name="roomType" id="roomType" type="hidden" value="" /> <input
 							name="totalPrice" id="totalPrice" type="hidden" value="" />
 
-						<div class="roomAvailable" id="roomAvailable" style="visibility: hidden">
+						<div class="roomAvailable" id="roomAvailable"
+							style="visibility: hidden">
 							<input path="id" type="hidden" /> <input
 								class="btn btn-primary btn-large book-now" type="submit"
 								value="Book Now!!" />
 							<p>Room is available!! Please book</p>
 						</div>
-						<div class="roomNotAvailable" id="roomNotAvailable" style="visibility: hidden">
+						<div class="roomNotAvailable" id="roomNotAvailable"
+							style="visibility: hidden">
 							<p>Room not available!! Please try other options</p>
 						</div>
-
-
-
 					</div>
-				</div>
 			</form>
 
 			<hr />
@@ -309,10 +303,6 @@
 	<jsp:include page="includes/footer.jsp" />
 	<jsp:include page="includes/scripts.jsp" />
 	<script type="text/javascript">
-		//var jq = jQuery.noConflict();
-	</script>
-
-	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#checkAvail").click(function(event) {
 				console.log("checkAvail");
@@ -327,29 +317,17 @@
 						var res = result;
 						var roomId = result["result"];
 						localStorage.setItem("roomId",roomId);
-						alert(roomId);
 						if (roomId > 0) {
 							console.log("At " + JSON.stringify(result));
 							document.getElementById("roomAvailable").style.visibility = "visible";
 							document.getElementById("roomNotAvailable").style.visibility = "hidden";
-							
-							//jq(".roomAvailable").css("visibility", "visible");
-							//jq(".roomNotAvailable").css("visibility", "hidden");
-							//setting the value of the room id which is available for booking and 
-							//assigned to the user by default based on his selection criteria
 							document.getElementById('roomId').value = roomId;
 						} else {
-							//throw new Error("not available");
-							//jq(".roomAvailable").css("visibility", "hidden");
-							//jq(".roomNotAvailable").css("visibility", "visible");
 							document.getElementById("roomNotAvailable").style.visibility = "visible";
 							document.getElementById("roomAvailable").style.visibility = "hidden";
 						}
 					},
 					error : function(jqXHR, textStatus, errorThrown) {
-						//jq(".roomAvailable").css("visibility", "hidden");
-						//jq(".roomNotAvailable").css("visibility", "visible");
-						//console.log(jqXHR.status + " " + jqXHR.responseText);
 						document.getElementById("roomNotAvailable").style.visibility = "visible";
 						document.getElementById("roomAvailable").style.visibility = "hidden";
 					}
@@ -357,7 +335,6 @@
 				event.preventDefault();
 			});
 		});
-		alert("Hello");
 		$(document).ready(function() {
 			function init() {
 				if (localStorage["rooms"]) {
@@ -378,14 +355,21 @@
 		$('#localStorageTest').submit(function() {
 			localStorage.clear();
 		});
+		
 		function datesLocalStorage() {
-			alert("Book now button");
+			alert("Hello");
+			myDivObj = document.getElementById("base_price");
+			if (myDivObj) {
+				alert(myDivObj.innerHTML);
+				localStorage.setItem('base_price', myDivObj.innerHTML);
+			} else {
+				alert("Alien Found");
+			}
+
 			var check_in_date = $('#check_in_date').val();
 			var check_out_date = $('#check_out_date').val();
-			//localStorage.setItem("check_in_date", check_in_date);
-			//localStorage.setItem("check_out_date", check_out_date);
 			localStorage.setItem('date_from', check_in_date);
-			localStorage.setItem('date_to', check_out_date );
+			localStorage.setItem('date_to', check_out_date);
 		}
 	</script>
 </body>

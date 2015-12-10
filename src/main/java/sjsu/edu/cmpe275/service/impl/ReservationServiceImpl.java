@@ -13,34 +13,36 @@ import sjsu.edu.cmpe275.service.ReservationService;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
-	
+
 	@Autowired
 	private ReservationDAO reservationDAO;
-	
+
 	@Transactional
 	public Reservation createReservation(Reservation reservation) {
 		Reservation reserv = reservationDAO.createReservation(reservation);
 		return reserv;
 	}
 
+	@Transactional
 	@Override
-	public Reservation cancelReservation(String reservationId) {
+	public Reservation cancelReservation(Long reservationId) {
 		// TODO Auto-generated method stub
-		return null;
+		return reservationDAO.cancelReservation(reservationId);
 	}
-
+	
+	@Transactional
 	@Override
 	public List<Reservation> findReservation() {
 		// TODO Auto-generated method stub
-		return null;
+		return reservationDAO.findReservation();
 	}
 
 	@Transactional(readOnly = true)
-	public Reservation findReservation(String reservationId) {
+	public Reservation findReservation(Long reservationId) {
 		// TODO Auto-generated method stub
 		Reservation reservation = reservationDAO.findReservation(reservationId);
 		return reservation;
-		
+
 	}
 
 	@Transactional
@@ -54,5 +56,7 @@ public class ReservationServiceImpl implements ReservationService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 }

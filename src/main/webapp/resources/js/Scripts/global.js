@@ -284,11 +284,13 @@ $(function() {
 *
 **************************/
 function update_extras_price() {
-	var base_price =100;
+	var base_price = 100;
 	console.log("test");
 	var extras = $('input:checked').length;
 	var extras_price = (extras*15);
+	localStorage.setItem("extras_price",extras_price);
 	var total_price = base_price + extras_price;
+	alert(total_price);
 	$('#extras_price').html("$ "+ extras_price.toFixed(2));
 	$('#total_price').html("$ " + total_price.toFixed(2));
 }
@@ -329,7 +331,7 @@ function update_total_price() {
 
 	var days = returnNumberOfDaysBetweenTwoDates($('.datepicker_from').datepicker( "getDate" ), $('.datepicker_to').datepicker( "getDate" ));
 	total_price = total_price * days * parseInt($('.select_rooms').val());
-
+	alert(total_price);
 	$('#total_price').html("$"+ total_price.toFixed(2));
 	$('#total_price').css('letterSpacing', '0px');
 	if(total_price < 100) {

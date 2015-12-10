@@ -8,6 +8,7 @@
 <meta charset="utf-8">
 <title>Pay</title>
 <jsp:include page="includes/header.jsp" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -73,7 +74,7 @@
 
 								<div class="span3 pull-right">
 									<p>Base price</p>
-									<span class="price">1280.00 GBP</span>
+									<span class="price" id="base_price">$ 100</span>
 								</div>
 
 							</div>
@@ -158,8 +159,6 @@
 											</div>
 										</div>
 									</div>
-
-
 								</div>
 
 								<div class="span3 pull-right">
@@ -269,19 +268,60 @@
 		</div>
 	</div>
 	<script>
-		function postData(){
-			 alert (JSON.stringify(localStorage));
+		$(document).ready(
+				
+		function() {
+					//get from local
+					var base_priceValue = JSON.stringify(localStorage
+							.getItem("base_price"));
+
+					var res = base_priceValue.slice(1, 7);
+					var finalRes =  res + "00";
+					//dom
+					 
+					$('#base_price').text(finalRes);
+				});
+
+		
+		
+		$(document).ready(function() {
+			$(":checkbox").change(function() {
+				alert("Changed");
+				
+				var extras = $('input:checked').length;
+				var extras_price = (extras*15);
+				localStorage.setItem("extras_price",extras_price);
+				alert("Changed");
+				/* var total_price = base_price + extras_price;
+				alert(total_price);
+			
+				$('#total_price').html("$ " + total_price.toFixed(2));
+				 */
+				 var base_priceValue = JSON.stringify(localStorage
+							.getItem("base_price"));
+
+				 var total_price = base_priceValue + extras_price;
+				 alert(total_price);
+				 
+				$('#extras_price').html("$ "+ extras_price.toFixed(2));
+			});
+		});
+
+		function postData() {
+
+			alert(JSON.stringify(localStorage));
 			//console.log(JSON.stringify(localStorage));
 			$.ajax({
-					type : 'POST',
-					url : "bill/saveData",
-					contentType: 'application/json; charset=utf-8',
-					data :JSON.stringify(localStorage),
-					dataType: "json",
-					success : function(result) {
-					}
-			  });
-		}	
+				type : 'POST',
+				url : "bill/saveData",
+				contentType : 'application/json; charset=utf-8',
+				data : JSON.stringify(localStorage),
+				dataType : "json",
+				success : function(result) {
+
+				}
+			});
+		}
 	</script>
 	<jsp:include page="includes/footer.jsp" />
 	<jsp:include page="includes/scripts.jsp" />

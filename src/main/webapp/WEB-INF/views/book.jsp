@@ -94,12 +94,12 @@
 											</legend>
 										</div>
 										<div class="span3">
-											<label>Email address <input name="email" type="text">
+											<label>Email address <input name="email" type="email">
 											</label>
 										</div>
 
 										<div class="span3">
-											<label>Email address confirmation <input type="text"
+											<label>Email address confirmation <input type="email"
 												class="stored" id="email" name="email">
 											</label>
 										</div>

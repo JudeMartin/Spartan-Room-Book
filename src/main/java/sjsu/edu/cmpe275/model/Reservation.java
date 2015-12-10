@@ -1,5 +1,6 @@
 package sjsu.edu.cmpe275.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Basic;
@@ -10,45 +11,59 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
-public class Reservation {
+@Table(name = "RESERVATION")
+public class Reservation implements Serializable {
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="reservation_id")
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "reservation_id")
 	private Long reservationId;
-	
-	@Column(name="guest_id")
-	private Long guestId;
-	
-	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
-	@JoinColumn(name="room_id")
-	@NotFound(action=NotFoundAction.IGNORE)
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "guest_id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Guest guest;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "room_id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Room room;
-	
-	@DateTimeFormat(pattern="MM-dd-yyyy")
-	@Column(name="reservation_date")
-	private Date reservationDate;
-	
-	@DateTimeFormat(pattern="MM-dd-yyyy")
-	@Column(name="check_in_date")
-	private Date checkInDate;
 
-	@DateTimeFormat(pattern="MM-dd-yyyy")
-	@Column(name="check_out_date")
-	private Date checkOutDate;
+	public Room getRoom() {
+		return room;
+	}
 
-	private int adults = 0;
-	private int children = 0;
-	private int rooms = 0;
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+
+	 
+	@Column(name = "reservation_date")
+	private java.sql.Date reservationDate;
+ 
+	@Column(name = "check_in_date")
+	private java.sql.Date checkInDate;
+ 
+	@Column(name = "check_out_date")
+	private java.sql.Date checkOutDate;
+
+	private int adults;
+	private int children;
+	private int rooms;
 
 	private int amenityTypeId = RoomOtherType.SMOKING.getOtherTypeId();
 
@@ -60,46 +75,44 @@ public class Reservation {
 		this.reservationId = reservationId;
 	}
 
-	public Long getGuestId() {
-		return guestId;
+	public Guest getGuest() {
+		return guest;
 	}
 
-	public void setGuestId(Long guestId) {
-		this.guestId = guestId;
+	public void setGuest(Guest guest) {
+		this.guest = guest;
 	}
-
 
 	public Date getReservationDate() {
 		return reservationDate;
 	}
 
 	public void setReservationDate(Date reservationDate) {
-		this.reservationDate = reservationDate;
+		this.reservationDate =(java.sql.Date) reservationDate;
 	}
 
 	@Basic
-    @Temporal(TemporalType.DATE)
-    @NotNull
-    @Future
-	public Date getCheckInDate() {
-		return checkInDate;
+	@Temporal(TemporalType.DATE)
+	@NotNull
+	@Future
+	public java.sql.Date getCheckInDate() {
+		return (java.sql.Date) checkInDate;
 	}
 
 	public void setCheckInDate(Date checkInDate) {
-		this.checkInDate = checkInDate;
+		this.checkInDate =(java.sql.Date) checkInDate;
 	}
 
-	
 	@Basic
-    @Temporal(TemporalType.DATE)
-    @NotNull
-    @Future
-	public Date getCheckOutDate() {
-		return checkOutDate;
+	@Temporal(TemporalType.DATE)
+	@NotNull
+	@Future
+	public java.sql.Date getCheckOutDate() {
+		return (java.sql.Date) checkOutDate;
 	}
 
 	public void setCheckOutDate(Date checkOutDate) {
-		this.checkOutDate = checkOutDate;
+		this.checkOutDate = (java.sql.Date)checkOutDate;
 	}
 
 	public int getAdults() {
@@ -126,12 +139,11 @@ public class Reservation {
 		this.amenityTypeId = amenityTypeId;
 	}
 
-	public Room getRoom() {
-		return room;
-	}
-
-	public void setRoom(Room room) {
-		this.room = room;
+	@Override
+	public String toString() {
+		return "Reservation [id=" + reservationId  + ", reservationDate=" + reservationDate
+				+ ", checkInDate=" + checkInDate + ", checkOutDate=" + checkOutDate + ", amenityTypeId=" + amenityTypeId
+				+ ", adults=" + adults + ", children=" + children + " ]" + "Guests [" + guest.toString() + "]" + "Room [" + room.toString() +"]";
 	}
 
 	public int getRooms() {
@@ -141,14 +153,4 @@ public class Reservation {
 	public void setRooms(int rooms) {
 		this.rooms = rooms;
 	}
-
-	@Override
-	public String toString() {
-		return "Reservation [reservationId=" + reservationId + ", guestId=" + guestId + ", room=" + room
-				+ ", reservationDate=" + reservationDate + ", checkInDate=" + checkInDate + ", checkOutDate="
-				+ checkOutDate + ", adults=" + adults + ", children=" + children + ", rooms=" + rooms
-				+ ", amenityTypeId=" + amenityTypeId + "]";
-	}
-
-	
 }

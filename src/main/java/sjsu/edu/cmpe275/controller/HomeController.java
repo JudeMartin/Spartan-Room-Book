@@ -42,6 +42,16 @@ public class HomeController {
 	public ModelAndView loadHome(HttpServletResponse response) throws IOException{
 		return new ModelAndView("home");
 	}
+	
+	@RequestMapping(value="/login")
+	public ModelAndView login(HttpServletResponse response) throws IOException{
+		return new ModelAndView("login");
+	}
+	
+	@RequestMapping(value="/Thankyou")
+	public ModelAndView ThankYou(HttpServletResponse response) throws IOException{
+		return new ModelAndView("Thankyou");
+	}
 
 	@RequestMapping(value="/rooms")
 	public ModelAndView loadRooms(HttpServletResponse response) throws IOException{
@@ -68,6 +78,11 @@ public class HomeController {
 	public ModelAndView loadBookStart(HttpServletResponse response) throws IOException {
 		return new ModelAndView("book-start");
 	}
+	
+	@RequestMapping(value="book-start")
+	public ModelAndView loadBookStartpage(HttpServletResponse response) throws IOException {
+		return new ModelAndView("book-start");
+	}
 
 	@RequestMapping(value = "/book", method = RequestMethod.POST)
 	public String loadBook(HttpServletResponse response, Model model, @Valid Reservation reservation, BindingResult result)
@@ -86,10 +101,10 @@ public class HomeController {
 		// check availability
 		// if available then redirect to the reservation page
 		// else display a message and remain on the same page
-		System.out.println("load book pay: " + guest.toString());
+		System.out.println("load book pay: ");// + guest.toString());
 		//model.addAttribute("key", "value");
 		return "book-pay";
-	}
+	} 
 	
 	
 
