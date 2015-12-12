@@ -40,7 +40,7 @@ public class ReportController {
 		return null;
 	}
 
-	/* get the # of rooms avaliable => status_id = 1 */
+	/* get the # of rooms available => status_id = 1 */
 	@RequestMapping(value = "/rooms/avaliable", method = RequestMethod.GET)
 	public @ResponseBody String generateRoomAvaliable(
 			@RequestBody String jsonString) {
@@ -50,12 +50,13 @@ public class ReportController {
 				System.out.println("Here are the avaliable rooms:"
 						+ room.toString());
 			} else {
-				// Dont display them
+				// Don't display them
 			}
 		}
 		return null;
 	}
 
+	/* get the # of rooms available => status_id = 2 */
 	@RequestMapping(value = "/rooms/unavaliable", method = RequestMethod.GET)
 	public @ResponseBody String generateRoomNonAvaliable(
 			@RequestBody String jsonString) {
@@ -65,7 +66,7 @@ public class ReportController {
 				System.out.println("Here are the avaliable rooms:"
 						+ room.toString());
 			} else {
-				// Dont display them
+				// Don't display them
 			}
 		}
 		return null;
