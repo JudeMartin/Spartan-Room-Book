@@ -75,57 +75,66 @@ public class BillController {
 
 		// Reservation JSON Payload
 		String adults = (String) jsonObj.get("adults");
-		String amenityTypeId = "5";// (String) jsonObj.get("amenityTypeId"); /*
-									// Needs to be fixed */
+		String amenityTypeId = "5";
 		String room_id = (String) jsonObj.get("roomId");
 		String rooms = (String) jsonObj.get("rooms");
 		String children = (String) jsonObj.get("children");
-		java.sql.Date check_out_date = sqlDateGenerator((String) jsonObj.get("date_to"));
-		java.sql.Date check_in_date = sqlDateGenerator((String) jsonObj.get("date_from"));
-		java.sql.Date reservation_date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+		java.sql.Date check_out_date = sqlDateGenerator((String) jsonObj
+				.get("date_to"));
+		java.sql.Date check_in_date = sqlDateGenerator((String) jsonObj
+				.get("date_from"));
+		java.sql.Date reservation_date = new java.sql.Date(Calendar
+				.getInstance().getTime().getTime());
 
-		System.out.println(
-				"adults" + adults + "room_id" + room_id + "rooms" + rooms + "children" + children + "check_out_date"
-						+ check_out_date + "check_in_date" + check_in_date + "reservation_date" + reservation_date);
+		System.out.println("adults" + adults + "room_id" + room_id + "rooms"
+				+ rooms + "children" + children + "check_out_date"
+				+ check_out_date + "check_in_date" + check_in_date
+				+ "reservation_date" + reservation_date);
 
 		// Payment JSON Payload
 
 		String total_payment = (String) jsonObj.get("total_price");
 		String tax = "2";
-		String discount = "10";// (String) jsonObj.get("discount");
+		String discount = "10";
 		String base = (String) jsonObj.get("localBasePrice");
 		int days = daysCalculator(check_in_date, check_out_date);
 		System.out.println(days);
 		String Extra_Charges = (String) jsonObj.get("extras_price");
 		System.out.println("Extra charges:" + Extra_Charges);
 		/* Guest object */
-		Guest newGuest = GenerateJSONGuest(address, city, country, driver_license, email, first_name, last_name, phone);
+		Guest newGuest = GenerateJSONGuest(address, city, country,
+				driver_license, email, first_name, last_name, phone);
 
 		/* Reservation object */
-		Reservation reservation = GenerateJSONReservation(adults, room_id, rooms, children, check_out_date,
-				check_in_date, reservation_date, total_payment, discount, base, days, newGuest, amenityTypeId);
+		Reservation reservation = GenerateJSONReservation(adults, room_id,
+				rooms, children, check_out_date, check_in_date,
+				reservation_date, total_payment, discount, base, days,
+				newGuest, amenityTypeId);
 		System.out.println(reservation.getReservationId());
 		/* Bill object */
-		BillInfo bI = (BillInfo) generateJSONBILL(first_name, last_name, rooms, total_payment, discount, base, days,
-				reservation, newGuest);
+		BillInfo bI = (BillInfo) generateJSONBILL(first_name, last_name, rooms,
+				total_payment, discount, base, days, reservation, newGuest);
 		System.out.println(bI.getPayment_id());
-		// billInfoService.deleteBill(payment_Id);
 
 		/* Room object */
 		Room roomObj = (Room) roomService.viewRoom(Long.valueOf(room_id));
 
 		/* Other Obj */
-		Double total_cal_value = calculateTotal(Double.parseDouble(base), Double.parseDouble(Extra_Charges),
-				Double.parseDouble(tax), Double.parseDouble(discount));
+		Double total_cal_value = calculateTotal(Double.parseDouble(base),
+				Double.parseDouble(Extra_Charges), Double.parseDouble(tax),
+				Double.parseDouble(discount));
 		total_payment = total_cal_value.toString();
-		// http://localhost:8080/SpartanRoomBook/bill/delete/47
-		String cancel_url_non_encoded = "http://localhost:8080/SpartanRoomBook/bill/delete/" + bI.getPayment_id();
+
+		String cancel_url_non_encoded = "http://localhost:8080/SpartanRoomBook/bill/delete/"
+				+ bI.getPayment_id();
 
 		String cancel_url = shorten(cancel_url_non_encoded);
 		System.out.println("cancelURL:" + cancel_url);
 		System.out.println("Before MEIL JSON() :" + Extra_Charges);
-		GenerateEmailJSON(email, first_name, last_name, adults, room_id, rooms, children, check_out_date, check_in_date,
-				reservation_date, total_payment, discount, base, days, cancel_url, roomObj, Extra_Charges);
+		GenerateEmailJSON(email, first_name, last_name, adults, room_id, rooms,
+				children, check_out_date, check_in_date, reservation_date,
+				total_payment, discount, base, days, cancel_url, roomObj,
+				Extra_Charges);
 
 		return null;
 	}
@@ -137,7 +146,8 @@ public class BillController {
 			return "the Input is not valid";
 		}
 		System.out.println("In the   viewPayment Method");
-		BillInfo billInfomation = (BillInfo) billInfoService.viewBill(payment_Id);
+		BillInfo billInfomation = (BillInfo) billInfoService
+				.viewBill(payment_Id);
 		System.out.println(billInfomation.toString());
 		return null;
 	}
@@ -155,6 +165,7 @@ public class BillController {
 		return null;
 	}
 
+	/* Done */
 	@RequestMapping(value = "/delete/{payment_Id}", method = RequestMethod.GET)
 	public String deleteByGetBill(@PathVariable Long payment_Id) {
 		System.out.println("in the deleteByGetBill  ()");
@@ -167,8 +178,9 @@ public class BillController {
 		return null;
 	}
 
-	private BillInfo generateJSONBILL(String first_name, String last_name, String rooms, String total_payment,
-			String discount, String base, int days, Reservation reservation, Guest guest) {
+	private BillInfo generateJSONBILL(String first_name, String last_name,
+			String rooms, String total_payment, String discount, String base,
+			int days, Reservation reservation, Guest guest) {
 		BillInfo billInfo = new BillInfo();
 		billInfo.setTotal_payment(Double.parseDouble(total_payment));
 		billInfo.setDiscount(Integer.parseInt(discount));
@@ -182,13 +194,17 @@ public class BillController {
 		return (BillInfo) billInfoService.generateBill(billInfo);
 	}
 
-	private Reservation GenerateJSONReservation(String adults, String room_id, String rooms, String children,
-			java.sql.Date check_out_date, java.sql.Date check_in_date, java.sql.Date reservation_date,
-			String total_payment, String discount, String base, int days, Guest newGuest, String amenityTypeId) {
+	private Reservation GenerateJSONReservation(String adults, String room_id,
+			String rooms, String children, java.sql.Date check_out_date,
+			java.sql.Date check_in_date, java.sql.Date reservation_date,
+			String total_payment, String discount, String base, int days,
+			Guest newGuest, String amenityTypeId) {
 		Room roomObj = (Room) roomService.viewRoom(Long.valueOf(room_id));
-		System.out.println(total_payment + "totalPayment" + discount + "discont" + base + "base" + days + "days"
-				+ adults + "adults" + check_in_date + "check in" + check_out_date + "check Out" + reservation_date
-				+ "res date" + rooms + "rooms" + children + "children" + newGuest.toString() + "guest" + "roomObj:"
+		System.out.println(total_payment + "totalPayment" + discount
+				+ "discont" + base + "base" + days + "days" + adults + "adults"
+				+ check_in_date + "check in" + check_out_date + "check Out"
+				+ reservation_date + "res date" + rooms + "rooms" + children
+				+ "children" + newGuest.toString() + "guest" + "roomObj:"
 				+ roomObj.toString());
 		Reservation reservation = new Reservation();
 		reservation.setAdults(Integer.parseInt(adults));
@@ -205,7 +221,8 @@ public class BillController {
 		return reservation;
 	}
 
-	private Guest GenerateJSONGuest(String address, String city, String country, String driver_license, String email,
+	private Guest GenerateJSONGuest(String address, String city,
+			String country, String driver_license, String email,
 			String first_name, String last_name, String phone) {
 		Guest guest = new Guest();
 		guest.setAddress(address);
@@ -222,9 +239,11 @@ public class BillController {
 		return newGuest;
 	}
 
-	private int daysCalculator(java.sql.Date check_out_date, java.sql.Date check_in_date) {
+	private int daysCalculator(java.sql.Date check_out_date,
+			java.sql.Date check_in_date) {
 		long days_in_Long = -1;
-		days_in_Long = Math.round((check_in_date.getTime() - check_out_date.getTime()) / (double) 86400000);
+		days_in_Long = Math.round((check_in_date.getTime() - check_out_date
+				.getTime()) / (double) 86400000);
 		int days = safeLongToInt(days_in_Long);
 		return days;
 	}
@@ -287,14 +306,17 @@ public class BillController {
 
 	public static int safeLongToInt(long l) {
 		if (l < Integer.MIN_VALUE || l > Integer.MAX_VALUE) {
-			throw new IllegalArgumentException(l + " cannot be cast to int without changing its value.");
+			throw new IllegalArgumentException(l
+					+ " cannot be cast to int without changing its value.");
 		}
 		return (int) l;
 	}
 
-	private void GenerateEmailJSON(String email, String first_name, String last_name, String adults, String room_id,
-			String rooms, String children, java.sql.Date check_out_date, java.sql.Date check_in_date,
-			java.sql.Date reservation_date, String total_payment, String discount, String base, int days,
+	private void GenerateEmailJSON(String email, String first_name,
+			String last_name, String adults, String room_id, String rooms,
+			String children, java.sql.Date check_out_date,
+			java.sql.Date check_in_date, java.sql.Date reservation_date,
+			String total_payment, String discount, String base, int days,
 			String cancel_url, Room roomObj, String Extra_Charges) {
 		System.out.println("Generate EMAIL JSON():" + Extra_Charges);
 		Email emailJson = new Email();
@@ -330,9 +352,10 @@ public class BillController {
 		emailController.mailSender(emailJson);
 	}
 
-	public static Double calculateTotal(Double Base_Payment, Double Extra_Charges, Double Tax, Double Discount) {
-		System.out.println("Base_Payment" + Base_Payment + "Extra_charges" + Extra_Charges + "Tax:" + Tax + "Discount:"
-				+ Discount);
+	public static Double calculateTotal(Double Base_Payment,
+			Double Extra_Charges, Double Tax, Double Discount) {
+		System.out.println("Base_Payment" + Base_Payment + "Extra_charges"
+				+ Extra_Charges + "Tax:" + Tax + "Discount:" + Discount);
 		Double charges_BeforeTax = Base_Payment + Extra_Charges;
 		System.out.println("Charges+BeforeTax" + charges_BeforeTax);
 		Double Total = 0.0;
@@ -361,16 +384,19 @@ public class BillController {
 
 		try {
 			URL url = new URL("http://goo.gl/api/url");
-			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			HttpURLConnection connection = (HttpURLConnection) url
+					.openConnection();
 			connection.setDoOutput(true);
 			connection.setRequestMethod("POST");
 			connection.setRequestProperty("User-Agent", "toolbar");
 
-			OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+			OutputStreamWriter writer = new OutputStreamWriter(
+					connection.getOutputStream());
 			writer.write("url=" + URLEncoder.encode(urlStr, "UTF-8"));
 			writer.close();
 
-			BufferedReader rd = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			BufferedReader rd = new BufferedReader(new InputStreamReader(
+					connection.getInputStream()));
 			sb = new StringBuilder();
 			while ((line = rd.readLine()) != null) {
 				sb.append(line + '\n');
@@ -378,7 +404,8 @@ public class BillController {
 
 			String json = sb.toString();
 			// It extracts easily...
-			return json.substring(json.indexOf("http"), json.indexOf("\"", json.indexOf("http")));
+			return json.substring(json.indexOf("http"),
+					json.indexOf("\"", json.indexOf("http")));
 		} catch (MalformedURLException e) {
 			return longUrl;
 		} catch (IOException e) {
