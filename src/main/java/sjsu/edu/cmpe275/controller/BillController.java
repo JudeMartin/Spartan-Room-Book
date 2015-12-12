@@ -1,5 +1,13 @@
 package sjsu.edu.cmpe275.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Calendar;
 
 import org.json.simple.JSONObject;
@@ -67,8 +75,8 @@ public class BillController {
 
 		// Reservation JSON Payload
 		String adults = (String) jsonObj.get("adults");
-		String amenityTypeId = (String) jsonObj
-				.get("amenityTypeId"); /* Needs to be fixed */
+		String amenityTypeId = "5";// (String) jsonObj.get("amenityTypeId"); /*
+									// Needs to be fixed */
 		String room_id = (String) jsonObj.get("roomId");
 		String rooms = (String) jsonObj.get("rooms");
 		String children = (String) jsonObj.get("children");
@@ -82,39 +90,48 @@ public class BillController {
 
 		// Payment JSON Payload
 
-		String total_payment = (String) jsonObj.get("total_payment");
-		String discount = (String) jsonObj.get("discount");
-		String base = (String) jsonObj.get("base");
+		String total_payment = (String) jsonObj.get("total_price");
+		String tax = "2";
+		String discount = "10";// (String) jsonObj.get("discount");
+		String base = (String) jsonObj.get("localBasePrice");
 		int days = daysCalculator(check_in_date, check_out_date);
 		System.out.println(days);
-
+		String Extra_Charges = (String) jsonObj.get("extras_price");
+		System.out.println("Extra charges:" + Extra_Charges);
 		/* Guest object */
 		Guest newGuest = GenerateJSONGuest(address, city, country, driver_license, email, first_name, last_name, phone);
 
 		/* Reservation object */
 		Reservation reservation = GenerateJSONReservation(adults, room_id, rooms, children, check_out_date,
-				check_in_date, reservation_date, total_payment, discount, base, days, newGuest);
+				check_in_date, reservation_date, total_payment, discount, base, days, newGuest, amenityTypeId);
 		System.out.println(reservation.getReservationId());
 		/* Bill object */
-		BillInfo bI = generateJSONBILL(first_name, last_name, rooms, total_payment, discount, base, days, reservation);
+		BillInfo bI = (BillInfo) generateJSONBILL(first_name, last_name, rooms, total_payment, discount, base, days,
+				reservation, newGuest);
+		System.out.println(bI.getPayment_id());
 		// billInfoService.deleteBill(payment_Id);
-		String cancel_url = "";
 
 		/* Room object */
 		Room roomObj = (Room) roomService.viewRoom(Long.valueOf(room_id));
 
 		/* Other Obj */
-		//Double Base_Payment, Double Extra_Charges, Double Tax,
-		   //Double Discount
-		//calculateTotal(Double.parseDouble(total_payment),Double.parseDouble(),Double.parseDouble(discount));
+		Double total_cal_value = calculateTotal(Double.parseDouble(base), Double.parseDouble(Extra_Charges),
+				Double.parseDouble(tax), Double.parseDouble(discount));
+		total_payment = total_cal_value.toString();
+		// http://localhost:8080/SpartanRoomBook/bill/delete/47
+		String cancel_url_non_encoded = "http://localhost:8080/SpartanRoomBook/bill/delete/" + bI.getPayment_id();
+
+		String cancel_url = shorten(cancel_url_non_encoded);
+		System.out.println("cancelURL:" + cancel_url);
+		System.out.println("Before MEIL JSON() :" + Extra_Charges);
 		GenerateEmailJSON(email, first_name, last_name, adults, room_id, rooms, children, check_out_date, check_in_date,
-				reservation_date, total_payment, discount, base, days, cancel_url, roomObj);
+				reservation_date, total_payment, discount, base, days, cancel_url, roomObj, Extra_Charges);
 
 		return null;
 	}
 
 	/* Done */
-	@RequestMapping(value = "{payment_Id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{payment_Id}", method = RequestMethod.GET)
 	public String viewPayment(@PathVariable Long payment_Id, Model model) {
 		if (payment_Id == null) {
 			return "the Input is not valid";
@@ -126,14 +143,32 @@ public class BillController {
 	}
 
 	/* Done */
-	@RequestMapping(value = "{payment_Id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/delete/{payment_Id}", method = RequestMethod.DELETE)
 	public String deleteBill(@PathVariable Long payment_Id) {
-		billInfoService.deleteBill(payment_Id);
+		System.out.println("in the delete Bill ()");
+		BillInfo billInfo = (BillInfo) billInfoService.viewBill(payment_Id);
+		Reservation res = (Reservation) billInfo.getReservation();
+		billInfo.setGuest(null);
+		billInfo.setReservation(null);
+		billInfoService.updateBill(billInfo);
+		billInfoService.deleteBill(billInfo.getPayment_id());
+		return null;
+	}
+
+	@RequestMapping(value = "/delete/{payment_Id}", method = RequestMethod.GET)
+	public String deleteByGetBill(@PathVariable Long payment_Id) {
+		System.out.println("in the deleteByGetBill  ()");
+		BillInfo billInfo = (BillInfo) billInfoService.viewBill(payment_Id);
+		Reservation res = (Reservation) billInfo.getReservation();
+		billInfo.setGuest(null);
+		billInfo.setReservation(null);
+		billInfoService.updateBill(billInfo);
+		billInfoService.deleteBill(billInfo.getPayment_id());
 		return null;
 	}
 
 	private BillInfo generateJSONBILL(String first_name, String last_name, String rooms, String total_payment,
-			String discount, String base, int days, Reservation reservation) {
+			String discount, String base, int days, Reservation reservation, Guest guest) {
 		BillInfo billInfo = new BillInfo();
 		billInfo.setTotal_payment(Double.parseDouble(total_payment));
 		billInfo.setDiscount(Integer.parseInt(discount));
@@ -143,13 +178,13 @@ public class BillController {
 		billInfo.setFirst_name(first_name);
 		billInfo.setLast_name(last_name);
 		billInfo.setReservation(reservation);
-		billInfoService.generateBill(billInfo);
-		return billInfo;
+		billInfo.setGuest(guest);
+		return (BillInfo) billInfoService.generateBill(billInfo);
 	}
 
 	private Reservation GenerateJSONReservation(String adults, String room_id, String rooms, String children,
 			java.sql.Date check_out_date, java.sql.Date check_in_date, java.sql.Date reservation_date,
-			String total_payment, String discount, String base, int days, Guest newGuest) {
+			String total_payment, String discount, String base, int days, Guest newGuest, String amenityTypeId) {
 		Room roomObj = (Room) roomService.viewRoom(Long.valueOf(room_id));
 		System.out.println(total_payment + "totalPayment" + discount + "discont" + base + "base" + days + "days"
 				+ adults + "adults" + check_in_date + "check in" + check_out_date + "check Out" + reservation_date
@@ -157,7 +192,7 @@ public class BillController {
 				+ roomObj.toString());
 		Reservation reservation = new Reservation();
 		reservation.setAdults(Integer.parseInt(adults));
-		reservation.setAmenityTypeId(Integer.parseInt("5"));
+		reservation.setAmenityTypeId(Integer.parseInt(amenityTypeId));
 		reservation.setRoom(roomObj);
 		reservation.setCheckOutDate(check_out_date);
 		reservation.setCheckInDate(check_in_date);
@@ -260,7 +295,8 @@ public class BillController {
 	private void GenerateEmailJSON(String email, String first_name, String last_name, String adults, String room_id,
 			String rooms, String children, java.sql.Date check_out_date, java.sql.Date check_in_date,
 			java.sql.Date reservation_date, String total_payment, String discount, String base, int days,
-			String cancel_url, Room roomObj) {
+			String cancel_url, Room roomObj, String Extra_Charges) {
+		System.out.println("Generate EMAIL JSON():" + Extra_Charges);
 		Email emailJson = new Email();
 		String other_type = "Non Smoking";
 		if (roomObj.getOtherTypeId() == 1) {
@@ -277,8 +313,7 @@ public class BillController {
 		emailJson.setDays(days);
 		emailJson.setDiscount(Integer.valueOf(discount));
 		emailJson.setEmail_id(email);
-		emailJson.setExtra_pay(33);
-		emailJson.setUserName(first_name + last_name);
+		emailJson.setUserName(first_name + " " + last_name);
 		emailJson.setType("Test type");
 		emailJson.setTotal_payment(Double.parseDouble(total_payment));
 		emailJson.setTax(2);
@@ -287,20 +322,69 @@ public class BillController {
 		emailJson.setRoom_id(Long.parseLong(room_id));
 		emailJson.setReservation_id((long) 2);
 		emailJson.setOther_type(other_type);
-		emailJson.setExtra_pay(100);
+		emailJson.setExtra_pay(Double.parseDouble(Extra_Charges));
 		emailJson.setBase_pay(Double.parseDouble(base));
 		emailJson.setBooking_date(reservation_date);
 		emailJson.setCancel_url(cancel_url);
 
 		emailController.mailSender(emailJson);
 	}
-	
-	public static Double calculateTotal(Double Base_Payment, Double Extra_Charges, Double Tax,
-			   Double Discount) {
-		Double Charges_BeforeTax = Base_Payment + Extra_Charges;
+
+	public static Double calculateTotal(Double Base_Payment, Double Extra_Charges, Double Tax, Double Discount) {
+		System.out.println("Base_Payment" + Base_Payment + "Extra_charges" + Extra_Charges + "Tax:" + Tax + "Discount:"
+				+ Discount);
+		Double charges_BeforeTax = Base_Payment + Extra_Charges;
+		System.out.println("Charges+BeforeTax" + charges_BeforeTax);
 		Double Total = 0.0;
-		Total = (((((Charges_BeforeTax)) * (100 - Discount) / 100)) * (100 + Tax) / 100);
+
+		Double cash_before_discount = (((charges_BeforeTax) * 10) / 100);
+		System.out.println("cash_before_discount" + cash_before_discount);
+
+		Double discounted_amt = (charges_BeforeTax - cash_before_discount);
+		System.out.println("discounted_amt" + discounted_amt);
+		Double taxable_amt = (((discounted_amt) * 2) / 100);
+		System.out.println("taxable_amt" + taxable_amt);
+
+		Total = discounted_amt + taxable_amt;
 		System.out.println(Total);
 		return Total;
 	}
+
+	public String shorten(String longUrl) {
+		if (longUrl == null) {
+			return longUrl;
+		}
+
+		StringBuilder sb = null;
+		String line = null;
+		String urlStr = longUrl;
+
+		try {
+			URL url = new URL("http://goo.gl/api/url");
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			connection.setDoOutput(true);
+			connection.setRequestMethod("POST");
+			connection.setRequestProperty("User-Agent", "toolbar");
+
+			OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+			writer.write("url=" + URLEncoder.encode(urlStr, "UTF-8"));
+			writer.close();
+
+			BufferedReader rd = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			sb = new StringBuilder();
+			while ((line = rd.readLine()) != null) {
+				sb.append(line + '\n');
+			}
+
+			String json = sb.toString();
+			// It extracts easily...
+			return json.substring(json.indexOf("http"), json.indexOf("\"", json.indexOf("http")));
+		} catch (MalformedURLException e) {
+			return longUrl;
+		} catch (IOException e) {
+			System.out.println("LongURL:" + longUrl);
+			return longUrl;
+		}
+	}
+
 }

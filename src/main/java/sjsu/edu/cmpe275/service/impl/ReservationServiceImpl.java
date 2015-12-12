@@ -29,7 +29,7 @@ public class ReservationServiceImpl implements ReservationService {
 		// TODO Auto-generated method stub
 		return reservationDAO.cancelReservation(reservationId);
 	}
-	
+
 	@Transactional
 	@Override
 	public List<Reservation> findReservation() {
@@ -57,6 +57,9 @@ public class ReservationServiceImpl implements ReservationService {
 		return null;
 	}
 
-	
-
+	@Override
+	public void updateReservation(Reservation reservation) {
+		// TODO Auto-generated method stub
+		reservationDAO.updateReservation(reservation);
+	}
 }

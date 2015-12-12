@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,8 +27,6 @@ public class BillInfo implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long payment_id;
 
-	
-
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "reservation_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
@@ -39,6 +38,19 @@ public class BillInfo implements Serializable {
 
 	public void setReservation(Reservation reservation) {
 		this.reservation = reservation;
+	}
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "guest_id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Guest guest;
+
+	public Guest getGuest() {
+		return guest;
+	}
+
+	public void setGuest(Guest guest) {
+		this.guest = guest;
 	}
 
 	@Column(name = "total_payment")
@@ -121,10 +133,11 @@ public class BillInfo implements Serializable {
 	public void setBase(Double base) {
 		this.base = base;
 	}
+
 	@Override
-	public String toString(){
-		return "["+" payment_id "+payment_id+", total_payment"+total_payment+", rooms"+rooms+", days"+days+", discount"+discount
-		+", base price"+base+", first_name"+first_name+", last_name"+last_name+", days"+days
-		+", reservation details"+reservation.toString();
+	public String toString() {
+		return "[" + " payment_id " + payment_id + ", total_payment" + total_payment + ", rooms" + rooms + ", days"
+				+ days + ", discount" + discount + ", base price" + base + ", first_name" + first_name + ", last_name"
+				+ last_name + ", days" + days + ", reservation details" + reservation.toString();
 	}
 }

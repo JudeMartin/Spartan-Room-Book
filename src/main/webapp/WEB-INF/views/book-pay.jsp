@@ -8,7 +8,8 @@
 <meta charset="utf-8">
 <title>Pay</title>
 <jsp:include page="includes/header.jsp" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -181,66 +182,65 @@
 										<span>Payment</span> information
 									</h3>
 
-								<!-- 	<form class="form-horizontal" id="form1" action="/bill/saveData"  method="post"> -->
-										<div class="control-group">
-											<label for="inputWarning" class="control-label pay strong">Card
-												Type</label>
-											<div class="controls">
-												<select class="span4"><option value="0">Select</option>
-													<option value="VISA">Visa</option>
-													<option value="Master">MasterCard</option>
-													<option value="Diners">DinersClub</option>
-													<option value="AMEX">AmEx</option>
-												</select>
-											</div>
+									<!-- 	<form class="form-horizontal" id="form1" action="/bill/saveData"  method="post"> -->
+									<div class="control-group">
+										<label for="inputWarning" class="control-label pay strong">Card
+											Type</label>
+										<div class="controls">
+											<select class="span4"><option value="0">Select</option>
+												<option value="VISA">Visa</option>
+												<option value="Master">MasterCard</option>
+												<option value="Diners">DinersClub</option>
+												<option value="AMEX">AmEx</option>
+											</select>
 										</div>
-										<div class="control-group">
-											<label for="inputError" class="control-label pay strong">Card
-												Number</label>
-											<div class="controls">
-												<input type="text" class="span3"> <strong>CVV</strong>
-												<input type="text" class="span1 cvv2" placeholder="">
-											</div>
+									</div>
+									<div class="control-group">
+										<label for="inputError" class="control-label pay strong">Card
+											Number</label>
+										<div class="controls">
+											<input type="text" class="span3"> <strong>CVV</strong>
+											<input type="text" class="span1 cvv2" placeholder="">
 										</div>
-										<div class="control-group">
-											<label for="inputInfo" class="control-label pay strong">Expiration
-												Date</label>
-											<div class="controls">
-												<select class="span2 month_picker"><option
-														value="0">Month</option>
-													<option value="1">January</option>
-													<option value="2">February</option>
-													<option value="3">March</option>
-													<option value="4">April</option>
-													<option value="5">May</option>
-													<option value="6">June</option>
-													<option value="7">July</option>
-													<option value="8">August</option>
-													<option value="9">September</option>
-													<option value="10">October</option>
-													<option value="11">November</option>
-													<option value="12">December</option></select> <select
-													class="span2 year_picker"><option value="0">Year</option>
-													<option value="2013">2013</option>
-													<option value="2014">2014</option>
-													<option value="2015">2015</option>
-													<option value="2016">2016</option>
-													<option value="2017">2017</option>
-													<option value="2018">2018</option>
-													<option value="2019">2019</option>
-													<option value="2020">2020</option>
-													<option value="2021">2021</option>
-													<option value="2022">2022</option>
-													<option value="2023">2023</option></select>
-											</div>
+									</div>
+									<div class="control-group">
+										<label for="inputInfo" class="control-label pay strong">Expiration
+											Date</label>
+										<div class="controls">
+											<select class="span2 month_picker"><option value="0">Month</option>
+												<option value="1">January</option>
+												<option value="2">February</option>
+												<option value="3">March</option>
+												<option value="4">April</option>
+												<option value="5">May</option>
+												<option value="6">June</option>
+												<option value="7">July</option>
+												<option value="8">August</option>
+												<option value="9">September</option>
+												<option value="10">October</option>
+												<option value="11">November</option>
+												<option value="12">December</option></select> <select
+												class="span2 year_picker"><option value="0">Year</option>
+												<option value="2013">2013</option>
+												<option value="2014">2014</option>
+												<option value="2015">2015</option>
+												<option value="2016">2016</option>
+												<option value="2017">2017</option>
+												<option value="2018">2018</option>
+												<option value="2019">2019</option>
+												<option value="2020">2020</option>
+												<option value="2021">2021</option>
+												<option value="2022">2022</option>
+												<option value="2023">2023</option></select>
 										</div>
-										<div class="control-group">
-											<label for="inputSuccess" class="control-label pay strong">Cardholder
-												full name</label>
-											<div class="controls">
-												<input type="text" class="span4 card_holder">
-											</div>
+									</div>
+									<div class="control-group">
+										<label for="inputSuccess" class="control-label pay strong">Cardholder
+											full name</label>
+										<div class="controls">
+											<input type="text" class="span4 card_holder">
 										</div>
+									</div>
 									<!-- </form> -->
 								</div>
 
@@ -252,10 +252,11 @@
 									<span class="price strong" id="total_price">$ 100.00 </span>
 								</div>
 
-								<div class="span12"><a href="Thankyou">
-									<button class="btn btn-primary btn-large book-now pull-right" onclick="postData();">Submit
-										payment</button></a>>
-									<br /> <br />
+								<div class="span12">
+									<a href="Thankyou">
+										<button class="btn btn-primary btn-large book-now pull-right"
+											onclick="postData();">Submit payment</button>
+									</a>> <br /> <br />
 								</div>
 
 							</div>
@@ -269,47 +270,40 @@
 	</div>
 	<script>
 		$(document).ready(
-				
+
 		function() {
-					//get from local
-					var base_priceValue = JSON.stringify(localStorage
-							.getItem("base_price"));
 
-					var res = base_priceValue.slice(1, 7);
-					var finalRes =  res + "00";
-					//dom
-					 
-					$('#base_price').text(finalRes);
-				});
-
-		
-		
-		$(document).ready(function() {
-			$(":checkbox").change(function() {
-				alert("Changed");
-				
-				var extras = $('input:checked').length;
-				var extras_price = (extras*15);
-				localStorage.setItem("extras_price",extras_price);
-				alert("Changed");
-				/* var total_price = base_price + extras_price;
-				alert(total_price);
-			
-				$('#total_price').html("$ " + total_price.toFixed(2));
-				 */
-				 var base_priceValue = JSON.stringify(localStorage
-							.getItem("base_price"));
-
-				 var total_price = base_priceValue + extras_price;
-				 alert(total_price);
-				 
-				$('#extras_price').html("$ "+ extras_price.toFixed(2));
-			});
+			var base_price = localStorage.getItem("base_price");
+			var edited_base_price = base_price.slice(1);
+			$('#base_price').html("$ " + edited_base_price);
 		});
+
+		$(document).ready(
+				function() {
+					$(":checkbox").change(
+							function() {
+								console.log("Changed");
+								var extras = $('input:checked').length;
+								var extras_price = (extras * 15);
+
+								var total_price = base_price + extras_price;
+
+								localStorage.setItem("extras_price",
+										extras_price);
+								var base_priceValue = JSON
+										.stringify(localStorage
+												.getItem("base_price"));
+
+								var b = base_priceValue.slice(1,
+										base_priceValue.length);
+								var total_price = b + extras_price;
+								$('#extras_price').html(
+										"$ " + extras_price.toFixed(2));
+							});
+				});
 
 		function postData() {
 
-			alert(JSON.stringify(localStorage));
 			//console.log(JSON.stringify(localStorage));
 			$.ajax({
 				type : 'POST',
@@ -318,9 +312,9 @@
 				data : JSON.stringify(localStorage),
 				dataType : "json",
 				success : function(result) {
-
 				}
 			});
+			localStrorage.clear();
 		}
 	</script>
 	<jsp:include page="includes/footer.jsp" />

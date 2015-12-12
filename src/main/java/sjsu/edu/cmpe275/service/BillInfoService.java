@@ -9,7 +9,7 @@ public interface BillInfoService {
 
 	public BillInfo viewBill(Long payment_Id);
 
-	public void generateBill(BillInfo billInfo);
+	public BillInfo generateBill(BillInfo billInfo);
 
 	public void updateBill(BillInfo billInfo);
 

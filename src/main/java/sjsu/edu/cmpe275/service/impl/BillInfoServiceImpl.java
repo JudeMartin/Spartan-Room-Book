@@ -36,9 +36,9 @@ public class BillInfoServiceImpl implements BillInfoService {
 
 	@Transactional
 	@Override
-	public void generateBill(BillInfo billInfo) {
+	public BillInfo generateBill(BillInfo billInfo) {
 		// TODO Auto-generated method stub
-		billInfoDAO.generateBill(billInfo);
+		return billInfoDAO.generateBill(billInfo);
 	}
 
 }

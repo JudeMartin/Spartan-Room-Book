@@ -17,5 +17,6 @@ public interface ReservationService {
 	Reservation findReservationGuest(Long guest_id);
 
 	Integer checkAvailability(SearchCriteria searchCriteria);
-
+	
+	public void updateReservation(Reservation reservation);
 }

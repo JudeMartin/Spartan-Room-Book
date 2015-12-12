@@ -10,17 +10,17 @@ import javax.persistence.Id;
 @Entity
 public class Room {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="room_id")
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "room_id")
+	private Long id;
 
-	@Column(name="room_type_id")
-	private int roomTypeId;	
-	
-	@Column(name="other_type_id")
+	@Column(name = "room_type_id")
+	private int roomTypeId;
+
+	@Column(name = "other_type_id")
 	private int otherTypeId;
-	
-	@Column(name="status_id")
+
+	@Column(name = "status_id")
 	private int statusId;
 
 	public Long getId() {
@@ -60,6 +60,4 @@ public class Room {
 		return "Room [id=" + id + ", roomTypeId=" + roomTypeId + ", otherTypeId=" + otherTypeId + ", statusId="
 				+ statusId + "]";
 	}
-	
-	
 }

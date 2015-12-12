@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import sjsu.edu.cmpe275.dao.BillInfoDAO;
 import sjsu.edu.cmpe275.model.BillInfo;
+import sjsu.edu.cmpe275.model.Guest;
+import sjsu.edu.cmpe275.model.Reservation;
 
 @Repository
 public class BillInfoDAOImpl implements BillInfoDAO {
@@ -47,8 +49,26 @@ public class BillInfoDAOImpl implements BillInfoDAO {
 
 	@Override
 	public void deleteBill(Long payment_Id) {
+
+		/*
+		 * BillInfo billInfo = (BillInfo) getSession().get(BillInfo.class,
+		 * payment_Id); Reservation res = (Reservation)
+		 * billInfo.getReservation(); Guest guest = (Guest) billInfo.getGuest();
+		 * 
+		 * 
+		 * 
+		 * System.out.println("Days:" + billInfo.getDays() + "" +
+		 * billInfo.getDiscount() + billInfo.getFirst_name() +
+		 * billInfo.getLast_name() +billInfo.getRooms() + billInfo.getBase() +
+		 * billInfo.getTotal_payment() + billInfo.getGuest());
+		 * 
+		 * System.out.println(guest.toString());
+		 * System.out.println(res.toString());
+		 * 
+		 * 
+		 */
 		BillInfo billInfo = (BillInfo) getSession().get(BillInfo.class, payment_Id);
 		getSession().delete(billInfo);
-	}
 
+	}
 }

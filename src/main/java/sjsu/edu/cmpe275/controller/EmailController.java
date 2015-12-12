@@ -41,16 +41,16 @@ public class EmailController {
 				+ "</td></tr><tr><td>Check In Date </td><td>: " + payload.getCheck_in_date()
 				+ "</td></tr><tr><td>Check Out Date </td><td>: " + payload.getCheck_out_date()
 				+ "</td></tr><tr><td>Days </td><td>: " + payload.getDays() + "</td></tr><tr><td>To cancel </td><td>: "
-				+ payload.getCancel_url() + "</td></tr></table><hr><br>");
+				+ "<a href="+payload.getCancel_url()+">Click Here to Cancel</a>" + "</td></tr></table><hr><br>");
 		message.append("<table style='border: 0'><th>Room Details</th><tr><td>Room # </td><td>: " + payload.getRoom_id()
 				+ "</td></tr><tr><td>Bed Type </td><td>: " + payload.getRoom_type()
 				+ "</td></tr><tr><td>Room Type</td><td>: " + payload.getOther_type()
 				+ "</td></tr><tr><td>Adults </td><td>: " + payload.getAdults()
 				+ "</td></tr><tr><td>Children </td><td>: " + payload.getChildren() + "</td></tr></table><hr><br>");
 		message.append("<table style='border: 0'><th>Billing Details</th><tr><td>Base Payment </td><td>: $ "
-				+ payload.getBase_pay() + ".00</td></tr><tr><td>Extra Charges </td><td>: $ " + payload.getExtra_pay()
-				+ ".00</td></tr><tr><td>Tax </td><td>: $ " + payload.getTax()
-				+ ".00</td></tr><tr><td>Discount </td><td>: " + payload.getDiscount()
+				+ payload.getBase_pay() + "</td></tr><tr><td>Extra Charges </td><td>: $ " + payload.getExtra_pay()
+				+ "</td></tr><tr><td>Tax </td><td>: " + payload.getTax()
+				+ "%</td></tr><tr><td>Discount </td><td>: " + payload.getDiscount()
 				+ "%</td></tr><tr><td>Total </td><td>: $ " + payload.getTotal_payment() + "</td></tr></table><br><br>");
 		message.append(
 				"<p>Thanks you for selecting <b>Hotel Sparta</b>,<br><font size='2'>Spartans</font><br><font size='1'>+1(234) 567-8910</font></p>");
@@ -60,7 +60,6 @@ public class EmailController {
 		String title = "<h1>Hi !" + payload.getUserName() + "</h1>";
 		mm.sendMail(payload.getEmail_id(), payload.getUserName(), finalMsg);
 
-		//model.addAttribute("email_id", "sharma.surbhi114@gmail.com");
 		return "emailConfirmation";
 	}
 

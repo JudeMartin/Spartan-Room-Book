@@ -304,8 +304,32 @@
 	<jsp:include page="includes/scripts.jsp" />
 	<script type="text/javascript">
 		$(document).ready(function() {
+			console.log("clearing the local storage");
+			localStorage.clear();
+			console.log("checkAvail");
+			
+			localStorage.setItem("address",0);
+			localStorage.setItem("adults",0);
+			localStorage.setItem("base_price",0);
+			localStorage.setItem("children",0);
+			localStorage.setItem("city",0);
+			localStorage.setItem("country",0);
+			localStorage.setItem("date_from",0);
+			localStorage.setItem("date_to",0);
+			localStorage.setItem("driver_license",0);
+			localStorage.setItem("email",0);
+			localStorage.setItem("extras_price",0);
+			localStorage.setItem("first_name",0);
+			localStorage.setItem("last_name",0);  
+			localStorage.setItem("localBasePrice",0); 
+			localStorage.setItem("phone",0); 
+			localStorage.setItem("roomId",0); 
+			localStorage.setItem("rooms",0); 
+			localStorage.setItem("state",0); 
+			localStorage.setItem("total_price",0); 
+			localStorage.setItem("zip",0); 
+			
 			$("#checkAvail").click(function(event) {
-				console.log("checkAvail");
 				$.ajax({
 					type : 'GET',
 					url : "book/availability",
