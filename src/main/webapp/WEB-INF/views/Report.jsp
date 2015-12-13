@@ -10,7 +10,18 @@
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/resources/demos/style.css">
+<style>
+body {
+	padding: 80px;
+}
+</style>
 <script>
 	$(document).ready(function() {
 		$("#dialog1").hide();
@@ -54,7 +65,8 @@
 		Available Rooms</button>
 	<button id="checkBookedRoomsButton" onclick="btnClick4();">
 		Check Booked Rooms</button>
-	<div id="dialog1" class="web_dialog" style="width: 100%;">
+	<div id="dialog1" class="web_dialog"
+		style="width: 100%; padding-top: 40px;">
 		<!-- <table style="width: 100%; border: 0px;" cellpadding="3"> <td>${guestData.guest_id}</td>-->
 		<table class="table" border="1" style="width: 100%">
 			<tr>
@@ -86,9 +98,10 @@
 		</table>
 	</div>
 
-	<div id="dialog2" class="web_dialog" style="width: 100%;">
+	<div id="dialog2" class="web_dialog"
+		style="width: 100%; padding-top: 40px;">
 		<!-- <table style="width: 100%; border: 0px;" cellpadding="3"> -->
-		<table border="1" style="width: 100%">
+		<table class="table" border="1" style="width: 100%">
 			<tr>
 				<th>Payment ID</th>
 				<th>Reservation ID</th>
@@ -118,9 +131,10 @@
 		</table>
 	</div>
 
-	<div id="dialog3" class="web_dialog" style="width: 100%;">
+	<div id="dialog3" class="web_dialog"
+		style="width: 100%; padding-top: 40px;">
 		<!-- <table style="width: 100%; border: 0px;" cellpadding="3"> -->
-		<table border="1" style="width: 100%">
+		<table class="table" border="1" style="width: 100%">
 			<tr>
 				<th>Room ID</th>
 				<th>Room Amenity Type Id</th>
@@ -141,9 +155,10 @@
 		</table>
 	</div>
 
-	<div id="dialog4" class="web_dialog" style="width: 100%;">
+	<div id="dialog4" class="web_dialog"
+		style="width: 100%; padding-top: 40px;">
 		<!-- <table style="width: 100%; border: 0px;" cellpadding="3"> -->
-		<table border="1" style="width: 100%">
+		<table class="table" border="1" style="width: 100%">
 			<tr>
 				<th>Room ID</th>
 				<th>Room Amenity Type Id</th>
