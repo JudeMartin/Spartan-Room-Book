@@ -14,4 +14,6 @@ public interface BillInfoDAO {
 	public void updateBill(BillInfo billInfo);
 
 	public void deleteBill(Long payment_Id);
+
+	public List<BillInfo> listGuest();
 }

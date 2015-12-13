@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Calendar;
+import java.util.List;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -136,6 +137,17 @@ public class BillController {
 				total_payment, discount, base, days, cancel_url, roomObj,
 				Extra_Charges);
 
+		return null;
+	}
+
+	/* Done */
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String listPayments() {
+		System.out.println("In the   listPayments Method");
+		List<BillInfo> billList = billInfoService.listBills();
+		for (BillInfo bi : billList) {
+			System.out.println("Bill:" + bi.toString());
+		}
 		return null;
 	}
 

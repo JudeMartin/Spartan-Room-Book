@@ -15,4 +15,6 @@ public interface BillInfoService {
 
 	public void deleteBill(Long payment_Id);
 
+	public List<BillInfo> listBills();
+
 }

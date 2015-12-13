@@ -1,5 +1,7 @@
 package sjsu.edu.cmpe275.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,6 +41,13 @@ public class BillInfoServiceImpl implements BillInfoService {
 	public BillInfo generateBill(BillInfo billInfo) {
 		// TODO Auto-generated method stub
 		return billInfoDAO.generateBill(billInfo);
+	}
+
+	@Transactional(readOnly = true)
+	@Override
+	public List<BillInfo> listBills() {
+		// TODO Auto-generated method stub
+		return billInfoDAO.listGuest();
 	}
 
 }

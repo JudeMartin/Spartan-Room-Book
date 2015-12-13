@@ -1,5 +1,7 @@
 package sjsu.edu.cmpe275.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,8 @@ public class BillInfoDAOImpl implements BillInfoDAO {
 	@Override
 	public BillInfo viewBill(Long payment_Id) {
 		// TODO Auto-generated method stub
-		BillInfo billInfo = (BillInfo) getSession().get(BillInfo.class, payment_Id);
+		BillInfo billInfo = (BillInfo) getSession().get(BillInfo.class,
+				payment_Id);
 		return billInfo;
 	}
 
@@ -64,11 +67,17 @@ public class BillInfoDAOImpl implements BillInfoDAO {
 		 * 
 		 * System.out.println(guest.toString());
 		 * System.out.println(res.toString());
-		 * 
-		 * 
 		 */
-		BillInfo billInfo = (BillInfo) getSession().get(BillInfo.class, payment_Id);
+		BillInfo billInfo = (BillInfo) getSession().get(BillInfo.class,
+				payment_Id);
 		getSession().delete(billInfo);
 
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<BillInfo> listGuest() {
+		// TODO Auto-generated method stub
+		return getSession().createCriteria(BillInfo.class).list();
 	}
 }
