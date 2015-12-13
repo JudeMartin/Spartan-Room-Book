@@ -145,9 +145,9 @@ body {
 				<c:forEach items="${roomAvalibleList}" var="roomAvblData">
 					<tr>
 						<td>${roomAvblData.id}</td>
-						<td>${roomAvblData.roomTypeId}</td>
-						<td>${roomAvblData.otherTypeId}</td>
-						<td>${roomAvblData.statusId}</td>
+						<td>${roomAvblData.roomTypeId == '1' ? "1 Queen Bed":"2 King Beds"}</td>
+						<td>${roomAvblData.otherTypeId == '1' ? "Smoking":"Non Smoking"}</td>
+						<td>${roomAvblData.statusId == '1' ? "Available":"N/A"}</td>
 
 					</tr>
 				</c:forEach>
@@ -169,9 +169,9 @@ body {
 				<c:forEach items="${roomNotAvalibleList}" var="roomNOTAvblData">
 					<tr>
 						<td>${roomNOTAvblData.id}</td>
-						<td>${roomNOTAvblData.roomTypeId}</td>
-						<td>${roomNOTAvblData.otherTypeId}</td>
-						<td>${roomNOTAvblData.statusId}</td>
+						<td>${roomNOTAvblData.roomTypeId  == '1' ? "1 Queen Bed":"2 King Beds"}</td>
+						<td>${roomNOTAvblData.otherTypeId == '1' ? "Smoking":"Non Smoking"}</td>
+						<td>${roomNOTAvblData.statusId == '2' ? "Booked":"N/A"}</td>
 
 
 					</tr>
