@@ -20,7 +20,15 @@ public class Guest implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "guest_id")
-	private Long guestId;
+	private Long guest_id;
+
+	public Long getGuest_id() {
+		return guest_id;
+	}
+
+	public void setGuest_id(Long guest_id) {
+		this.guest_id = guest_id;
+	}
 
 	@Column(name = "first_name")
 	private String first_name;
@@ -40,13 +48,7 @@ public class Guest implements Serializable {
 	private String driver_license;
 
 
-	public Long getGuestId() {
-		return guestId;
-	}
-
-	public void setGuestId(Long guestId) {
-		this.guestId = guestId;
-	}
+	 
 
 	public String getFirst_name() {
 		return first_name;
@@ -114,7 +116,7 @@ public class Guest implements Serializable {
 
 	@Override
 	public String toString() {
-		return "[" + "guest_id" + "=" + guestId + ", first_name" + "=" + first_name + ", last_name" + "=" + last_name
+		return "[" + "guest_id" + "=" + guest_id + ", first_name" + "=" + first_name + ", last_name" + "=" + last_name
 				+ ", address" + "=" + address + ", email" + "=" + email + ", driver_license" + "=" + driver_license
 				+ ", country" + "=" + country + ", city" + "=" + city + ", phone" + "=" + phone + "]";
 

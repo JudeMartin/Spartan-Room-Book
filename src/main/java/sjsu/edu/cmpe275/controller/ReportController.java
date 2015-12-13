@@ -1,11 +1,12 @@
 package sjsu.edu.cmpe275.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,9 +31,39 @@ public class ReportController {
 	@Autowired
 	BillInfoService billInfoService;
 
-	@RequestMapping(value = { "/", }, method = RequestMethod.GET)
-	public String listReports(Model model) {
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String listReports(ModelMap model) {
+		List<Guest> guests = guestService.listGuest();
+
+		//List<Room> roomAvalibleList = roomService.listRooms();
+
+		List<Room> roomNotAvalibleList = roomService.listRooms();
+
+		List<BillInfo> paymentList = billInfoService.listBills();
+
+		List<Room> roomAvalibleList = roomService.listRooms();
+
+		
+		removeFromList(roomAvalibleList,1);
+		removeFromList(roomNotAvalibleList,2);
+		
+
+		model.addAttribute("guests", guests);
+		model.addAttribute("roomAvalibleList", roomAvalibleList);
+		model.addAttribute("roomNotAvalibleList", roomNotAvalibleList);
+		model.addAttribute("paymentList", paymentList);
+
 		return "Report";
+	}
+
+	private void removeFromList(List<Room> roomAvalibleList,int value) {
+		for (Iterator<Room> iterator = roomAvalibleList.iterator(); iterator.hasNext();) {
+			Room room = iterator.next();
+			if (room.getStatusId() != value) {
+				// Remove the current element from the iterator and the list.
+				iterator.remove();
+			}
+		}
 	}
 
 	@RequestMapping(value = "/guests", method = RequestMethod.GET)
@@ -87,8 +118,10 @@ public class ReportController {
 	public String generatePayments() {
 		List<BillInfo> paymentList = billInfoService.listBills();
 
-		for (BillInfo billInfo : paymentList) {
-			System.out.println(billInfo.toString());
+		if (paymentList.size() != 0 && paymentList != null) {
+			for (BillInfo billInfo : paymentList) {
+				System.out.println(billInfo.toString());
+			}
 		}
 		return null;
 	}
