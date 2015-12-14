@@ -155,7 +155,7 @@
 			<version>1.1</version>
 		</dependency>
 		<!-- Bit-ly Api -->
-	 
+
 	</dependencies>
 
 	<repositories>
@@ -174,6 +174,15 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId> com.heroku.sdk </groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version> 0.3.4</version>
+				<configuration>
+					<appName>test-application-java</appName>
 				</configuration>
 			</plugin>
 		</plugins>
