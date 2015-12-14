@@ -85,18 +85,6 @@ public class FakeEmailController {
 		System.out.println(payload.toString());
 		StringBuilder message = new StringBuilder();
 		message.append("<table style='border: 0'><th>Room Details</th><tr><td>Room # </td><td>: " + payload.getRoom_id()
-				+ "</td></tr><tr><td>Bed Type </td><td>: " + payload.getRoom_type()
-				+ "</td></tr><tr><td>Room Type</td><td>: " + payload.getOther_type()
-				+ "</td></tr><tr><td>Adults </td><td>: " + payload.getAdults()
-				+ "</td></tr><tr><td>Children </td><td>: " + payload.getChildren() + "</td></tr></table><hr><br>");
-		message.append("<table style='border: 0'><th>Billing Details</th><tr><td>Base Payment </td><td>: $ "
-				+ payload.getBase_pay() + "</td></tr><tr><td>Extra Charges </td><td>: $ " + payload.getExtra_pay()
-				+ "</td></tr><tr><td>Tax </td><td>: " + payload.getTax()
-				+ "%</td></tr><tr><td>Discount </td><td>: " + payload.getDiscount()
-				+ "%</td></tr><tr><td>Total </td><td>: $ " + payload.getTotal_payment() + "</td></tr></table><br><br>");
-		message.append(
-				"<p>Thanks you for selecting <b>Hotel Sparta</b>,<br><font size='2'>Spartans</font><br><font size='1'>+1(234) 567-8910</font></p>");
-		message.append("<table style='border: 0'><th>Room Details</th><tr><td>Room # </td><td>: " + payload.getRoom_id()
 		+ "</td></tr><tr><td>Bed Type </td><td>: " + payload.getRoom_type()
 		+ "</td></tr><tr><td>Room Type</td><td>: " + payload.getOther_type()
 		+ "</td></tr><tr><td>Adults </td><td>: " + payload.getAdults()
