@@ -56,8 +56,8 @@ public class GuestController {
 			System.out.println("the form has errors ");
 		}
 		System.out.println(guest.toString());
-		System.out.println("Deleting a single guest:" + guest.getGuestId());
-		guestService.deleteGuest(guest.getGuestId());
+		System.out.println("Deleting a single guest:" + guest.getGuest_id());
+		guestService.deleteGuest(guest.getGuest_id());
 		// model.addAttribute("guestData", null);
 		List<Guest> guests = guestService.listGuest();
 		model.addAttribute("guests", guests);
@@ -67,7 +67,7 @@ public class GuestController {
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public String updateGuest(Model model, @ModelAttribute("command") Guest guest, BindingResult result) {
-		Guest guestData = (Guest) guestService.viewGuest(guest.getGuestId());
+		Guest guestData = (Guest) guestService.viewGuest(guest.getGuest_id());
 		System.out.println("Guest Data=> edit method" + guestData.toString());
 		model.addAttribute("guestData", guestData);
 		List<Guest> guests = guestService.listGuest();
