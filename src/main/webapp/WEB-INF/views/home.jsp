@@ -303,39 +303,62 @@
 	<jsp:include page="includes/footer.jsp" />
 	<jsp:include page="includes/scripts.jsp" />
 	<script type="text/javascript">
-		$(document).ready(function() {
-			console.log("Calling clearLocalStorage()");
-			localStorageSetup();
-			$("#checkAvail").click(function(event) {
-				$.ajax({
-					type : 'GET',
-					url : "book/availability",
-					context : document.body,
-					data : $("#form1").serialize(),
-					async : true,
-					dataType: "json",
-					success : function(result) {
-						var res = result;
-						var roomId = result["result"];
-						localStorage.setItem("roomId",roomId);
-						if (roomId > 0) {
-							console.log("At " + JSON.stringify(result));
-							document.getElementById("roomAvailable").style.visibility = "visible";
-							document.getElementById("roomNotAvailable").style.visibility = "hidden";
-							document.getElementById('roomId').value = roomId;
-						} else {
-							document.getElementById("roomNotAvailable").style.visibility = "visible";
-							document.getElementById("roomAvailable").style.visibility = "hidden";
-						}
-					},
-					error : function(jqXHR, textStatus, errorThrown) {
-						document.getElementById("roomNotAvailable").style.visibility = "visible";
-						document.getElementById("roomAvailable").style.visibility = "hidden";
-					}
-				});
-				event.preventDefault();
-			});
-		});
+		$(document)
+				.ready(
+						function() {
+							console.log("Calling clearLocalStorage()");
+							localStorageSetup();
+							$("#checkAvail")
+									.click(
+											function(event) {
+												$
+														.ajax({
+															type : 'GET',
+															url : "book/availability",
+															context : document.body,
+															data : $("#form1")
+																	.serialize(),
+															async : true,
+															dataType : "json",
+															success : function(
+																	result) {
+																var res = result;
+																var roomId = result["result"];
+																localStorage
+																		.setItem(
+																				"roomId",
+																				roomId);
+																if (roomId > 0) {
+																	console
+																			.log("At "
+																					+ JSON
+																							.stringify(result));
+																	document
+																			.getElementById("roomAvailable").style.visibility = "visible";
+																	document
+																			.getElementById("roomNotAvailable").style.visibility = "hidden";
+																	document
+																			.getElementById('roomId').value = roomId;
+																} else {
+																	document
+																			.getElementById("roomNotAvailable").style.visibility = "visible";
+																	document
+																			.getElementById("roomAvailable").style.visibility = "hidden";
+																}
+															},
+															error : function(
+																	jqXHR,
+																	textStatus,
+																	errorThrown) {
+																document
+																		.getElementById("roomNotAvailable").style.visibility = "visible";
+																document
+																		.getElementById("roomAvailable").style.visibility = "hidden";
+															}
+														});
+												event.preventDefault();
+											});
+						});
 		$(document).ready(function() {
 			function init() {
 				if (localStorage["rooms"]) {
@@ -356,42 +379,39 @@
 		$('#localStorageTest').submit(function() {
 			localStorage.clear();
 		});
-		function localStorageSetup(){
-			
+		function localStorageSetup() {
+
 			console.log("clearing the local storage");
 			localStorage.clear();
 			console.log("checkAvail");
-			
-			localStorage.setItem("address",0);
-			localStorage.setItem("adults",0);
-			localStorage.setItem("base_price",0);
-			localStorage.setItem("children",0);
-			localStorage.setItem("city",0);
-			localStorage.setItem("country",0);
-			localStorage.setItem("date_from",0);
-			localStorage.setItem("date_to",0);
-			localStorage.setItem("driver_license",0);
-			localStorage.setItem("email",0);
-			localStorage.setItem("extras_price",0);
-			localStorage.setItem("first_name",0);
-			localStorage.setItem("last_name",0);  
-			localStorage.setItem("localBasePrice",0); 
-			localStorage.setItem("phone",0); 
-			localStorage.setItem("roomId",0); 
-			localStorage.setItem("rooms",0); 
-			localStorage.setItem("state",0); 
-			localStorage.setItem("total_price",0); 
-			localStorage.setItem("zip",0); 
-			
+
+			localStorage.setItem("address", "enter address");
+			localStorage.setItem("adults", 0);
+			localStorage.setItem("base_price", 0);
+			localStorage.setItem("children", 0);
+			localStorage.setItem("city", "city");
+			localStorage.setItem("country", "country");
+			localStorage.setItem("date_from", 0);
+			localStorage.setItem("date_to", 0);
+			localStorage.setItem("driver_license", "DL_CA");
+			localStorage.setItem("email", "email");
+			localStorage.setItem("extras_price", 0);
+			localStorage.setItem("first_name", "first name");
+			localStorage.setItem("last_name", "last name");
+			localStorage.setItem("localBasePrice", 0);
+			localStorage.setItem("phone", "phone");
+			localStorage.setItem("roomId", 0);
+			localStorage.setItem("rooms", 0);
+			localStorage.setItem("state", "state");
+			localStorage.setItem("total_price", 0);
+			localStorage.setItem("zip", 0);
+
 		}
 		function datesLocalStorage() {
-			alert("Hello");
 			myDivObj = document.getElementById("base_price");
 			if (myDivObj) {
-				alert(myDivObj.innerHTML);
 				localStorage.setItem('base_price', myDivObj.innerHTML);
 			} else {
-				alert("Alien Found");
 			}
 
 			var check_in_date = $('#check_in_date').val();
